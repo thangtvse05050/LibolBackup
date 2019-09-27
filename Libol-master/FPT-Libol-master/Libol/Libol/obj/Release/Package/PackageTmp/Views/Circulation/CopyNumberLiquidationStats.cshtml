@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "CopyNumberLiquidationStats";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+</head>
+
+<body>
+    <h5 style="margin-top:20px;">Kiểm tra thanh lý</h5>
+    <div class="control-label align-self-center">
+        <div class="form-group col-10">
+            <label class="control-label col-md-2 align-self-center">Đăng ký cá biệt: </label>
+            <textarea rows="5" type="text" class="form-control col-md-4" id="DKCBID" name="DKCBID"></textarea>
+        </div>
+    </div>
+    <div class="btn-group d-xl-flex justify-content-md-center" role="group">
+        <button id="stat" type="submit" style="margin-right:20px;">Xem thử</button>
+        <button id="reset" type="button" onclick="reset()">Đặt lại</button>
+    </div>
+    <div id="ContentStatLiquidation"></div>
+</body>
+<script>
+    document.getElementById("stat").onclick = function () {
+        var empObj = {
+            strDKCBID: document.getElementById("DKCBID").value,
+        };
+        $.ajax({
+            url: "GetCopyNumberLiquidationStats",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            beforeSend: function () {
+                $("#ContentStatLiquidation").html("<h4>Loading...</h4>");
+            },
+            success: function (result) {
+                $("#ContentStatLiquidation").html(result)
+            },
+            error: function (errormessage) {
+                console.log("error");
+            }
+        });
+    };
+    $(window).bind("pageshow", function () {
+        $("#Library").val('');
+        $("#Location").val('');
+    });
+    function reset() {
+        $("#DKCBID").val('');
+    }
+</script>
+
+
+
+
+

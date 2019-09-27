@@ -1,0 +1,479 @@
+﻿@using System.Linq;
+@using Libol.Models;
+@using Libol.EntityResult;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #textColorInput {
+        color: red;
+    }
+
+    label {
+        text-align: right;
+    }
+
+    .affix {
+        top: 20px;
+        z-index: 9999 !important;
+    }
+
+    .btn-circle.btn-xl {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        font-size: 24px;
+        line-height: 1.33;
+        border-radius: 35px;
+    }
+</style>
+<h4 style="margin:1rem"><mark>Thông Tin Biên Mục Chi Tiết</mark></h4>
+@*<nav class="col-sm-3">
+        <div class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
+            <button type="button" class="btn btn-warning btn-circle btn-xl">
+                +
+            </button>
+        </div>
+    </nav>*@
+
+
+@{
+    FPT_SP_CATA_GET_CONTENTS_OF_ITEMS_Result Leader = ViewData["Leader"] as FPT_SP_CATA_GET_CONTENTS_OF_ITEMS_Result;
+    List<FPT_SP_CATA_GET_CONTENTS_OF_ITEMS_Result> Contents = ViewData["ListContent"] as List<FPT_SP_CATA_GET_CONTENTS_OF_ITEMS_Result>;
+    List<SP_CATA_GET_MODIFIED_FIELDS_Result> Fields = ViewData["listField"] as List<SP_CATA_GET_MODIFIED_FIELDS_Result>;
+    List<FPT_CATA_FILE_NEW> Filex = ViewData["listFile"] as List<FPT_CATA_FILE_NEW>;
+    //Merge 2 List Content + Des
+    var res = Contents.Zip(Fields, (c, f) => new { Content = c, Field = f });
+}
+
+<div id="formCreated">
+
+    @{
+        <label class='control-label align-self-center font-weight-bold'>000 : Leader </label> <br>
+        <div class="form-group row col-12">
+            <label class='control-label col-md-2 align-self-center font-weight-bold'>000</label>
+            @Html.TextBox(Leader.Content, Leader.Content, new { @class = "form-control col-md-9", @id = Leader.IDSort })
+        </div>
+        foreach (var item in res)
+        {
+            if (item.Content.Ind != "")
+            {
+                <label class='control-label align-self-center font-weight-bold'>@item.Content.IDSort : @item.Field.VietFieldName</label> <br>
+                <div class="form-group row col-12">
+
+                    <label class='control-label col-md-2 align-self-center font-weight-bold'>@item.Content.IDSort </label>
+                    @Html.TextBox(item.Content.FieldCode, item.Content.Content, new { @class = "form-control col-md-9", @id = item.Content.IDSort })
+                    @Html.TextBox(item.Content.Ind, item.Content.Ind, new { @class = "form-control col-md-1", @id = item.Content.IDSort, @maxlength = 2 })
+
+                </div>
+            }
+            else
+            {
+                <label class='control-label align-self-center font-weight-bold'>@item.Content.IDSort : @item.Field.VietFieldName</label> <br>
+                <div class="form-group row col-12">
+                    <label class='control-label col-md-2 align-self-center font-weight-bold'>@item.Content.IDSort </label>
+                    @Html.TextBox(item.Content.FieldCode, item.Content.Content, new { @class = "form-control col-md-9", @id = item.Content.IDSort })
+                </div>
+            }
+
+        }
+
+    }
+    <br>
+    <h5 class='control-label align-self-center font-weight-bold' id="lbAdd"><mark>CÁC TRƯỜNG THÊM MỚI</mark></h5> <br>
+
+
+</div>
+@*/////////////////////////////////////////File Processing//////////////////////////////////////////////////*@
+<div class="row">
+
+    <div class="col-md-8">
+        <h3><mark>Download EData</mark></h3>
+        @{
+            foreach (var nile in Filex)
+            {
+                @Html.ActionLink(nile.FileName, "Download", "Catalogue", new { FileName = nile.FileName, FilePath = nile.FilePath }, new { @target = "_blank" })
+                <br />
+            }
+
+        }
+    </div>
+    <div class="col-md-4">
+        <h3><mark>Upload EData</mark></h3>
+
+        <input type="file" class="btn-secondary" id="fileInput" multiple="" />
+        <input type="button" class="btn-outline-success" id="fileButton" value="Upload Files" /><br />
+
+    </div>
+</div>
+
+
+
+<div class="form-group col-md-12 form-inline">
+    <div class="form-row col-md-12 text-center">
+        <div style="margin : auto">
+            <input type="button" id="btnCreate" class="btn-primary form-control" value="Cập Nhập" onclick="Update();" />
+            @*<button disabled type="button" id="btnReset" class="btn btn-primary form-control">Đặt Lại</button>*@
+            <button type="button" id="btnAddField" class="btn btn-primary form-control" data-toggle="modal" data-target="#centralModalSm" data-backdrop="static">Thêm Trường</button>
+            <input type="button" id="btnShelf" class="btn btn-primary form-control" value="Xếp Giá" />
+        </div>
+    </div>
+</div>
+
+<!--The Modal -->
+@*Tìm Kiếm Nhãn Trường*@
+<div class="modal fade" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thêm Mới Trường</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <input type="text" class="col-md-10 form-control" id="txtSearch" placeholder="">
+                    <button type="button" class="col-md-1 btn-success form-control" id="btnSearch" onclick="SearchFields()">Search</button>
+                </div>
+                <br>
+                <br>
+                <div class="table-responsive col-sm-10 offset-sm-1">
+                    <table class="table table-hover table-bordered" id="table">
+                        @*<tr><td class="nr"><strong> Doanhdq</strong></td><td class="nr">Doanhdq</td><td><button type="button" class="use-address" /></td></tr>*@
+                    </table>
+                </div>
+
+                <div id="resultas"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnAddField" onclick="" hidden>Thêm Trường</button>
+                @*<button type="button" class="btn btn-success" onclick="location.href='/Catalogue/AddNewCatalogue';">Biên Mục Mới</button>*@
+                @*<button type="button" class="btn btn-secondary" id="btnShelf">Xếp Giá</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--The Modal -->
+@*Thông báo Update thành công*@
+<div class="modal fade" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Cập Nhập Thành Công</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Mã Tài Liệu : <label class='col-md-2 align-self-center font-weight-bold' id="codeId"></label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="confirm" onclick="location.reload()">Xác Nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //upload FIle
+    $('#fileInput').bind('change', function () {
+        $('#fileButton').attr("disabled", false)
+        var size = 0;
+        var filex = $("#fileInput").get(0).files;
+        //this.files[0].size gets the size of your file.
+        for (var i = 0; i < filex.length; i++) {
+            //debugger;
+            size = size + filex[i].size;
+            if (size > 4096000) {
+                alert('Kích thước File quá lớn(4MB) !');
+                $('#fileButton').attr("disabled", true);
+                return false;
+            }
+
+        }
+
+
+    });
+    //UpLoad Edata
+    $(document).ready(function () {
+        $("#fileButton").click(function () {
+
+            var files = $("#fileInput").get(0).files;
+            var fileData = new FormData();
+            fileData.append('ID', '@Request.QueryString["ID"]');
+            for (var i = 0; i < files.length; i++) {
+                fileData.append("fileInput", files[i]);
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Catalogue/UploadFile",
+                dataType: "json",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: fileData,
+                success: function (result, status, xhr) {
+                    alert(result);
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert(status);
+                }
+            });
+        });
+
+
+    });
+</script>
+<script>
+    //add event click enter for input search Fields
+    $("#txtSearch").on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            SearchFields();
+        }
+    });
+    
+    $('#lbAdd').hide();
+    $('#btnShelf').click(function () {
+        //window.location.href = '/Catalogue/AddNewCatalogue?ID=' + 'Request.QueryString["ID"]';
+        window.location.href = '/Shelf/Index?Code=' + $('#001').val();
+    });
+    var tempArrTempFieldName = ["000"];
+    $(document).ready(function () {
+        //debugger;
+        $('#001').prop('disabled', true);
+        var arrListFieldName = @Html.Raw(Json.Encode(ViewBag.listField));
+        $.each(arrListFieldName, function (i, item) {
+        tempArrTempFieldName.push(item.FieldCode);
+        });
+
+        });
+</script>
+
+<script>
+
+    function SearchFields() {
+        $('#table').empty();
+        $('#centralModalSm').modal({ backdrop: 'static', keyboard: false });
+        var strSearch = $('#txtSearch').val();
+        $.ajax({
+            url: "/Catalogue/SearchField",
+            type: "POST",
+            data: JSON.stringify({ strSearch: strSearch }),
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (listRs) {
+                //debugger;
+                $('#table').append("<tr class='table-success'><th scope='col'> Nhãn Trường</th ><th scope='col'>Mô Tả</th><th scope='col'>Hành Động</th></tr>")
+                if (listRs.length >= 0) {
+                    for (var i = 0; i < listRs.length; i++) {
+                        $('#table').append("<tr><td class='clFieldCode'><strong>" + listRs[i].FieldCode + "</strong></td><td class='clFieldName'>" + listRs[i].VietFieldName + "</td><td><button type='button' class='use-address btn-success'>Thêm</button></td></tr>");
+                    }
+                }
+
+                $(".use-address").click(function () {
+
+                    var $FieldCode = $(this).closest("tr")   // Finds the closest row <tr>
+                        .find(".clFieldCode")     // Gets a descendent with class="nr"
+                        .text();         // Retrieves the text within <td>
+
+                    var $FieldName = $(this).closest("tr")   // Finds the closest row <tr>
+                        .find(".clFieldName")     // Gets a descendent with class="nr"
+                        .text();         // Retrieves the text within <td>
+
+
+
+
+                    var result = confirm("Bạn có chắc muốn thêm trường " + $FieldCode + "?");
+                    if (result) {
+                        if (!tempArrTempFieldName.includes($FieldCode)) {
+                            $('#lbAdd').show(0);
+                            $("#formCreated").append("<label class='control-label align-self-center font-weight-bold'>" + $FieldCode + " : " + $FieldName + " </label> <br> <div class='form-group row col-12'> <label class='control-label col-md-2 align-self-center font-weight-bold'>" + $FieldCode + "</label> <input class='form-control col-md-9' id='" + $FieldCode + "'  type='text'>");
+                            tempArrTempFieldName.push($FieldCode);
+                            alert("Thêm mới trường " + $FieldCode + " thành công !");
+                            $(this).closest("tr").empty();
+                        } else {
+                            alert("Trường " + $FieldCode + " đã tồn tại !");
+                        }
+                    }
+
+                });
+            },
+            error: function (errorThrown) {
+                alert("Xảy ra lỗi khi thêm trường mới !");
+            }
+
+        });
+    }
+</script>
+
+
+<script>
+    function Update() {
+        //List get Data form ViewBag
+
+
+        //array chứa field và giá trị các trường đã được gộp các $ với nhau
+        var arrFieldName = [];
+        var arrFieldValue = [];
+
+        //array chứa field và các giá trị tương ứng như khi show
+        var arrFieldOrg = [];
+        var arrValueOrg = [];
+
+        //GET Inf Lan 1 : Lấy các thông tin nguyên bản - thực hiện UpdateBlockField
+        $.each(tempArrTempFieldName, function (i, FieldName) {
+            var strValue = $("#" + FieldName).val();
+            //TÁCH CÁC TRƯỜNG LẶP THÀNH 1 HÀNG RIÊNG BIỆT
+            if (strValue.indexOf("::") != -1) {
+                var arrValues = strValue.split("::");
+                $.each(arrValues, function (i, value) {
+                    arrFieldOrg.push(FieldName);
+                    arrValueOrg.push(value)
+                });
+            }
+            else {
+                arrFieldOrg.push(FieldName);
+                arrValueOrg.push(strValue)
+            }
+
+        });
+
+        //*******************************************GET Values from Input by FieldName*************************************************
+
+        //GET Inf Lan 2 : Lấy các thông tin nguyên bản - thực hiện Update các thông tin liên quan khác , tương tự như tạo mới Biên mục sơ lược
+        $.each(tempArrTempFieldName, function (i, FieldName) {
+
+            var strValue = $("#" + FieldName).val();
+
+            if (FieldName === '245') {
+
+                var arrIndex = [];
+                for (var i = 1; i < strValue.length; i++) {
+                    if (strValue[i] === '$') {
+                        arrIndex.push(i);
+                        //debugger;
+                    }
+                }
+                //debugger;
+                //xóa các kí tự nối ngoại trừ trường hợp nhan đề song song và phụ đề ('=')
+                for (var i = 0; i < arrIndex.length; i++) {
+                    var deleted = 0;
+                    if (strValue[arrIndex[i] - 1 - deleted] === '/' || strValue[arrIndex[i] - 1 - deleted] === '.' || strValue[arrIndex[i] - 1 - deleted] === ',') {
+                        //var x = strValue.substring(0, arrIndex[i] - 1 - deleted);
+                        //var y = strValue.substring(arrIndex[i] - deleted);
+                        strValue = strValue.substring(0, arrIndex[i] - 1 - deleted) + strValue.substring(arrIndex[i] - deleted);
+                        deleted++;
+                        //debugger;
+                    }
+                }
+                //debugger;
+            }
+
+            if (FieldName === '260') {
+                var arrIndex = [];
+                for (var i = 1; i < strValue.length; i++) {
+                    if (strValue[i] === '$') {
+                        arrIndex.push(i);
+                    }
+                }
+                for (var i = 0; i < arrIndex.length; i++) {
+                    if (strValue[arrIndex[i] - 1 - i] === ':' || strValue[arrIndex[i] - 1 - i] === ',') {
+                        //var x = strValue.substring(0, arrIndex[i] - 1 - i);
+                        //var y = strValue.substring(arrIndex[i] - i);
+                        strValue = strValue.substring(0, arrIndex[i] - 1 - i) + strValue.substring(arrIndex[i] - i);
+                    }
+                }
+                //debugger;
+            }
+
+            if (FieldName === '300') {
+                var arrIndex = [];
+                for (var i = 1; i < strValue.length; i++) {
+                    if (strValue[i] === '$') {
+                        arrIndex.push(i);
+                    }
+                }
+
+                for (var i = 0; i < arrIndex.length; i++) {
+                    if (strValue[arrIndex[i] - 1 - i] === ':' || strValue[arrIndex[i] - 1 - i] === '+' || strValue[arrIndex[i] - 1 - i] === ';') {
+                        strValue = strValue.substring(0, arrIndex[i] - 1 - i) + strValue.substring(arrIndex[i] - i);
+
+                    }
+                }
+
+            }
+            //TÁCH CÁC TRƯỜNG LẶP THÀNH 1 HÀNG RIÊNG BIỆT
+            if (strValue.indexOf("::") != -1) {
+                var arrValues = strValue.split("::");
+                $.each(arrValues, function (i, value) {
+                    arrFieldName.push(FieldName);
+                    arrFieldValue.push(value)
+                });
+            }
+            else {
+                arrFieldName.push(FieldName);
+                arrFieldValue.push(strValue)
+            }
+
+        });
+        //array chứa fieldName và Field tương tự như khi biên mục sơ lượcc (Input chuẩn để update)
+        var arrFieldNameFinal = [];
+        var arrFieldValueFinal = [];
+
+        $.each(arrFieldValue, function (index, value) {
+            if (value.indexOf("$") >= 0) {
+                var arrTemp = value.split("$");
+                //Loc value null
+                arrTemp = arrTemp.filter(function (v) { return v !== '' });
+
+                $.each(arrTemp, function (i, valTemp) {
+                    arrFieldNameFinal.push(arrFieldName[index] + '$' + valTemp.substring(0, 1));
+                    arrFieldValueFinal.push(valTemp.substring(1));
+                });
+            }
+            else {
+                arrFieldNameFinal.push(arrFieldName[index]);
+                arrFieldValueFinal.push(arrFieldValue[index]);
+            }
+        });
+        //debugger
+
+        //***********************************DONE CHUẨN HÓA CHUỖI TRƯỚC KHI UPDATE **************************************************
+        //UPDATE Item
+
+        $.ajax({
+            url: "/Catalogue/InsertOrUpdateCatalogue",
+            type: "POST",
+            data: JSON.stringify({ listFieldsName: arrFieldNameFinal, listFieldsValue: arrFieldValueFinal, listFieldsOrg: arrFieldOrg, listValuesOrg: arrValueOrg }),
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (Data) {
+                //pop up Modal succes
+                $('#modalSuccess').modal({ backdrop: 'static' })
+                $('#modalSuccess').modal('toggle');
+                $('#codeId').text(Data[0]);
+                $('#btnShelf').click(function () {
+                    window.location.href = '/Shelf/Index?Code=' + Data[0];
+                    //window.location.href = '/Shelf/Index?Code=' + Data[0] + '&ItemID=' + Data[1];
+                });
+
+            },
+            error: function (errorThrown) {
+                alert("Cập nhập thông tin biên mục không thành công !!!");
+            }
+
+        });
+
+    }
+
+
+</script>
+
+
+
+
+
+

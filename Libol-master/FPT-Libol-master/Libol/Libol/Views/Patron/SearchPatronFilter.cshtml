@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Tìm kiếm bạn đọc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .form-row {
+        margin-top: 0.5rem;
+    }
+</style>
+<h4 style="margin : 1rem">Tìm kiếm bạn đọc</h4>
+<form action="/Patron/SearchPatron" id="filterForm">
+    <div class="form-row">
+        <div class="col">
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Số thẻ</label></div>
+                <div class="col"><input type="text" class="form-control" name="strCode"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Giới tính</label></div>
+                <div class="col">
+                <select class="form-control" name="blnSex">
+                    <option value="">----- Chọn -----</option><option value="1">Nam</option><option value="0">Nữ</option>
+                </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Ngày cấp thẻ</label></div>
+                <div class="col"><input type="date" class="form-control" name="strLastIssuedDate"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Nhóm bạn đọc</label></div>
+                <div class="col">
+                    <select class="form-control" name="intPatronGroupID">
+                        <option value="">----- Chọn -----</option>
+                        @foreach (var item in ViewBag.PatronGroup)
+                        {
+                            <option value="@item.Name">@item.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Lớp</label></div>
+                <div class="col"><input type="text" class="form-control" name="strClass"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Khóa</label></div>
+                <div class="col"><input type="text" class="form-control" name="strGrade" /></div>
+            </div>
+        </div>
+        <div class="col" style="margin-right: 200px;">
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Họ tên</label></div>
+                <div class="col"><input type="text" class="form-control" name="strName"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Ngày sinh</label></div>
+                <div class="col"><input type="date" class="form-control" name="strDOB"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Ngày hết hạn</label></div>
+                <div class="col"><input type="date" class="form-control" name="strExpiredDate"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Khoa</label></div>
+                <div class="col">
+                    <select class="form-control" name="faculty">
+                        <option value="">----- Chọn -----</option>
+                        @foreach (var item in ViewBag.Faculty)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Ngành nghề</label></div>
+                <div class="col">
+                    <select class="form-control" name="intOccupationID">
+                        <option value="">----- Chọn -----</option>
+                        @foreach (var item in ViewBag.Occupation)
+                        {
+                            <option value="@item.Occupation">@item.Occupation</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col text-center"><button class="btn btn-primary" type="submit" onclick="SearchPatron()">Tìm kiếm</button><button class="btn btn-primary" type="button" style="margin-left: 10px;" onclick="Reset()">Đặt lại</button></div>
+    </div>
+</form>
+
+<script>
+    function SearchPatron() {
+        $('#filterForm').submit();
+    }
+    function Reset() {
+        location.reload();
+    }
+</script>

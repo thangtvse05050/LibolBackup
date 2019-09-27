@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "Tìm kiếm sách - Thư viện trường đại học FPT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start body -->
+<div class="container">
+    <figure>
+        <img class="pic-header" alt="Home Slide" src="~/AllContent/images/white-background.png" />
+    </figure>
+    <div class="navbar-home">
+        <a href="@Url.Action("Home", "Home")" style="background-color: #D8491F"><i class="fa fa-home"></i> Trang chủ</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Sản phẩm</a>
+        <div class="dropdown-home">
+            <button class="dropbtn">Dịch vụ</button>
+            <div class="dropdown-content">
+                <a href="#">Z39.50</a>
+            </div>
+        </div>
+        <a href="#" style="width: 153px">Nội qui thư viện</a>
+        <a href="@Url.Action("PatronPage", "InformationPatron")" style="width: 220px">Thông tin bạn đọc</a>
+        <a href="@Url.Action("Login", "Login")" id="login" class="login"><i class="fa fa-sign-in"></i> Đăng nhập</a>
+    </div>
+    <br>
+    <h2 class="searching">Kết quả tìm kiếm: tìm thấy <span style="color: red">69</span> biểu ghi</h2>
+    <br>
+    <div>
+        <table border="1" style="background-color: #f5f5f5">
+            <tr>
+                <th class="info" style="width: 45px">STT</th>
+                <th class="info">Thông tin ấn phẩm</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>
+                    <a href="@Url.Action("DetailBook", "SearchBook")" class="news">
+                        Phát triển cơ sở dữ liệu Java Oracle / Nguyễn Ngọc Tuấn, Hồng
+                        Phúc .
+                        -
+                    </a>
+                    H.: Giao thông vận tải, 2005. - 434 tr.; 24 cm. - Hồng Phúc Tác giả<br>
+                    &nbsp;&nbsp;<i class="fa fa-angle-double-right" style="font-size:18px"></i>&nbsp;&nbsp;<b>
+                        Mã
+                        ĐKCB:
+                    </b>TK/TTHL000286, TK/TTHL001383, TK/TTHL001698
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>
+                    <a href="#" class="news">
+                        Java Programming: From Problem Analysis to Program Design / D.S.
+                        Malik
+                    </a>. - 3rd ed. - Canada : Thomson Course Technology, 2007. - 1055tr.; 28cm + Đĩa CD -
+                    ROM. - <br>
+                    &nbsp;&nbsp;<i class="fa fa-angle-double-right" style="font-size:18px"></i>&nbsp;&nbsp;<b>
+                        Mã
+                        ĐKCB:
+                    </b>TK/TTHL000061, TK/TTHL000062, TK/TTHL000375-TK/TTHL000377
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>
+                    <a href="#" class="news">
+                        Java programming : from problem analysis to program design / D.S.
+                        Malik
+                    </a> - 2nd ed. - Boston, MA : Thomson /Course Technology, 2006. - xxxix, 1103 p. : col.
+                    ill. ; 24 cm. + 1 computer optical disc (4 3/4 in.). -<br>
+                    &nbsp;&nbsp;<i class="fa fa-angle-double-right" style="font-size:18px"></i>&nbsp;&nbsp;<b>
+                        Mã
+                        ĐKCB:
+                    </b>TK/TTHL000592, TK/TTHL000593
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>
+                    <a href="#" class="news">
+                        Invitation to computer science : Java version / G Michael Schneider,
+                        Judith L Gersting
+                    </a> . - 3rd ed. - Boston, Mass : Thomson, 2007. - 720 p. : ill. ; 26 cm. -
+                    Gersting, Judith L. Author<br>
+                    &nbsp;&nbsp;<i class="fa fa-angle-double-right" style="font-size:18px"></i>&nbsp;&nbsp;<b>
+                        Mã
+                        ĐKCB:
+                    </b>TK/HCHL000989
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>
+                    <a href="#" class="news">Data structures and algorithms in Java / Adam Drozdek</a> . - 2nd ed. -
+                    Cambridge, Mass. : Course Technology, 2005. - XVI, 752 p. ; 24 cm. - <br>
+                    &nbsp;&nbsp;<i class="fa fa-angle-double-right" style="font-size:18px"></i>&nbsp;&nbsp;<b>
+                        Mã
+                        ĐKCB:
+                    </b>GT/CNTT002001-GT/CNTT002007, GT/CNTT002009, GT/CNTT002011, GT/CNTT002012,
+                    GT/CNTT002015, GT/CNTT002017-GT/CNTT002029, GT/CNTT002032, GT/CNTT002033, GT/CNTT002036,
+                    GT/CNTT002039, GT/CNTT002041-GT/CNTT002043, GT/CNTT002046, GT/CNTT002052, GT/CNTT002054,
+                    GT/CNTT002059, GT/CNTT002062, GT/CNTT002063, GT/CNTT002065-GT/CNTT002068, GT/CNTT002070,
+                    GT/CNTT002071, GT/CNTT002073, GT/CNTT002075-GT/CNTT002080, GT/CNTT002084-GT/CNTT002087,
+                    GT/CNTT002089, GT/CNTT002090, GT/CNTT002092-GT/CNTT002095, GT/CNTT002097, GT/CNTT002098,
+                    GT/CNTT002100-GT/CNTT002102, GT/CNTT002105-GT/CNTT002107, GT/CNTT002110, GT/CNTT002112,
+                    GT/CNTT002113, GT/CNTT002115, GT/CNTT002119, GT/CNTT002121, GT/CNTT002123, GT/CNTT002124,
+                    GT/CNTT002126, GT/CNTT002129-GT/CNTT002131, GT/CNTT002133, GT/CNTT002134,
+                    GT/CNTT002136-GT/CNTT002139, GT/CNTT002142-GT/CNTT002146, GT/CNTT002148-GT/CNTT002152,
+                    GT/CNTT002154, GT/CNTT002156, GT/CNTT002157, GT/CNTT002159, GT/CNTT002162, GT/CNTT002163,
+                    GT/CNTT002170, GT/CNTT002171, GT/CNTT002173-GT/CNTT002176, GT/CNTT002178-GT/CNTT002181,
+                    GT/CNTT002183, GT/CNTT002184, GT/CNTT002187, GT/CNTT002189, GT/CNTT002190, GT/CNTT002194,
+                    GT/CNTT002195, GT/CNTT002200, GT/CNTT002201, GT/CNTT002203, GT/CNTT002204,
+                    GT/CNTT002207-GT/CNTT002209, GT/CNTT002211, GT/CNTT002213, GT/CNTT002215,
+                    GT/CNTT002221-GT/CNTT002223, GT/CNTT002225, GT/CNTT002229-GT/CNTT002231, GT/CNTT002233,
+                    GT/CNTT002237-GT/CNTT002245, GT/CNTT002250, GT/CNTT002251, GT/CNTT002253, GT/CNTT002255,
+                    GT/CNTT002259, GT/CNTT002263, GT/CNTT002264, GT/CNTT002267, GT/CNTT002269, GT/CNTT002270,
+                    GT/CNTT002272, GT/CNTT002273, GT/CNTT002276, GT/CNTT002280, GT/CNTT002281, GT/CNTT002287,
+                    GT/CNTT002290, GT/CNTT002296, GT/CNTT002297, TK/TTHL000153-TK/TTHL000157,
+                    TK/TTHL001348-TK/TTHL001351
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>
+                    <a href="#" class="news">Advanced java / Aptech computer education</a> . - H. : Đại học FPT,
+                    2003. - 219 p. ; 26 cm. - <br>
+                    &nbsp;&nbsp;<i class="fa fa-angle-double-right" style="font-size:18px"></i>&nbsp;&nbsp;<b>
+                        Mã
+                        ĐKCB:
+                    </b>TK/TTHL000565, TK/TTHL000566
+                </td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>
+                    <a href="#" class="news">Advanced java / Aptech computer education</a> . - H. : Đại học FPT,
+                    2003. - 219 p. ; 26 cm. - <br>
+                    &nbsp;&nbsp;<i class="fa fa-angle-double-right" style="font-size:18px"></i>&nbsp;&nbsp;<b>
+                        Mã
+                        ĐKCB:
+                    </b>TK/TTHL000565, TK/TTHL000566
+                </td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>
+                    <a href="#" class="news">Advanced java / Aptech computer education</a> . - H. : Đại học FPT,
+                    2003. - 219 p. ; 26 cm. - <br>
+                    &nbsp;&nbsp;<i class="fa fa-angle-double-right" style="font-size:18px"></i>&nbsp;&nbsp;<b>
+                        Mã
+                        ĐKCB:
+                    </b>TK/TTHL000565, TK/TTHL000566
+                </td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>
+                    <a href="#" class="news">Advanced java / Aptech computer education</a> . - H. : Đại học FPT,
+                    2003. - 219 p. ; 26 cm. - <br>
+                    &nbsp;&nbsp;<i class="fa fa-angle-double-right" style="font-size:18px"></i>&nbsp;&nbsp;<b>
+                        Mã
+                        ĐKCB:
+                    </b>TK/TTHL000565, TK/TTHL000566
+                </td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>
+                    <a href="#" class="news">Advanced java / Aptech computer education</a> . - H. : Đại học FPT,
+                    2003. - 219 p. ; 26 cm. - <br>
+                    &nbsp;&nbsp;<i class="fa fa-angle-double-right" style="font-size:18px"></i>&nbsp;&nbsp;<b>
+                        Mã
+                        ĐKCB:
+                    </b>TK/TTHL000565, TK/TTHL000566
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <ul class="pagination">
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+        </ul>
+    </div>
+    <br><br>
+    <hr>
+    <div>
+        <a href="Home.html" class="back"><b><i class='fa fa-arrow-left'></i> Về trang chủ</b></a>
+    </div>
+    <br>
+</div>
+<br>
+<!-- End body -->

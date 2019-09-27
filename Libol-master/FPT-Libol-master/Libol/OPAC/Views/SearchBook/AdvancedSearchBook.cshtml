@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "Tìm kiếm nâng cao - Thư viện trường đại học FPT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start body -->
+<div class="container">
+    <figure>
+        <img class="pic-header" alt="Home Slide" src="~/AllContent/images/white-background.png" />
+    </figure>
+    <div class="navbar-home">
+        <a href="@Url.Action("Home", "Home")" style="background-color: #D8491F"><i class="fa fa-home"></i> Trang chủ</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Sản phẩm</a>
+        <div class="dropdown-home">
+            <button class="dropbtn">Dịch vụ</button>
+            <div class="dropdown-content">
+                <a href="#">Z39.50</a>
+            </div>
+        </div>
+        <a href="#" style="width: 153px">Nội qui thư viện</a>
+        <a href="@Url.Action("PatronPage", "InformationPatron")" style="width: 220px">Thông tin bạn đọc</a>
+        <a href="@Url.Action("Login", "Login")" id="login" class="login"><i class="fa fa-sign-in"></i> Đăng nhập</a>
+    </div>
+    <br>
+    <h2 class="searching">Tìm kiếm nâng cao</h2>
+    <br>
+    <div class="inline" style="width: 100%; background-color: #e5e5e5">
+        <br>
+        <table class="advanced-searching">
+            <tr>
+                <td class="advanced-searching fixed-text"><b>Bộ sưu tập:</b></td>
+                <td class="advanced-searching">
+                    <select>
+                        <option>aaaaaa</option>
+                        <option>bbbbbb</option>
+                        <option>cccccc</option>
+                        <option>dddddd</option>
+                    </select>
+                </td>
+                <td class="advanced-searching fixed-text"><b>Loại hình:</b></td>
+                <td class="advanced-searching">
+                    <select>
+                        <option>Tất cả</option>
+                        <option>Có bản cứng</option>
+                        <option>Có bản mềm</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="inline" style="width: 100%; background-color: #e5e5e5">
+        <table class="advanced-searching2">
+            <tr>
+                <td class="advanced-searching"></td>
+                <td class="advanced-searching">
+                    <select>
+                        <option selected>Nhan đề</option>
+                        <option>Tác giả</option>
+                        <option>Chủ đề</option>
+                        <option>Khoa</option>
+                        <option>Chuyên ngành</option>
+                        <option>Môn học</option>
+                        <option>Năm xb</option>
+                        <option>Điểm truy cập chính</option>
+                        <option>Tóm tắt</option>
+                        <option>Mọi trường</option>
+                    </select>
+                </td>
+                <td class="advanced-searching" colspan="2">
+                    <input type="text" size="36" class="search-data" placeholder="Từ khóa tìm kiếm...">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="inline" style="width: 100%; background-color: #e5e5e5">
+        <table class="advanced-searching2">
+            <tr>
+                <td class="advanced-searching">
+                    <select>
+                        <option>Và</option>
+                        <option>Hoặc</option>
+                        <option>Không</option>
+                    </select>
+                </td>
+                <td class="advanced-searching">
+                    <select>
+                        <option selected>Nhan đề</option>
+                        <option>Tác giả</option>
+                        <option>Chủ đề</option>
+                        <option>Khoa</option>
+                        <option>Chuyên ngành</option>
+                        <option>Môn học</option>
+                        <option>Năm xb</option>
+                        <option>Điểm truy cập chính</option>
+                        <option>Tóm tắt</option>
+                        <option>Mọi trường</option>
+                    </select>
+                </td>
+                <td class="advanced-searching" colspan="2">
+                    <input type="text" size="36" class="search-data" placeholder="Từ khóa tìm kiếm...">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="inline" style="width: 100%; background-color: #e5e5e5">
+        <table class="advanced-searching2">
+            <tr>
+                <td class="advanced-searching">
+                    <select>
+                        <option>Và</option>
+                        <option>Hoặc</option>
+                        <option>Không</option>
+                    </select>
+                </td>
+                <td class="advanced-searching">
+                    <select>
+                        <option selected>Nhan đề</option>
+                        <option>Tác giả</option>
+                        <option>Chủ đề</option>
+                        <option>Khoa</option>
+                        <option>Chuyên ngành</option>
+                        <option>Môn học</option>
+                        <option>Năm xb</option>
+                        <option>Điểm truy cập chính</option>
+                        <option>Tóm tắt</option>
+                        <option>Mọi trường</option>
+                    </select>
+                </td>
+                <td class="advanced-searching" colspan="2">
+                    <input type="text" size="36" class="search-data" placeholder="Từ khóa tìm kiếm...">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="inline" style="width: 100%; background-color: #e5e5e5">
+        <br>
+        <button class="submit" onclick="alert('OK')" style="margin:auto; display:block;">Tìm kiếm</button>
+    </div>
+    <div class="inline" style="width: 100%; background-color: #e5e5e5"><br></div>
+    <br>
+</div>
+<br><br><br>
+<!-- End body -->

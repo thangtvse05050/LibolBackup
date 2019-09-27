@@ -1,0 +1,781 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "BaoCaoBoSung_New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/PagingStyle.css" />
+    <script src="~/Scripts/TotalMoneyToWords.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+    <script>
+        $(document).ready(function () {
+            var table1 = $('#MainTable1').DataTable({
+                // pageLength: 50,
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                //lengthChange: false,
+                buttons: [
+                    {
+                        extend: 'print',
+                        title: function () { var printTitle = 'Danh mục sách nhập'; return printTitle; }
+                    },
+                    'excel',
+                    'csv',
+                    'pdf',
+                    'colvis'
+                ],
+                info: false,
+                paging: false,
+                searching: false,
+            });
+
+            var table2 = $('#MainTable2').DataTable({
+                //le
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                //lengthChange: false,
+                buttons: [
+                    {
+                        extend: 'print',
+                        title: function () { var printTitle = 'Danh mục sách nhập'; return printTitle; }
+                    },
+                    'excel',
+                    'csv',
+                    'pdf',
+                    'colvis'
+                ],
+                info: false,
+                paging: false,
+                searching: false,
+            });
+
+            var table3 = $('#MainTable3').DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                buttons: [
+                    {
+                        extend: 'print',
+                        title: function () { var printTitle = 'Danh mục sách nhập'; return printTitle; }
+                    },
+                    'excel',
+                    'csv',
+                    'pdf',
+                    'colvis'
+                ],
+                info: false,
+                paging: false,
+                searching: false,
+            });
+
+
+            var table4 = $('#MainTable4').DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                buttons: [
+                    {
+                        extend: 'print',
+                        title: function () { var printTitle = 'Danh mục sách nhập'; return printTitle; }
+                    },
+                    'excel',
+                    'csv',
+                    'pdf',
+                    'colvis'
+                ],
+                info: false,
+                paging: false,
+                searching: false,
+            });
+
+
+            var table5 = $('#MainTable5').DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                buttons: [
+                    {
+                        extend: 'print',
+                        title: function () { var printTitle = 'Danh mục sách nhập'; return printTitle; }
+                    },
+                    'excel',
+                    'csv',
+                    'pdf',
+                    'colvis'
+                ],
+                info: false,
+                paging: false,
+                searching: false,
+            });
+
+
+            var table6 = $('#MainTable6').DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                buttons: [
+                    {
+                        extend: 'print',
+                        title: function () { var printTitle = 'Danh mục sách nhập'; return printTitle; }
+                    },
+                    'excel',
+                    'csv',
+                    'pdf',
+                    'colvis'
+                ],
+                info: false,
+                paging: false,
+                searching: false,
+            });
+        });
+
+        function exportTableToExcel(tbl1, tbl2, tbl3, tbl4, tbl5, tbl6, filename = '') {
+            var downloadLink;
+            var dataType = 'application/vnd.ms-excel';
+            var tableSelect1, tableSelect2, tableSelect3, tableSelect4, tableSelect5, tableSelect6;
+            var tableHTML = "";
+            if (document.getElementById(tbl1) != null) {
+                tableSelect1 = document.getElementById(tbl1);
+                tableHTML = tableSelect1.outerHTML.replace(/ /g, '%20') + " <br/> ";
+            }
+            if (document.getElementById(tbl2) != null) {
+                tableSelect2 = document.getElementById(tbl2);
+                tableHTML += tableSelect2.outerHTML.replace(/ /g, '%20') + " <br/> ";
+            }
+            if (document.getElementById(tbl3) != null) {
+                tableSelect3 = document.getElementById(tbl3);
+                tableHTML += tableSelect3.outerHTML.replace(/ /g, '%20') + " <br/> ";
+            }
+            if (document.getElementById(tbl4) != null) {
+                tableSelect4 = document.getElementById(tbl4);
+                tableHTML += tableSelect4.outerHTML.replace(/ /g, '%20') + " <br/> ";
+            }
+            if (document.getElementById(tbl5) != null) {
+                tableSelect5 = document.getElementById(tbl5);
+                tableHTML += tableSelect5.outerHTML.replace(/ /g, '%20') + " <br/> ";
+            }
+            if (document.getElementById(tbl6) != null) {
+                tableSelect6 = document.getElementById(tbl6);
+                tableHTML += tableSelect6.outerHTML.replace(/ /g, '%20');
+            }
+            // Specify file name
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+            // Create download link element
+            downloadLink = document.createElement("a");
+            document.body.appendChild(downloadLink);
+            if (navigator.msSaveOrOpenBlob) {
+                var blob = new Blob(['\ufeff', tableHTML], {
+                    type: dataType
+                });
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+                // Setting the file name
+                downloadLink.download = filename;
+                //triggering the function
+                downloadLink.click();
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="Main" style="width: auto;">
+        <table class="WordSection1" style="margin-top:20px; text-align:center;" width="100%" border="0">
+            <tr>
+                <td width="50%">
+                    <span style="font-weight:normal">
+                        TRƯỜNG ĐẠI HỌC FPT<br />
+                        <b>FPTU HÀ NỘI</b>
+                    </span>
+                    <hr style="width:50%;" />
+                </td>
+                <td width="50%">
+                    <span>
+                        <span style="font-weight:normal">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</span><br />
+                        <span style="font-weight:bold">Độc lập - Tự do - Hạnh phúc</span>
+                    </span>
+                    <hr style="width:50%;" />
+                </td>
+            </tr>
+        </table>
+        <br />
+        <span class="WordSection1" style="font-weight:normal">Số: TV/.....</span>
+        <h4 class="WordSection1" style="text-align:center;">PHIẾU NHẬP KHO THƯ VIỆN</h4>
+        <h5 class="WordSection1" style="text-align:center; font-weight:normal;">Ngày ..... Tháng ..... Năm .....</h5>
+        <br /><span class="WordSection1">Họ và tên người giao hàng:............................</span><br />
+        <span class="WordSection1">Bộ phận:..................................................................</span><br />
+        <span class="WordSection1">BBBG số:..................................................................</span><br />
+        @{
+            if (ViewBag.AcqItems != null)
+            {
+
+                int STT1 = 0, STT2 = 0, STT3 = 0, STT4 = 0, STT = 0, STT5 = 0, STT6 = 0;
+                long SUM4 = 0, SUM1 = 0, SUM2 = 0, SUM3 = 0, SUM = 0, SUM5 = 0, SUM6 = 0;
+                int TOTAL4 = 0, TOTAL1 = 0, TOTAL2 = 0, TOTAL3 = 0, TOTAL = 0, TOTAL5 = 0, TOTAL6 = 0;
+
+                if (ViewBag.DisVND != null)
+                {
+                    <table id="MainTable1" class="WordSection1 table-striped table-bordered display" style="margin-top:20px; width:auto; border: thin" border="1">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Số chứng từ</th>
+                                <th>Ngày chứng từ</th>
+                                <th>Mã đơn đặt</th>
+                                <th>ĐKCB</th>
+                                <th>ISBN</th>
+                                <th>Nhan đề</th>
+                                <th>Nhà XB</th>
+                                <th>Năm XB</th>
+                                <th>Số lượng nhập</th>
+                                <th>Ngày bổ sung</th>
+                                <th>Đơn giá</th>
+                                <th>Đơn vị tiền tệ</th>
+                                <th>Thành tiền</th>
+                                <th>Tình trạng sách</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.DisVND)
+                            {
+
+                                <tr>
+                                    <td>@(++STT1)</td>
+                                    <td>@item.SoChungTu</td>
+                                    <td>@item.NgayChungTu</td>
+                                    <td>@item.POID</td>
+                                    <td>@item.DKCB</td>
+                                    <td>@item.ISBN</td>
+                                    <td>@item.NhanDe</td>
+                                    <td>@item.NhaXuatBan</td>
+                                    <td>@item.NamXuatBan</td>
+                                    <td>@item.SLN</td>
+                                    <td>@item.NgayBoSung</td>
+                                    <td>@item.DonGia</td>
+                                    <td>@item.DonViTienTe</td>
+                                    <td>@item.ThanhTien</td>
+                                    <td>@item.TinhTrangSach</td>
+                                </tr>
+                                SUM1 += item.ThanhTien;
+                                TOTAL1 += item.SLN;
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tổng cộng</td>
+                                <td></td>
+                                <td></td>
+                                <td>@TOTAL1</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>@SUM1</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div id="Total1" class="WordSection1" style="font-weight:normal;">
+
+                    </div>
+                    <script>
+                    document.getElementById('Total1').innerHTML = '<span> Bằng chữ: ' + jsUcfirst(DOCSO.doc(@SUM1)) + ' (VND)</span>';
+                    </script>
+                }
+
+
+                if (ViewBag.DisYEN != null)
+                {
+                    <table id="MainTable2" class="WordSection1 table-striped table-bordered display" style="margin-top:20px; width:auto; border: thin" border="1">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Số chứng từ</th>
+                                <th>Ngày chứng từ</th>
+                                <th>Mã đơn đặt</th>
+                                <th>ĐKCB</th>
+                                <th>ISBN</th>
+                                <th>Nhan đề</th>
+                                <th>Nhà XB</th>
+                                <th>Năm XB</th>
+                                <th>Số lượng nhập</th>
+                                <th>Ngày bổ sung</th>
+                                <th>Đơn giá</th>
+                                <th>Đơn vị tiền tệ</th>
+                                <th>Thành tiền</th>
+                                <th>Tình trạng sách</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.DisYEN)
+                            {
+
+                                <tr>
+                                    <td>@(++STT2)</td>
+                                    <td>@item.SoChungTu</td>
+                                    <td>@item.NgayChungTu</td>
+                                    <td>@item.POID</td>
+                                    <td>@item.DKCB</td>
+                                    <td>@item.ISBN</td>
+                                    <td>@item.NhanDe</td>
+                                    <td>@item.NhaXuatBan</td>
+                                    <td>@item.NamXuatBan</td>
+                                    <td>@item.SLN</td>
+                                    <td>@item.NgayBoSung</td>
+                                    <td>@item.DonGia</td>
+                                    <td>@item.DonViTienTe</td>
+                                    <td>@item.ThanhTien</td>
+                                    <td>@item.TinhTrangSach</td>
+                                </tr>
+                                SUM2 += item.ThanhTien;
+                                TOTAL2 += item.SLN;
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tổng cộng</td>
+                                <td></td>
+                                <td></td>
+                                <td>@TOTAL2</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>@SUM2</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div id="Total2" class="WordSection1" style="font-weight:normal;">
+
+                    </div>
+                    <script>
+                    document.getElementById('Total2').innerHTML = '<span> Bằng chữ: ' + jsUcfirst(DOCSO.doc(@SUM2)) + ' (YEN)</span>';
+                    </script>
+                }
+                else if (ViewBag.DisYEN == null)
+                {
+                    <br />
+                }
+
+                if (ViewBag.DisUSD != null)
+                {
+                    <table id="MainTable3" class="WordSection1 table-striped table-bordered display" style="margin-top:20px; width:auto; border: thin" border="1">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Số chứng từ</th>
+                                <th>Ngày chứng từ</th>
+                                <th>Mã đơn đặt</th>
+                                <th>ĐKCB</th>
+                                <th>ISBN</th>
+                                <th>Nhan đề</th>
+                                <th>Nhà XB</th>
+                                <th>Năm XB</th>
+                                <th>Số lượng nhập</th>
+                                <th>Ngày bổ sung</th>
+                                <th>Đơn giá</th>
+                                <th>Đơn vị tiền tệ</th>
+                                <th>Thành tiền</th>
+                                <th>Tình trạng sách</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.DisUSD)
+                            {
+
+                                <tr>
+                                    <td>@(++STT3)</td>
+                                    <td>@item.SoChungTu</td>
+                                    <td>@item.NgayChungTu</td>
+                                    <td>@item.POID</td>
+                                    <td>@item.DKCB</td>
+                                    <td>@item.ISBN</td>
+                                    <td>@item.NhanDe</td>
+                                    <td>@item.NhaXuatBan</td>
+                                    <td>@item.NamXuatBan</td>
+                                    <td>@item.SLN</td>
+                                    <td>@item.NgayBoSung</td>
+                                    <td>@item.DonGia</td>
+                                    <td>@item.DonViTienTe</td>
+                                    <td>@item.ThanhTien</td>
+                                    <td>@item.TinhTrangSach</td>
+                                </tr>
+                                SUM3 += item.ThanhTien;
+                                TOTAL3 += item.SLN;
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tổng cộng</td>
+                                <td></td>
+                                <td></td>
+                                <td>@TOTAL3</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>@SUM3</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div id="Total3" class="WordSection1" style="font-weight:normal;">
+
+                    </div>
+                    <script>
+                    document.getElementById('Total3').innerHTML = '<span> Bằng chữ: ' + jsUcfirst(DOCSO.doc(@SUM3)) + ' (USD)</span>';
+                    </script>
+                }
+
+                if (ViewBag.DisBAnh != null)
+                {
+                    <table id="MainTable4" class="WordSection1 table-striped table-bordered display" style="margin-top:20px; width:auto; border: thin" border="1">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Số chứng từ</th>
+                                <th>Ngày chứng từ</th>
+                                <th>Mã đơn đặt</th>
+                                <th>ĐKCB</th>
+                                <th>ISBN</th>
+                                <th>Nhan đề</th>
+                                <th>Nhà XB</th>
+                                <th>Năm XB</th>
+                                <th>Số lượng nhập</th>
+                                <th>Ngày bổ sung</th>
+                                <th>Đơn giá</th>
+                                <th>Đơn vị tiền tệ</th>
+                                <th>Thành tiền</th>
+                                <th>Tình trạng sách</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.DisBAnh)
+                            {
+
+                                <tr>
+                                    <td>@(++STT4)</td>
+                                    <td>@item.SoChungTu</td>
+                                    <td>@item.NgayChungTu</td>
+                                    <td>@item.POID</td>
+                                    <td>@item.DKCB</td>
+                                    <td>@item.ISBN</td>
+                                    <td>@item.NhanDe</td>
+                                    <td>@item.NhaXuatBan</td>
+                                    <td>@item.NamXuatBan</td>
+                                    <td>@item.SLN</td>
+                                    <td>@item.NgayBoSung</td>
+                                    <td>@item.DonGia</td>
+                                    <td>@item.DonViTienTe</td>
+                                    <td>@item.ThanhTien</td>
+                                    <td>@item.TinhTrangSach</td>
+                                </tr>
+                                SUM4 += item.ThanhTien;
+                                TOTAL4 += item.SLN;
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Tổng cộng</td>
+                                <td></td>
+                                <td></td>
+                                <td>@TOTAL4</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>@SUM4</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div id="Total4" class="WordSection1" style="font-weight:normal;">
+
+                    </div>
+                    <script>
+                    document.getElementById('Total4').innerHTML = '<span> Bằng chữ: ' + jsUcfirst(DOCSO.doc(@SUM4)) + ' (Bảng Anh)</span>';
+                    </script>
+                }
+            }
+            else
+            {
+                int STT1 = 0, STT2 = 0, STT3 = 0, STT = 0;
+                double SUM = 0, SUM1 = 0, SUM2 = 0, SUM3 = 0;
+                int TOTAL = 0, TOTAL1 = 0, TOTAL2 = 0, TOTAL3 = 0;
+
+
+
+
+
+                if (ViewBag.DisVND != null)
+                {
+                    <table id="MainTable1" class="WordSection1 table-striped table-bordered display" style="margin-top:20px; width:auto; border: thin" border="1">
+                        <tr>
+                            <th>STT</th>
+                            <th>Số chứng từ</th>
+                            <th>Ngày chứng từ</th>
+                            <th>Mã đơn đặt</th>
+                            <th>ĐKCB</th>
+                            <th>ISBN</th>
+                            <th>Nhan đề</th>
+                            <th>Nhà XB</th>
+                            <th>Năm XB</th>
+                            <th>Số lượng nhập</th>
+                            <th>Ngày bổ sung</th>
+                            <th>Đơn giá</th>
+                            <th>Đơn vị tiền tệ</th>
+                            <th>Thành tiền</th>
+                            <th>Số lượt mượn</th>
+                        </tr>
+
+                        @foreach (var item in ViewBag.DisVND)
+                        {
+
+                            <tr>
+                                <td>@(++STT1)</td>
+                                <td>@item.SoChungTu</td>
+                                <td>@item.NgayChungTu</td>
+                                <td>@item.POID</td>
+                                <td>@item.DKCB</td>
+                                <td>@item.ISBN</td>
+                                <td>@item.NhanDe</td>
+                                <td>@item.NhaXuatBan</td>
+                                <td>@item.NamXuatBan</td>
+                                <td>@item.SLN</td>
+                                <td>@item.NgayBoSung</td>
+                                <td>@item.DonGia</td>
+                                <td>@item.DonViTienTe</td>
+                                <td>@item.ThanhTien</td>
+                                <td>@item.UseCount</td>
+                            </tr>
+                            SUM1 += item.ThanhTien;
+                            TOTAL1 += item.SLN;
+                        }
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Tổng cộng</td>
+                            <td></td>
+                            <td></td>
+                            <td>@TOTAL1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>@SUM1</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <div id="Total1" class="WordSection1" style="font-weight:normal;">
+
+                    </div>
+                    <script>
+                    document.getElementById('Total1').innerHTML = '<span> Bằng chữ: ' + jsUcfirst(DOCSO.doc(@SUM1)) + '</span>';
+                    </script>
+                }
+
+
+                if (ViewBag.DisYEN != null)
+                {
+                    <table id="MainTable2" class="WordSection1 table-striped table-bordered display" style="margin-top:20px; width:auto; border: thin" border="1">
+                        <tr>
+                            <th>STT</th>
+                            <th>Số chứng từ</th>
+                            <th>Ngày chứng từ</th>
+                            <th>Mã đơn đặt</th>
+                            <th>ĐKCB</th>
+                            <th>ISBN</th>
+                            <th>Nhan đề</th>
+                            <th>Nhà XB</th>
+                            <th>Năm XB</th>
+                            <th>Số lượng nhập</th>
+                            <th>Ngày bổ sung</th>
+                            <th>Đơn giá</th>
+                            <th>Đơn vị tiền tệ</th>
+                            <th>Thành tiền</th>
+                            <th>Số lượt mượn</th>
+                        </tr>
+                        @foreach (var item in ViewBag.DisYEN)
+                        {
+
+                            <tr>
+                                <td>@(++STT2)</td>
+                                <td>@item.SoChungTu</td>
+                                <td>@item.NgayChungTu</td>
+                                <td>@item.POID</td>
+                                <td>@item.DKCB</td>
+                                <td>@item.ISBN</td>
+                                <td>@item.NhanDe</td>
+                                <td>@item.NhaXuatBan</td>
+                                <td>@item.NamXuatBan</td>
+                                <td>@item.SLN</td>
+                                <td>@item.NgayBoSung</td>
+                                <td>@item.DonGia</td>
+                                <td>@item.DonViTienTe</td>
+                                <td>@item.ThanhTien</td>
+                                <td>@item.UseCount</td>
+                            </tr>
+                            SUM2 += item.ThanhTien;
+                            TOTAL2 += item.SLN;
+                        }
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Tổng cộng</td>
+                            <td></td>
+                            <td></td>
+                            <td>@TOTAL2</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>@SUM2</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <div id="Total2" class="WordSection1" style="font-weight:normal;">
+
+                    </div>
+                    <script>
+                    document.getElementById('Total2').innerHTML = '<span> Bằng chữ: ' + jsUcfirst(DOCSO.doc(@SUM2)) + '</span>';
+                    </script>
+                }
+                else if (ViewBag.DisYEN == null)
+                {
+                    <p>không có giá trị</p>
+                    <br />
+                }
+
+                if (ViewBag.DisUSD != null)
+                {
+                    <table id="MainTable3" class="WordSection1 table-striped table-bordered display" style="margin-top:20px; width:auto; border: thin" border="1">
+                        <tr>
+                            <th>STT</th>
+                            <th>Số chứng từ</th>
+                            <th>Ngày chứng từ</th>
+                            <th>Mã đơn đặt</th>
+                            <th>ĐKCB</th>
+                            <th>ISBN</th>
+                            <th>Nhan đề</th>
+                            <th>Nhà XB</th>
+                            <th>Năm XB</th>
+                            <th>Số lượng nhập</th>
+                            <th>Ngày bổ sung</th>
+                            <th>Đơn giá</th>
+                            <th>Đơn vị tiền tệ</th>
+                            <th>Thành tiền</th>
+                            <th>Số lượt mượn</th>
+                        </tr>
+                        @foreach (var item in ViewBag.DisUSD)
+                        {
+
+                            <tr>
+                                <td>@(++STT3)</td>
+                                <td>@item.SoChungTu</td>
+                                <td>@item.NgayChungTu</td>
+                                <td>@item.POID</td>
+                                <td>@item.DKCB</td>
+                                <td>@item.ISBN</td>
+                                <td>@item.NhanDe</td>
+                                <td>@item.NhaXuatBan</td>
+                                <td>@item.NamXuatBan</td>
+                                <td>@item.SLN</td>
+                                <td>@item.NgayBoSung</td>
+                                <td>@item.DonGia</td>
+                                <td>@item.DonViTienTe</td>
+                                <td>@item.ThanhTien</td>
+                                <td>@item.UseCount</td>
+                            </tr>
+                            SUM3 += item.ThanhTien;
+                            TOTAL3 += item.SLN;
+                        }
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Tổng cộng</td>
+                            <td></td>
+                            <td></td>
+                            <td>@TOTAL3</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>@SUM3</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <div id="Total3" class="WordSection1" style="font-weight:normal;">
+
+                    </div>
+                    <script>
+                    document.getElementById('Total3').innerHTML = '<span> Bằng chữ: ' + jsUcfirst(DOCSO.doc(@SUM3)) + '</span>';
+                    </script>
+                }
+            }
+        }
+
+
+        <table class="WordSection1" style="margin-top:20px; text-align:center;" width="100%" border="0">
+            <tr>
+                <td width="34%">Trưởng bộ phận</td>
+                <td width="33%">Cán bộ mua hàng</td>
+                <td width="33%">Thủ thư/ Thủ kho</td>
+            </tr>
+        </table>
+        <div class="WordSection1" style="width:100%; height:150px;"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="btn-group btn-group">
+                <button id="print" type="button" class="btn btn-primary mr-1">In</button>
+                <button id="ExcelTo" type="button" class="btn btn-primary mr-1" onclick="exportTableToExcel('MainTable1','MainTable2','MainTable3','MainTable4','MainTable5','MainTable6','Báo cáo Bổ sung')">Lưu vào file Excel</button>
+                <button id="export" type="button" class="btn btn-primary">Lưu vào file Word</button>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/ExportToWord.js"></script>
+    <script type="text/javascript">
+
+        //Nhấn btn in
+        $(document).ready(function () {
+            $("#print").click(function () {
+                var divToPrint = document.getElementById("Main");
+                newWin = window.open("");
+                newWin.document.write(divToPrint.outerHTML);
+                newWin.print();
+                newWin.close();
+            });
+        });
+
+    </script>
+</body>
+

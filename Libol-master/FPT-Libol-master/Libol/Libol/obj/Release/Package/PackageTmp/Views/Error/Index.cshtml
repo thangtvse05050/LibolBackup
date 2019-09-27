@@ -1,0 +1,43 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+
+        var empObj = {
+            Path: document.getElementById("path").textContent,
+            Error: document.getElementById("error").textContent,
+            Message: document.getElementById("message").textContent,
+            Track: document.getElementById("track").textContent
+        };
+        $.ajax({
+            url: "/Error/Log",
+            data: JSON.stringify(empObj),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+
+            },
+            error: function (errormessage) {
+
+            }
+        });
+    });
+</script>
+<h4 style="margin : 1rem; color:red">Xảy ra lỗi. Vui lòng liên hệ quản trị viên!</h4>
+<div>
+    @{
+        if (Model != null && Model.Exception != null)
+        {
+            <h5>Vui lòng chụp ảnh màn hình này gửi cho quản trị viên.</h5>
+            <h5>Path: ~/@string.Format("{0}/{1}", Model.ControllerName, Model.ActionName)</h5>
+            <h5>Error: @Model.Exception.GetType().Name</h5>
+            <h5 id="message">Message: @Model.Exception.Message</h5>
+            <p id="track">@Model.Exception.StackTrace</p>
+        }
+    }
+</div>

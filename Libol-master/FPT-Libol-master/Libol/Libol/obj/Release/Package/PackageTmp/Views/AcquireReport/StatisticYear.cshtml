@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "StatisticYear";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <script type="text/javascript" src="~/Scripts/load.js"></script>
+    <style>
+        label {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h4 style="margin-top:20px;">Thống kê bổ sung theo từng năm</h4>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group row col-12">
+                <label class="control-label col-md-8 align-self-center">Thư viện</label>
+                @Html.DropDownList("Library", ViewData["lib"] as List<SelectListItem>, new { @class = "form-control col-md-4" })
+            </div>
+            <div class="form-group row col-12">
+                <label class="control-label col-md-8 align-self-center">Từ năm</label>
+                @Html.DropDownList("FromYear", new SelectList(Enumerable.Range(2007, (DateTime.Now.Year - 2007) + 1).Reverse().ToList()), "-- Hãy chọn năm --", new { @class = "form-control col-md-4" })
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group row col-12">
+                <label class="control-label col-md-2 align-self-center">Kho</label>
+                @Html.DropDownList("Location", new SelectList(string.Empty, "Value", "Text"), "Hãy chọn Kho", new { @class = "form-control col-md-4" })
+            </div>
+            <div class="form-group row col-12">
+                <label class="control-label col-md-2 align-self-center">Tới năm</label>
+                @Html.DropDownList("ToYear", new SelectList(Enumerable.Range(2007, (DateTime.Now.Year - 2007) + 1).Reverse().ToList()), "-- Hãy chọn năm --", new { @class = "form-control col-md-4" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button type="submit" id="stat" class="btn btn-primary mr-1">Thống kê</button>
+        </div>
+    </div>
+
+    <div id="ContentStatYear"></div>
+    <script>
+        $(document).ready(function () {
+            $("#Library").change(function () {
+                $("#Location").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetLocations")', // we are calling json method
+                    dataType: 'json',
+                    data: { id: $("#Library").val() },
+                    success: function (locs) {
+                        $.each(locs, function (i, loc) {
+                            $("#Location").append('<option value="' + loc.Value + '">' +
+                                loc.Text + '</option>');
+                        });
+                    }
+                });
+                return false;
+            });
+        });
+        document.getElementById("stat").onclick = function () {
+            var empObj = {
+                strLibID: document.getElementById("Library").value,
+                strLocID: document.getElementById("Location").value,
+                strFromYear: document.getElementById("FromYear").value,
+                strToYear: document.getElementById("ToYear").value,
+            };
+            if (document.getElementById("FromYear").value > document.getElementById("ToYear").value) {
+                alert("Khoảng thời gian thống kê không hợp lệ");
+            } else {
+                $.ajax({
+                    url: "GetYearStats",
+                    data: JSON.stringify(empObj),
+                    contentType: "application/json;charset=utf-8",
+                    type: "POST",
+                    beforeSend: function () {
+                        $("#ContentStatYear").html("<h4>Loading...</h4>");
+                    },
+                    success: function (result) {
+                        $("#ContentStatYear").html(result)
+                    },
+                    error: function (errormessage) {
+                        console.log("error");
+                    }
+                });
+            }
+        };
+    </script>
+</body>
+
+
+
+

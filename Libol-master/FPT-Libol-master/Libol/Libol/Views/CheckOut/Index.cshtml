@@ -1,0 +1,343 @@
+﻿@{
+    ViewBag.Title = "Ghi mượn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script src="~/Scripts/jquery.blockUI.js"></script>
+    <style>
+        body {
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        #sidebar-wrapper {
+            min-height: 100vh;
+            margin-left: -15px !important;
+            -webkit-transition: margin .25s ease-out;
+            -moz-transition: margin .25s ease-out;
+            -o-transition: margin .25s ease-out;
+            transition: margin .25s ease-out;
+        }
+
+            #sidebar-wrapper .sidebar-heading {
+                padding: 0.875rem 1.25rem;
+                font-size: 1.2rem;
+            }
+
+            #sidebar-wrapper .list-group {
+                width: 18rem;
+                padding-left: 5px;
+            }
+
+            #sidebar-wrapper label {
+                font-size: 13px;
+            } 
+
+            label {
+                font-size:13px;
+            }
+
+        @@media (min-width: 768px) {
+            #sidebar-wrapper {
+                margin-left: 0;
+            }
+
+            #page-content-wrapper {
+                min-width: 0;
+                width: 100%;
+            }
+
+            #wrapper.toggled #sidebar-wrapper {
+                margin-left: -15rem;
+            }
+        }
+
+        th {
+            font-size: 14px;
+        }
+
+        td {
+            font-size: 13px;
+        }
+
+        .form-control {
+            font-size: 0.8rem !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <h4 style="margin:1rem;">Ghi mượn </h4>
+            <div class="list-group list-group-flush">
+                <div class="col">
+                    <h5>Tùy chọn</h5>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="checkoutofquota">
+                                <label class="form-check-label" for="checkoutofquota">Không tính vào hạn ngạch</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom: 5px;">
+                        <div class="col">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="openduedate">
+                                <label class="form-check-label" for="openduedate">Hạn trả mở</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-4">
+                            <div class="form-group"><label class="col-form-label">Ngày mượn:</label></div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-group"><input class="form-control" type="date" id="strCheckoutDate" value="@string.Format("{0:yyyy-MM-dd}", System.DateTime.Now)" /></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-4">
+                            <div class="form-group"><label class="col-form-label">Hạn trả:</label></div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-group"><input class="form-control" id="strDueDate" type="date" /></div>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-top: 0px;">
+                        <div class="col-3"><label class="col-form-label">Số thẻ:</label></div>
+                        <div class="col"><input class="form-control" id="strPatronCode" type="text" onchange="getCardInfo()" /></div>
+                        <div class="col-4"><label class="col-form-label"><a onclick="findByCardNumber();" href="#">Tìm</a> | <a href="/Patron/Create">Thêm</a></label></div>
+                    </div>
+                    <div class="form-row" style="margin-top: 0px;margin-bottom: 5px;">
+                        <div class="col-3"><label class="col-form-label">ĐKCB:</label></div>
+                        <div class="col"><input class="form-control" id="strCopyNumber" type="text" onchange="checkoutSuccess()" disabled /></div>
+                        <div class="col-4"><label class="col-form-label"><a href="/Catalogue/SearchCodeNumber">Tìm</a> | <a href="/Catalogue/AddNewCatalogue">Thêm</a></label></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-5"><button class="btn btn-primary form-control" type="button" onclick="checkoutSuccess()">Ghi mượn</button></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col" id="contentcheckout">
+        </div>
+    </div>
+
+    <input type="hidden" value="@ViewBag.HiddenPatronCode" id="hiddenPatronCode" />
+    
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($("#hiddenPatronCode").val() != '') {
+            document.getElementById("strPatronCode").value = $("#hiddenPatronCode").val();
+            var empObj = {
+                strPatronCode: $("#hiddenPatronCode").val(),
+            };
+            $.ajax({
+                contentType: "application/json;charset=utf-8",
+                type: "POST",
+                beforeSend: function (request) {
+                    $.blockUI({
+                        css: {
+                            border: 'none',
+                            padding: '15px',
+                            backgroundColor: '#000',
+                            '-webkit-border-radius': '10px',
+                            '-moz-border-radius': '10px',
+                            opacity: .5,
+                            color: '#fff'
+                        }
+                    });
+                },
+                complete: function (request, json) {
+                },
+                url: "/CheckOut/CheckOutCardInfo",
+                data: JSON.stringify(empObj),
+                success: function (result) {
+                    $("#contentcheckout").html(result);
+                    $.unblockUI()
+                    if (document.getElementById("hiddenmessage").value != "") {
+                        alert(document.getElementById("hiddenmessage").value);
+                        document.getElementById("strCopyNumber").value = "";
+                        document.getElementById("strCopyNumber").disabled = true;
+
+                    }
+                    else {
+                        document.getElementById("strCopyNumber").disabled = false;
+                        document.getElementById("strCopyNumber").focus();
+                    }
+                },
+                error: function (errormessage) {
+                    $.unblockUI()
+                }
+            });
+        }
+
+    });
+
+
+    function checkoutSuccess() {
+        var mode = 1;
+        if (document.getElementById("checkoutofquota").checked == true) {
+            mode = 3;
+        }
+        var empObj = {
+            strPatronCode: document.getElementById("strPatronCode").value,
+            strDueDate: document.getElementById("strDueDate").value,
+            intLoanMode: mode,
+            intHoldIgnore: 0,
+            strCopyNumbers: document.getElementById("strCopyNumber").value,
+            strCheckOutDate: document.getElementById("strCheckoutDate").value,
+            boolAllowDuplacate: 0
+        };
+        $.ajax({
+            url: "CheckOut/CheckOut",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            success: function (result) {
+                $("#contentcheckout").html(result)
+                if (document.getElementById("hiddenmessage").value != "") {
+                    alert(document.getElementById("hiddenmessage").value);
+                }
+                document.getElementById("strCopyNumber").value = "";
+                document.getElementById("strCopyNumber").focus();
+            },
+            error: function (errormessage) {
+                console.log("error");
+            }
+        });
+    }
+
+    function getCardInfo() {
+        var empObj = {
+            strPatronCode: document.getElementById("strPatronCode").value,
+        };
+        document.getElementById("checkoutofquota").checked = false;
+        document.getElementById("openduedate").checked = false;
+        $.ajax({
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            beforeSend: function (request) {
+                $.blockUI({
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    }
+                });
+            },
+            complete: function (request, json) {
+            },
+            url: "/CheckOut/CheckOutCardInfo",
+            data: JSON.stringify(empObj),
+            success: function (result) {
+                $("#contentcheckout").html(result);
+                $.unblockUI()
+                if (document.getElementById("hiddenmessage").value != "") {
+                    alert(document.getElementById("hiddenmessage").value);
+                    document.getElementById("strCopyNumber").value = "";
+                    document.getElementById("strCopyNumber").disabled = true;
+                }
+                else {
+                    document.getElementById("strCopyNumber").value = "";
+                    document.getElementById("strCopyNumber").focus();
+                }
+            },
+            error: function (errormessage) {
+                $.unblockUI()
+            }
+        });
+    }
+
+    function findByCardNumber() {
+        $.ajax({
+            url: "/CheckOut/FindByCardNumber",
+            type: "GET",
+            success: function (result) {
+                $("#contentcheckout").html(result);
+            },
+            error: function (errormessage) {
+            }
+        });
+    }
+
+    function Searchpatronbyname() {
+        var empObj = {
+            strFullName: document.getElementById("txtFullName").value
+        };
+        $.ajax({
+            url: "/CheckOut/FindByName",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            beforeSend: function (request) {
+                $.blockUI({
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    }
+                });
+            },
+            complete: function (request, json) {
+            },
+            success: function (result) {
+                $("#contentcheckout").html(result);
+                $.unblockUI()
+            },
+            error: function (errormessage) {
+                $.unblockUI()
+            }
+        });
+    }
+    function btnsearchpatron() {
+        var empObj = {
+            strFullName: document.getElementById("txtFullName").value
+        };
+        $.ajax({
+            url: "/CheckOut/FindByName",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            beforeSend: function (request) {
+                $.blockUI({
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    }
+                });
+            },
+            complete: function (request, json) {
+            },
+            success: function (result) {
+                $("#contentcheckout").html(result);
+                $.unblockUI()
+            },
+            error: function (errormessage) {
+                $.unblockUI()
+            }
+        });
+
+    }
+
+
+</script>
+
+

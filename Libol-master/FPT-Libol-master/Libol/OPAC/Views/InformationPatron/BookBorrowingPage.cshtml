@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Tài liệu đang mượn - Thư viện trường đại học FPT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start body -->
+<div class="container">
+    <figure>
+        <img class="pic-header" alt="Home Slide" src="~/AllContent/images/white-background.png" />
+    </figure>
+    <div class="navbar-home">
+        <a href="@Url.Action("Home", "Home")"><i class="fa fa-home"></i> Trang chủ</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Sản phẩm</a>
+        <div class="dropdown-home">
+            <button class="dropbtn">Dịch vụ</button>
+            <div class="dropdown-content">
+                <a href="Z3950.html">Z39.50</a>
+            </div>
+        </div>
+        <a href="#" style="width: 153px">Nội qui thư viện</a>
+        <a href="@Url.Action("PatronAfterLoginPage", "InformationPatron")" style="width: 220px; background-color: #D8491F">Thông tin bạn đọc</a>
+        <a href="@Url.Action("Home", "Home")" id="login" class="login"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+    </div>
+    <br>
+    <div class="inline">
+        <table border="1" class="personal" id="list-infor">
+            <tr>
+                <th class="personal">Trình đơn bạn đọc</th>
+            </tr>
+            <tr>
+                <td class="personal">
+                    <a href="@Url.Action("PatronAfterLoginPage", "InformationPatron")" class="book-borrowing">Thông tin bạn đọc</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="personal selecting">Tài liệu đang mượn</td>
+            </tr>
+            <tr>
+                <td class="personal"><a href="#" class="book-borrowing">Thông tin đặt mượn sách</a></td>
+            </tr>
+            <tr>
+                <td class="personal"><a href="#" class="book-borrowing">Lịch sử mượn sách</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    <div>
+        <table border="1" class="personal" id="infor">
+            <tr>
+                <th class="personal">Tài liệu đang mượn</th>
+            </tr>
+            <tr>
+                <td class="personal">
+                    <table border="3">
+                        <tr>
+                            <th class="book-borrowing" style="width: 45px">STT</th>
+                            <th class="book-borrowing">Tên sách</th>
+                            <th class="book-borrowing">ĐKCB</th>
+                            <th class="book-borrowing">Ngày mượn</th>
+                            <th class="book-borrowing">Hạn trả</th>
+                            <th class="book-borrowing" style="width: 70px">Số ngày quá hạn</th>
+                        </tr>
+                        <tr>
+                            <td class="fornews">1</td>
+                            <td class="fornews">
+                                <a href="#" class="book-borrowing-truncate">
+                                    Principles of Economics / N. Gregory
+                                    Mankiw
+                                </a>
+                            </td>
+                            <td class="fornews">GT/XHHL002972</td>
+                            <td class="fornews">10/09/2019</td>
+                            <td class="fornews">20/12/2019</td>
+                            <td class="fornews" style="text-align: center">0</td>
+                        </tr>
+                        <tr>
+                            <td class="fornews">2</td>
+                            <td class="fornews">
+                                <a href="#" class="book-borrowing-truncate">
+                                    Applied statistics and probability for
+                                    engineers / Douglas C. Montgomery, George C. Runger
+                                </a>
+                            </td>
+                            <td class="fornews">GT/KHTN004983</td>
+                            <td class="fornews">10/09/2019</td>
+                            <td class="fornews">20/12/2019</td>
+                            <td class="fornews" style="text-align: center">0</td>
+                        </tr>
+                        <tr>
+                            <td class="fornews">3</td>
+                            <td class="fornews">
+                                <a href="#" class="book-borrowing-truncate">
+                                    Giáo trình tư tưởng Hồ Chí Minh : Dành
+                                    cho sinh viên đại học, cao đẳng khối không chuyên ngành Mác - Lênin, tư tưởng Hồ
+                                    Chí Minh / Bộ Giáo Dục và Đào Tạo
+                                </a>
+                            </td>
+                            <td class="fornews">GT/KHXH002326</td>
+                            <td class="fornews">10/09/2019</td>
+                            <td class="fornews">20/12/2019</td>
+                            <td class="fornews" style="text-align: center">0</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+</div>
+<br>
+<!-- End body -->
