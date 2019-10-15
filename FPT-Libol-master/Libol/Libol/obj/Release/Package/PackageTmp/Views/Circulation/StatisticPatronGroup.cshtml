@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "StatisticPatronGroup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>    
+    <style>
+        label {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h4 style="padding-left:10px;margin-top:20px;">Thông tin ấn phẩm đã được mượn theo nhóm bạn đọc</h4>
+    <div class="row center-block">
+        <div class="col">
+            <div class="form-group row">
+                <label class="control-label col-md-5 align-self-center">Thư viện</label>
+                @Html.DropDownList("Library", ViewBag.list_lib as List<SelectListItem>, new { @class = "form-control col-md-5" })
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group row">
+                <label class="control-label col-md-3 align-self-center">Từ ngày</label>
+                <input class="form-control col-md-8" type="date" id="date_from" name="date_from" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group row">
+                <label class="control-label col-md-3 align-self-center">Tới ngày</label>
+                <input class="form-control col-md-5" type="date" id="date_to" name="date_to" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="theo_dau_an_pham" value="0" name="type" checked>
+                <label class="custom-control-label" for="theo_dau_an_pham">Theo đầu ấn phẩm</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="theo_ban_an_pham" value="1" name="type">
+                <label class="custom-control-label" for="theo_ban_an_pham">Theo bản ấn phẩm</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="btn-group btn-group">
+                <button type="submit" id="stat" class="btn btn-primary mr-1">Thống kê</button>
+                <button type="button" id="reset" class="btn btn-primary" onclick="reset()">Đặt lại</button>
+            </div>
+        </div>
+    </div>
+    <div id="result"></div>
+</body>
+
+
+<script>
+    $(document).ready(function () {
+        document.getElementById("stat").onclick = function () {
+            var empObj = {
+                strLibID: $("#Library").val(),
+                strDateFrom: $("#date_from").val(),
+                strDateTo: $("#date_to").val(),
+                strType: $("input[name='type']:checked").val()
+            };
+
+            if ($("#Library").val() == "") {
+                alert("Hãy chọn thư viện!");
+            } else {
+                $.ajax({
+                    url: "DisplayPatronGroup",
+                    data: JSON.stringify(empObj),
+                    contentType: "application/json;charset=utf-8",
+                    type: "POST",
+                    success: function (result) {
+                        $("#result").html(result)
+                    },
+                    error: function (errormessage) {
+                        console.log("error");
+                    }
+                });
+            }
+        };
+
+        $("#Library").change(function () {
+            $("#Location").empty();
+            $.ajax({
+            type: 'POST',
+            url: '@Url.Action("GetLocations")', // we are calling json method
+            dataType: 'json',
+            data: { id: $("#Library").val() },
+            success: function (locs) {
+                $.each(locs, function (i, loc) {
+                    $("#Location").append('<option value="' + loc.Value + '">' +
+                    loc.Text + '</option>');
+                });
+            }
+            //error: function (ex) {
+            //    alert('Failed to retrieve states.' + ex);
+            //}
+            });
+            return false;
+        });
+    });
+    function reset() {
+        location.reload();
+    };
+</script>

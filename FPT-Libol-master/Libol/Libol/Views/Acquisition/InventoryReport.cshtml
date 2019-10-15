@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "InventoryReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+    <style>
+        label {
+            text-align: right;
+        }
+        .bold{
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h5 style="margin-top:20px;">Kiểm kê</h5>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <a class="form-group row col-8 bold" href="/Acquisition/InventoryReport">Kiểm kê</a>
+                <a class="form-group row col-8" href="/Acquisition/CloseLoc">Đóng kho</a>
+                <a class="form-group row col-8" href="/Acquisition/CreateInventory">Tạo kỳ kiểm kê</a>
+                <a class="form-group row col-8" href="/Acquisition/OpenLoc">Mở kho</a>
+                <a class="form-group row col-8" href="/Acquisition/CloseInventory">Đóng kiểm kê</a>
+            </div>
+
+
+            <div class="col-lg-8">
+                <div class="form-group row col-8">
+                    <label class="control-label col-md-5 align-self-center">Kỳ kiểm kê</label>
+                    @Html.DropDownList("Inventory", ViewData["inven"] as List<SelectListItem>, new { @class = "form-control col-md-6" })
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="form-group row col-8">
+                            <label class="control-label col-md-5 align-self-center">Thư viện</label>
+                            @Html.DropDownList("Library", ViewData["lib"] as List<SelectListItem>, new { @class = "form-control col-md-6" })
+                        </div>
+                        <div class="form-group row col-8">
+                            <label class="control-label col-md-5 align-self-center">Đăng ký cá biệt:</label>
+                            <textarea type="text" class="form-control col-md-6" id="DKCBID" name="DKCBID" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="btn-group btn-group">
+                            <button type="submit" id="stat" class="btn btn-primary mr-1">Kiểm kê</button>
+                            <button type="button" id="reset" class="btn btn-primary" onclick="reset()">Đặt lại</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ContentStatLiquidation"></div>
+</body>
+<script>
+    document.getElementById("stat").onclick = function () {
+        var empObj = {
+            strInventoryID: document.getElementById("Inventory").value,
+            strLibID: document.getElementById("Library").value,
+            strDKCBID: document.getElementById("DKCBID").value,
+        };
+        if (document.getElementById("DKCBID").value == "" ) {
+            alert("Đăng ký cá biệt không được để trống");
+
+
+        } else if (document.getElementById("Library").value == "") {
+            alert("Hãy chọn thư viện")
+        }
+        else {
+            $.ajax({
+                url: "GetInventoryReport",
+                data: JSON.stringify(empObj),
+                contentType: "application/json;charset=utf-8",
+                type: "POST",
+                beforeSend: function () {
+                    $("#ContentStatLiquidation").html("<h4>Loading...</h4>");
+                },
+                success: function (result) {
+                    $("#ContentStatLiquidation").html(result)
+                },
+                error: function (errormessage) {
+                    console.log("error");
+                }
+            });
+        }
+    };
+    $(window).bind("pageshow", function () {
+        $("#Library").val('');
+        $("#Location").val('');
+    });
+    function reset() {
+        $("#DKCBID").val('');
+    }
+</script>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,275 @@
+﻿@model Libol.Models.CIR_PATRON
+@using Libol.Models;
+@{
+    /**/
+
+    ViewBag.Title = "Quá hạn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery.blockUI.js"></script>
+
+<style>
+    label {
+        text-align: right;
+    }
+
+    .form-control {
+        font-size: 0.8rem !important;
+    }
+
+    table th {
+        font-size: 14px;
+    }
+
+    table td {
+        font-size: 13px;
+    }
+</style>
+<h4 style="margin-top: 20px;margin-bottom: 20px;">Thông tin thẻ bạn đọc quá hạn</h4>
+
+<div class="row">
+    <div class="col-6">
+        <div class="form-group row col-12">
+            <label class="control-label col-md-6 align-self-center">Số thẻ: </label>
+            <input type="text" class="form-control col-md-3" id="txtSoThe">
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-6 align-self-center">Tên bạn đọc: </label>
+            <input type="text" class="form-control col-md-3" id="txtTenBanDoc">
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-6 align-self-center">Nhóm bạn đọc: </label>
+            <select class="form-control col-md-4" id="intPatronGroupID">
+                <option value="-1">----- Chọn -----</option>
+                @foreach (var item in ViewBag.PatronGroup)
+                {
+                    <option value="@item.ID">@item.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-6 align-self-center">Trường: </label>
+            <select class="form-control col-md-4" onchange="OnchangeCollege()" id="college">
+                <option value="-1">----- Chọn -----</option>
+                @foreach (var item in ViewBag.College)
+                {
+                    <option value="@item.ID">@item.College</option>
+                }
+            </select>
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-6 align-self-center">Khoa: </label>
+            <select class="form-control col-md-4" id="faculty">
+                <option value="-1">----- Chọn -----</option>
+            </select>
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-6 align-self-center">Khóa học: </label>
+            <input type="text" class="form-control col-md-3" id="txtKhoaHoc">
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-6 align-self-center">Lớp học: </label>
+            <input type="text" class="form-control col-md-3" id="txtLopHoc">
+        </div>
+
+
+    </div>
+    <div class="col-6">
+        <div class="form-group row col-12">
+            <label class="control-label col-md-3 align-self-center">Thư viện: </label>
+            <select class="form-control col-md-4" style="width:80% !important" onchange="OnchangeLibrary()" id="intLibID">
+                <option value="-1">----- Chọn -----</option>
+                @foreach (var item in ViewBag.Library)
+                {
+                    <option value="@item.ID">@item.Code</option>
+                }
+            </select>
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-3 align-self-center">Kho: </label>
+            <select class="form-control col-md-4" name="libraryList" id="intLocID">
+                <option value="-1">----- Chọn -----</option>
+            </select>
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-3 align-self-center">Tên tài liệu: </label>
+            <input type="text" class="form-control col-md-3" id="txtTenTaiLieu">
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-3 align-self-center">Số DKCB: </label>
+            <input type="text" class="form-control col-md-3" id="txtSDKCB">
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-3 align-self-center">Ngày mượn từ: </label>
+            <input class="form-control col-md-3" type="date" id="txtNgayMuonTu" />
+            <label class="control-label col-md-2 align-self-center">Đến: </label>
+            <input class="form-control col-md-3" type="date" id="txtNgayMuonDen" />
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-3 align-self-center">Ngày trả từ: </label>
+            <input class="form-control col-md-3" type="date" id="txtNgayTraTu" />
+            <label class="control-label col-md-2 align-self-center">Đến: </label>
+            <input class="form-control col-md-3" type="date" id="txtNgayTraDen" />
+        </div>
+        <div class="form-group row col-12">
+            <label class="control-label col-md-3 align-self-center">Quá hạn từ: </label>
+            <input type="number" class="form-control col-md-3" id="txtSoNgayQuaHan">
+            <label class="control-label col-md-2 align-self-center">Đến: </label>
+            <input type="number" class="form-control col-md-3" id="txtSoNgayQuaHanDen">
+            <label class="control-label col-md-1 align-self-center">(ngày) </label>
+        </div>
+    </div>
+    
+</div>
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="btn-group btn-group">
+            <button class="btn btn-primary mr-1" onclick="getOverduelist()">Tìm kiếm</button>
+            <button class="btn btn-primary" onclick="ResetFields()">Đặt lại</button>
+        </div>
+    </div>
+</div>
+
+<div id="content"></div>
+<div id="modalDetailDiv">
+</div>
+
+
+<script>
+
+
+    function OnchangeCollege() {
+        var e = document.getElementById("college");
+        var id = e.options[e.selectedIndex].value;
+        var empObj = {
+            CollegeID: id
+        };
+        $.ajax({
+            url: "/OverdueList/OnchangeCollege",
+            data: JSON.stringify(empObj),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = "<option value='-1'>----- Chọn -----</option>"
+                for (r in result) {
+                    html = html + "<option value=" + result[r].ID + ">" + result[r].Faculty + "</option>"
+                }
+                document.getElementById("faculty").innerHTML = html;
+
+            },
+            error: function (errormessage) {
+
+            }
+        });
+    }
+
+    function OnchangeLibrary() {
+        var e = document.getElementById("intLibID");
+        var id = e.options[e.selectedIndex].value;
+        var empObj = {
+            LibID: id
+        };
+        $.ajax({
+            url: "/OverdueList/OnchangeLibrary",
+            data: JSON.stringify(empObj),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = "<option value='-1'>----- Chọn -----</option>"
+                for (r in result) {
+                    html = html + "<option value=" + result[r].ID + ">" + result[r].Symbol + "</option>"
+                }
+                document.getElementById("intLocID").innerHTML = html;
+
+            },
+            error: function (errormessage) {
+
+            }
+        });
+    }
+
+    function getOverduelist() {
+        var intPatronGroupIDElement = document.getElementById("intPatronGroupID");
+        var intCollegeIDElement = document.getElementById("college");
+        var intFacultyIDElement = document.getElementById("faculty");
+        var intLibIDElement = document.getElementById("intLibID");
+        var intLocIDElement = document.getElementById("intLocID");
+        var empObj = {
+            strPatronIDs: "",
+            txtSoThe: document.getElementById("txtSoThe").value,
+            txtTenBanDoc: document.getElementById("txtTenBanDoc").value,
+            ddlNhomBanDoc: intPatronGroupIDElement.options[intPatronGroupIDElement.selectedIndex].value,
+            ddlTruong: intCollegeIDElement.options[intCollegeIDElement.selectedIndex].value,
+            ddlKhoa: intFacultyIDElement.options[intFacultyIDElement.selectedIndex].value,
+            txtKhoaHoc: document.getElementById("txtKhoaHoc").value,
+            txtLopHoc: document.getElementById("txtLopHoc").value,
+            ddlLib: intLibIDElement.options[intLibIDElement.selectedIndex].value,
+            ddlLoc: intLocIDElement.options[intLocIDElement.selectedIndex].value,
+            txtTenTaiLieu: document.getElementById("txtTenTaiLieu").value,
+            txtSDKCB: document.getElementById("txtSDKCB").value,
+            txtNgayMuonTu: document.getElementById("txtNgayMuonTu").value,
+            txtNgayMuonDen: document.getElementById("txtNgayMuonDen").value,
+            txtNgayTraTu: document.getElementById("txtNgayTraTu").value,
+            txtNgayTraDen: document.getElementById("txtNgayTraDen").value,
+            txtSoNgayQuaHan: document.getElementById("txtSoNgayQuaHan").value,
+            txtSoNgayQuaHanDen: document.getElementById("txtSoNgayQuaHanDen").value
+        };
+        $.ajax({
+            url: "/OverdueList/OverdueListResult",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            beforeSend: function (request) {
+                $.blockUI({
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    }
+                });
+            },
+            complete: function (request, json) {
+
+            },
+            success: function (result) {
+                $("#content").html(result);
+                $.unblockUI()
+            },
+            error: function (errormessage) {
+                $.unblockUI()
+            }
+        });
+    }
+
+    function ResetFields() {
+        document.getElementById("txtSoThe").value = "";
+        document.getElementById("txtTenBanDoc").value = "";
+        document.getElementById("txtKhoaHoc").value = "";
+        document.getElementById("txtLopHoc").value = "";
+        document.getElementById("txtTenTaiLieu").value = "";
+        document.getElementById("txtSDKCB").value = "";
+        document.getElementById("txtNgayMuonTu").value = "mm/dd/yyyy";
+        document.getElementById("txtNgayMuonDen").value = "mm/dd/yyyy";
+        document.getElementById("txtNgayTraTu").value = "mm/dd/yyyy";
+        document.getElementById("txtNgayTraDen").value = "mm/dd/yyyy";
+        document.getElementById("txtSoNgayQuaHan").value = "";
+        document.getElementById("txtSoNgayQuaHanDen").value = "";
+        document.getElementById("intPatronGroupID").value = -1;
+        document.getElementById("college").value = -1;
+        document.getElementById("intLibID").value = -1;
+        document.getElementById("faculty").innerHTML = "<option value='-1'>----- Chọn -----</option>";
+        document.getElementById("intLocID").innerHTML = "<option value='-1'>----- Chọn -----</option>";
+    }
+
+</script>
+
+
+

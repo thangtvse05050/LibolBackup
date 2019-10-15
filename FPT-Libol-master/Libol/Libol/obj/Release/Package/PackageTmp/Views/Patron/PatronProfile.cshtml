@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Trang bạn đọc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .team-boxed {
+        color: #313437;
+        background-color: #eef4f7
+    }
+
+        .team-boxed p {
+            color: #7d8285
+        }
+
+        .team-boxed h2 {
+            font-weight: 700;
+            margin-bottom: 40px;
+            padding-top: 40px;
+            color: inherit
+        }
+
+    @@media (max-width:767px) {
+        .team-boxed h2 {
+            margin-bottom: 25px;
+            padding-top: 25px;
+            font-size: 24px
+        }
+    }
+
+    .team-boxed .intro {
+        font-size: 16px;
+        max-width: 500px;
+        margin: 0 auto
+    }
+
+        .team-boxed .intro p {
+            margin-bottom: 0
+        }
+
+    .team-boxed .people {
+        padding: 50px 0
+    }
+
+    .team-boxed .item {
+        text-align: center
+    }
+
+        .team-boxed .item .box {
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            margin-bottom: 30px
+        }
+
+        .team-boxed .item .name {
+            font-weight: 700;
+            margin-top: 28px;
+            margin-bottom: 8px;
+            color: inherit
+        }
+
+        .team-boxed .item .title {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #d0d0d0;
+            letter-spacing: 2px;
+            font-size: 13px
+        }
+
+        .team-boxed .item .description {
+            font-size: 15px;
+            margin-top: 15px;
+            margin-bottom: 20px
+        }
+
+        .team-boxed .item img {
+            max-width: 160px
+        }
+
+    .team-boxed .social {
+        font-size: 18px;
+        color: #a2a8ae
+    }
+
+        .team-boxed .social a {
+            color: inherit;
+            margin: 0 10px;
+            display: inline-block;
+            opacity: .7
+        }
+
+            .team-boxed .social a:hover {
+                opacity: 1
+            }
+</style>
+
+<div class="row">
+    <div class="col text-center align-items-center"><label class="col-form-label text-center" style="color: black;font-size: 20px;"><strong>Trang bạn đọc</strong></label></div>
+</div>
+<form>
+    <div class="team-boxed">
+        <div class="container">
+            <div class="row people">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <img src="~/Content/Images/book.png" />
+                        <h3 class="name" style="font-size: 30px;">Thông tin hồ sơ</h3>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><span>@Html.ActionLink("Quản lý hồ sơ", "Create", "Patron") </span></li>
+                        <li class="list-group-item"><span>@Html.ActionLink("Tra cứu", "SearchPatronFilter", "Patron")</span></li>
+                        <li class="list-group-item"><span>Hàng đợi<br /></span></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <img src="~/Content/Images/images.png" />
+                        <h3 class="name">Danh mục</h3>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><span>Dân tộc</span></li>
+                        <li class="list-group-item"><span>Trình độ văn hóa</span></li>
+                        <li class="list-group-item"><span>Nhóm ngành nghề</span></li>
+                        <li class="list-group-item"><span>Nhóm bạn đọc</span></li>
+                        <li class="list-group-item"><span>Trường</span></li>
+                        <li class="list-group-item"><span>Khoa</span></li>
+                        <li class="list-group-item"><span>Tỉnh</span></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <img src="data:image/png;base64,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" />
+                        <h3 class="name">Xuất nhập dữ liệu</h3>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item"><span>@Html.ActionLink("Thêm bạn đọc theo lô", "AddPatronByFile", "Patron")</span></li>
+                        <li class="list-group-item"><span>@Html.ActionLink("Xóa bạn đọc theo lô", "DeletePatronsByList", "Patron")</span></li>
+                        <li class="list-group-item"><span>@Html.ActionLink("Gia hạn bạn đọc theo lô", "AdjournPatronExpiredDateByList", "Patron")</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
