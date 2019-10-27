@@ -1,0 +1,2700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6B024B72-CF73-4B83-AEDF-ABBE0765C797}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Libol</RootNamespace>
+    <AssemblyName>Libol</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.7.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.7.6\lib\net46\Hangfire.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.7.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.SqlServer.1.7.6\lib\net45\Hangfire.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="XCrypt">
+      <HintPath>..\..\..\..\Users\ngqua\Downloads\Libol60_Updated\Code\Libol60\bin\XCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing, Version=0.16.4.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.4\lib\net461\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.4.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.4\lib\net461\zxing.presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.5.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.5.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.5.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.5.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.5.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AcquiredController.cs" />
+    <Compile Include="Controllers\AcquireReportController.cs" />
+    <Compile Include="Controllers\AcquisitionController.cs" />
+    <Compile Include="Controllers\CirculationController.cs" />
+    <Compile Include="Controllers\CatalogueController.cs" />
+    <Compile Include="Controllers\CheckInController.cs" />
+    <Compile Include="Controllers\CheckOutController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ManagementController.cs" />
+    <Compile Include="Controllers\OverdueEmailNoticeController.cs" />
+    <Compile Include="Controllers\OverdueListController.cs" />
+    <Compile Include="Controllers\PatronController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PrintBarcodeController.cs" />
+    <Compile Include="Controllers\PrintLabelController.cs" />
+    <Compile Include="Controllers\RenewController.cs" />
+    <Compile Include="Controllers\ShelfController.cs" />
+    <Compile Include="EntityResult\DUPLICATE_INVENTORY.cs" />
+    <Compile Include="EntityResult\FPT_CIR_SP_STAT_TOP20_Result.cs" />
+    <Compile Include="EntityResult\FPT_COUNT_COPYNUMBER_BY_ITEMID_Result.cs" />
+    <Compile Include="EntityResult\FPT_COUNT_COPYNUMBER_ONLOAN_Result.cs" />
+    <Compile Include="EntityResult\FPT_GET_LIQUIDBOOKS_BY_COPYNUMBER_Result.cs" />
+    <Compile Include="EntityResult\FPT_SP_CATA_GET_DICINFOR_REFERENCES_Result.cs" />
+    <Compile Include="EntityResult\FPT_SP_CATA_SEARCH_MARC_FIELDS_Results.cs" />
+    <Compile Include="EntityResult\FPT_SP_GETINFOR_EMAIL_Result.cs" />
+    <Compile Include="EntityResult\FPT_SP_GET_ITEM_Result.cs" />
+    <Compile Include="EntityResult\FPT_SP_ILL_SEARCH_PATRON_Result.cs" />
+    <Compile Include="EntityResult\Holding_Item.cs" />
+    <Compile Include="EntityResult\Library.cs" />
+    <Compile Include="EntityResult\LibraryLocation.cs" />
+    <Compile Include="EntityResult\Location.cs" />
+    <Compile Include="EntityResult\Removed_Item.cs" />
+    <Compile Include="EntityResult\SP_CATA_GET_MODIFIED_FIELDS_Result.cs" />
+    <Compile Include="EntityResult\SP_CIR_OVERDUELIST_GETINFOR_Result.cs" />
+    <Compile Include="EntityResult\SP_GET_CURRENT_CHECKIN_INFOR_Result.cs" />
+    <Compile Include="EntityResult\SP_GET_TITLES_Result.cs" />
+    <Compile Include="EntityResult\SP_HOLDING_LOCATION_UPD_STATUS_Result.cs" />
+    <Compile Include="EntityResult\Total_Amount.cs" />
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_THESIS_SUBJECT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_CATA_FILE_NEW.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_RECOMMEND.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SPECIALIZED_REPORT_GET_GTTK_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SPECIALIZED_REPORT_GET_PUBLISHER_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SPECIALIZED_REPORT_GET_YEAR_PUBLISHNUM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SPECIALIZED_REPORT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_CATA_GET_CONTENTS_OF_ITEMS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_GET_GENERAL_LOC_INFOR_DUCNV_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_GET_HOLDING_BY_RECOMMENDID_Newest_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_GET_HOLDING_BY_RECOMMENDID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_GET_HOLDING_REMOVED_GET_COPYNUMBER_TO_INS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_GET_HOLDING_REMOVED_PAGING_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_GET_HOLDING_REMOVED_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_GET_HOLDING_REMOVED_WITH_ID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_GET_ITEM_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_HOLDING_LIBLOCUSER_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_HOLDING_LIB_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_INVENTORY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SYS_USER_RIGHT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SYS_USER_RIGHT_DETAIL.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityResult\SP_GET_LOCKEDPATRONS_Result2.cs" />
+    <Compile Include="EntityResult\FPT_SP_UPDATE_UNLOCK_PATRON_CARD_Result.cs" />
+    <Compile Include="EntityResult\SP_UNLOCK_PATRON_CARD_Result.cs" />
+    <Compile Include="EntityResult\SP_GET_LOCKEDPATRONS_Result.cs" />
+    <Compile Include="EntityResult\SP_HOLDING_LIBRARY_SELECT_Result.cs" />
+    <Compile Include="EntityResult\SP_HOLDING_LOCATION_GET_INFO_Result.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Business\AcquisitionBusiness.cs" />
+    <Compile Include="Models\ACQ_ACQUIRE_SOURCE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACQ_BUDGET.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACQ_BUDGET_ACCUMULATE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACQ_BUDGET_CREDIT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACQ_BUDGET_DEBIT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACQ_CURRENCY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACQ_ITEM.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACQ_ONLOAN_INLIST_INVENT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACQ_PO.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACQ_PO_STATUS.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACQ_STATUS.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACQ_VENDOR.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BANDOC_IN.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BOOKCODE_RES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Book_code.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\CatalogueBusiness.cs" />
+    <Compile Include="Models\CAT_AUTHORITY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_AUTHORITY_LINK.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_BIBLIOGRAPHY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_BIBLIOGRAPHY_DETAIL.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_AUTHOR.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_CLASS_BBK.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_CLASS_DDC.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_CLASS_LOC.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_CLASS_NLM.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_CLASS_NSC.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_CLASS_UDC.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_COUNTRY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_DIRLEVEL.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_ITEM_TYPE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_KEYWORD.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_LANGUAGE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_LIST.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_LIST_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_MEDIUM.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_NUMBER.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_OAI_SET.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_PUBLISHER.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_RECORDTYPE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_RELATOR.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_SERIES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_SER_CATEGORY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_SH.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_THESIS_LEVEL.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_THESIS_SUBJECT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_DIC_YEAR.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_EDATA_AUDIO.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_EDATA_COLLECTION.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_EDATA_FILE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_EDATA_IMAGE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_EDATA_METADATA.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_EDATA_METADATA_DEFIN.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_EDATA_MULTIMEDIA.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_EDATA_PARAMETER.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_EDATA_URL.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_EDATA_VIDEO.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CAT_QUEUE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\CheckOutBusiness.cs" />
+    <Compile Include="Models\CIR_DIC_COLLEGE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_DIC_EDUCATION.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_DIC_ETHNIC.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_DIC_FACULTY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_DIC_OCCUPATION.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_DIC_PROVINCE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_FINE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_HOLDING.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_LOAN.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_LOAN_HISTORY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_LOAN_TYPE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_OPEN_HOUR.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_PATRON.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_PATRON_BLOCK.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_PATRON_GROUP.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_PATRON_LOCK.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_PATRON_OTHER_ADDR.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_PATRON_UNIVERSITY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_PHOTOCOPY_PRICE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_PHOTOCOPY_REQUEST.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_PRINTED_CARD.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_RENEW.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_RESERVE_REQUEST.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CIR_SERIAL_COUNT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\CirculationBusiness.cs" />
+    <Compile Include="Models\FPT_ACQ_LANGUAGE_DETAILS_STATISTIC_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_LANGUAGE_STATISTIC_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityResult\FPT_ACQ_MONTH_STATISTIC_Result.cs" />
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_AUTHOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_BBK_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_COUNTRY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_DDC_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_DIC40_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_DIC41_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_DIC42_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_DIC43_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_ITEMTYPE_NEW_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_KEYWORD_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_LANGUAGE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_LIBRARY_NEW_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_LOC_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_MEDIUM_NEW_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_NLM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_OAI_SET_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_PUBLISHER_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_SERIALS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_SH_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ACQ_STATISTIC_TOP20_BY_UDC_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityResult\FPT_ACQ_YEAR_STATISTIC_Result.cs" />
+    <Compile Include="Models\FPT_ADMIN_GET_RIGHTS_DENY_ADMIN_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_CIR_GET_LOCFULLNAME_LIBUSER_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityResult\FPT_CIR_MONTH_STATISTIC_Result.cs" />
+    <Compile Include="EntityResult\FPT_CIR_YEAR_STATISTIC_Result.cs" />
+    <Compile Include="EntityResult\FPT_GET_LIQUIDBOOKS_Result.cs" />
+    <Compile Include="Models\FPT_GET_LOCFULLNAME_LIBUSER_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_JOIN_ISBN_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_CIR_LIBLOCUSER_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_CIR_LIB_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_GET_COPYNUMBER_STRING_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_GET_HOLDING_BY_LOCATIONID_lan12_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_GET_HOLDING_BY_RECOMMEND_LAN3_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_JOIN_COPYNUMBER_BY_ITEMID_AND_ACQUIREDDATE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityResult\FPT_SP_STAT_PATRONMAX_Result.cs" />
+    <Compile Include="EntityResult\GET_PATRON_LOANINFOR_Result.cs" />
+    <Compile Include="EntityResult\GET_CATALOGUE_FIELDS_Result.cs" />
+    <Compile Include="Models\CLASSIFICATION.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CLASSIFICATION_FIELD.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CLASSIFICATION_LINKS.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CLASSIFICATION_LINK_TYPES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DICTIONARY40.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DICTIONARY41.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DICTIONARY42.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DICTIONARY43.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dtproperty.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dt_getpropertiesbyid_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dt_getpropertiesbyid_u_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDELIV_FILE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDELIV_PAYMENT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDELIV_REQUEST.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDELIV_REQUEST_MODE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDELIV_STATUS.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDELIV_USER.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FIELD000S.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FIELD100S.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FIELD200S.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FIELD300S.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FIELD400S.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FIELD500S.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FIELD600S.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FIELD700S.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FIELD800S.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FIELD900S.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FIELD_AUTHORITY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FLibContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FLibContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ADMIN_GET_RIGHTS_ACCEPT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ADMIN_GET_RIGHTS_DENY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_ADMIN_GET_RIGHTS_WHEN_CREATE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_COLLEGE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GETALL_OCCUPATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GETFACULTYBYID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GETWAREHOUSE_BOOK_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GET_ALL_COLLEGE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GET_ALL_FACULTY_BY_ID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GET_ALL_FACULTY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GET_ALL_PROVINCE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GET_EDUCATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GET_PARTRON_GROUP_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GET_PATRON_ONLOAN_INCOMMING_BY_USERID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GET_PATRON_ONLOAN_INCOMMING_FOR_EMAILSCAN_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GET_PATRON_ONLOAN_INCOMMING_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GET_SHELF_CONTENT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_GET_VALUEFROMID_BOOK_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_PATRON_UNIVERSITY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_EDU_SP_GETLOANTYPES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_CATA_CHECK_EXIST_TITLE_2019_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_CATA_GET_DETAILINFOR_OF_ITEM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GET_BLACK_PATRON_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityResult\GET_PATRON_ONLOANINFOR_Result.cs" />
+    <Compile Include="EntityResult\GET_PATRON_RENEW_LOAN_INFOR_Result.cs" />
+    <Compile Include="EntityResult\GET_PATRON_RENEW_ONLOAN_INFOR_Result.cs" />
+    <Compile Include="Models\HELP_CAT_DIC.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HELP_CAT_FILE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HELP_DIC_ITEM.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HELP_ITEM_LINK.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOLDING.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOLDING_COPY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOLDING_INVENTORY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOLDING_LIBRARY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOLDING_LOCATION.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOLDING_LOCATION_PROCESS.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOLDING_LOCATION_SCHEMA.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOLDING_REMOVED.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOLDING_REMOVE_REASON.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HOLDING_SHELF_SCHEMA.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_APDU_TYPES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_COPYRIGHT_COMPLIANCE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_GET_OUT_RESPONSE_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_INCOMING_REQUESTS.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_INCOMING_REQUESTS_BILINF.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_INCOMING_REQUESTS_DELINF.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_INCOMING_REQUESTS_DENIED.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_INCOMING_REQUESTS_LOG.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_ITEM_TYPES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_LIBRARIES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_LOCAL_LIBRARY_ADDRESSES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_LOCAL_LIBRARY_E_ADDRESSES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_MEDIUM_TYPES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_OUTGOING_REQUESTS.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_OUTGOING_REQUESTS_DENIED.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_OUTGOING_REQUESTS_LOG.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_OUTGOING_REQUESTS_RETINF.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_PAYMENT_TYPES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_PHYSICAL_DELIVERY_MODES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_REQUEST_ITEMS.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_REQUEST_STATUS.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_RESPONSES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_SERVICE_TYPES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_Z3950_DBS.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ILL_Z3950_SERVERS.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INIT_INVENTORY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INVENTORY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INVENTORY_COPY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemCode.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityResult\ITEMMAX.cs" />
+    <Compile Include="Models\ITEM_AUTHOR.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_AUTHORITY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_BBK.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_COUNTRY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_DDC.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_DICTIONARY40.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_DICTIONARY41.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_DICTIONARY42.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_DICTIONARY43.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_FULLTEXT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_ITEM.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_KEYWORD.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_LANGUAGE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_LIBRARY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_LINK.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_LOC.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_NLM.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_NSC.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_OAI_SET.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_PUBLISHER.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_SERIES.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_SH.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_THESIS_SUBJECT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_TITLE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ITEM_UDC.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Libol.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Libol.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Libol.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Libol.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Libol.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_AUTHORITY_BLOCK.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_AUTHORITY_FIELD.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_AUTHORITY_FIELD_TYPE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_AUTHORITY_INDICATOR.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_AUTHORITY_WORKSHEET.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_AUTHORITY_WS_DETAIL.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_BIB_BLOCK.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_BIB_FIELD.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_BIB_INDICATOR.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_BIB_WS_DETAIL.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_FIELD_TYPE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_FUNCTION.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_LINK_TYPE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MARC_WORKSHEET.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OAI_SET.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OAI_URL_RESOURCE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OPAC_COMMENT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OPAC_SUBJECT_BBK.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OPAC_SUBJECT_DDC.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\PatronBusiness.cs" />
+    <Compile Include="EntityResult\PATRON_GROUP.cs" />
+    <Compile Include="Models\REGULARITY_OUT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\RenewBusiness.cs" />
+    <Compile Include="Business\SearchPatronBusiness.cs" />
+    <Compile Include="Models\SER_ARTICLE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SER_CATEGORY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SER_COPY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SER_ISSUE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SER_ITEM.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SER_REGULARITY.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SER_ROUTING.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SER_SUBJECT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Business\ShelfBusiness.cs" />
+    <Compile Include="Models\SP_ACQ_ACQUIRE_SOURCE_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_BROWSE_CONTRACT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_BUDGET_ACCOUNT_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_BUDGET_CREDIT_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_BUDGET_CURRENCY_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_BUDGET_LIQUIDATE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_BUDGET_NAME_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_BUDGET_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_BUDGET_SEL_STATUS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_BUDGET_SUM_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_BUDGET_TRANSACTION_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_CURRENCY_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_ACQ_PO_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_BUDGET_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_CAT_DIC_LIST_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_CHECKINGRECEIVED_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_CONTACTDETAIL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_CONTRACT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_DEBIT_AMOUNT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_FINACIAL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_ITEMS_OF_CONTRACT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_ITEMS_TOCLAIM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_ORDER_ITEMS_LIST_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_ORDER_ITEMS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_PO_VENDOR_INF_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_SEPLOC_ITEMS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_STATUS_OF_CONTRACT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_STATUS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_VENDOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_GET_WAITING_PO_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_INVENTORY_GET_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_ITEM_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_LIB_GET_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_PO_ALL_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_PO_BROWSE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_PO_BY_VENDOR_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_PO_ITEM_DETAIL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_PO_ITEM_SEL_BYPOID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_PO_ITEM_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_PO_SELECT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_PO_SEL_BOOKORDER_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_PO_STATUS_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_RECEIPT_NO_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_STATITEMTYPE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_STATLANGUAGE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_STATLOCATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_STATMEDIUM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_STATNATIONPUB_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_STATPUBLISHER_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_STATSOURCE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_STATTOP20_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_STATUS_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_STATYEAR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_STAT_QUICKVIEW_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ACQ_VENDOR_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ADMIN_GET_EVENTGROUPS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ADMIN_GET_EVENTS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ADMIN_GET_PARAMETERS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ADMIN_GET_RIGHTS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ADMIN_GET_USERS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ADMIN_STATDAY_EVENT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ADMIN_STATDAY_MODULE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ADMIN_STATIC_WEEKLY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ADMIN_STATMONTH_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ALL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATALOGUE_STAT_OVERVIEW_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATALOG_MARCBF_GET_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_FIELDCODE_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_AUTHORITYSOURCE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_AUTHORITY_ID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_AUTHORITY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_BLOCKFIELDS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_CLASSIFICATION_DATA_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_CLASSIFICATION_ITEMS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_CLASSIFICATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_CONTENTS_OF_ITEMS1_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_CONTENTS_OF_ITEMS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_FIELDFUNCTIONS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_FIELDTYPES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_FIELD_PROPERTIES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_INDICATORS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_LINKTYPES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_MARC_FORM_2019_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_PICKED_FIELDVIEW_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_RANGE_OF_ITEMID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_GET_USERFIELDS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_QUEUE_DURATION_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CATA_QUICK_VIEW_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CAT_DIC_COUNTRY_SELECT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CAT_DIC_DIRLEVEL_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CAT_DIC_ITEM_TYPE_INDEX_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CAT_DIC_MEDIUM_INDEX_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CAT_DIC_PUBLISHER_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CAT_DIC_RECORDTYPE_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CAT_EDATA_PARAMETER_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CAT_HOLDING_LIBRARY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CHECK_HOLD_REQUEST_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CHECK_RENEWDATE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIRCULATION_GETCALENDERSERVATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIRCULATION_THONGKE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_CHECK_DUEDATE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_DIC_FACULTY_SELECTCOLID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_FACULTY_SELECT_BYCID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityResult\SP_CIR_GET_RENEW_Result.cs" />
+    <Compile Include="Models\SP_CIR_HOLDING_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_GET_FACULTY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_OA_SELECT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_SELECT_QUEUE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_STARTGRP_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_STATCLASS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_STATCOLLEGE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_STATCREATEDDATE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_STATEXPIREDDATE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_STATFACULTY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_STATGRADE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_STATISTIC_TOP20_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_STATOCCUPATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CIR_PATRON_UNI_SELECT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_COMMON_GET_PROVINCE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_COMMON_GET_REFERENCE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_CURRENT_RECEIVE_COPIES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_DAYLY_RECEIVE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_EDATA_COLLECTION_GET_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_EDATA_GET_DATAFILE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_EDATA_GET_EDATAFILE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_EDATA_GET_GENERAL_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_EDATA_GET_ITEM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_EDATA_GET_METADATA_DEFIN_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_EDATA_GET_METADATA_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_EDATA_ITEM_GET_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETCATDICLIST2FIELD_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETCATDICLIST_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETCOPYNUMBERINFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETLOANTYPES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETPATRONHOLD_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETPATRONLOCATIONS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETREFERENCE_BYFIELCODE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETSCHEDULE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETTOTAL_HOLDINGCOPIES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETUSERLOCATIONS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETUSER_ROUTING_LOCATIONS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GETWORKINGTIME_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ACQITEM_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ACQSOURCES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ACQSTATUS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ARTICLE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_BUDGETS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_CATEGORY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_CONTRACT_STATUS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_COPIES_OF_BIND_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_COPIES_TO_BIND_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_COUNTRIES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_CURRENCY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_DIC_LIST_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_DIRLEVEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_EDELIV_ANNUALSTAT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_EDELIV_CHECKDEBT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_EDELIV_CUSTOMER_BY_CODE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_EDELIV_CUSTOMER_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_EDELIV_DAYSTAT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_EDELIV_MONTHSTAT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_EDELIV_REQMONTH_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_EDELIV_REQUESTINFFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_EDELIV_REQUESTMODE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_EDELIV_REQUESTS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_EDELIV_REQUEST_PROCESS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_GENERAL_LOC_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_GEN_CALSSIFICATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_GEN_EXPIRED_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_GEN_ISSUE_ITEM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_HOLDING_HOL_INFOR1_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_HOLDING_HOL_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_HOLDING_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_HOLDING_INFO_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_HOLDING_LIBLOC_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_HOLDING_REMOVED_ONIDs_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_HOLDING_REMOVED_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ILL_ID_INCOMING_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ILL_ID_OUTGOING_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ILL_IN_HISTORY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ILL_IN_REQUESTS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ILL_IN_REQUEST_PROCESS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ILL_LIBSYMBOL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ILL_OUT_HISTORY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ILL_OUT_REQUESTS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ILL_OUT_REQUEST_PROCESS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ILL_REASONCODE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ISSUE_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ITEMS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ITEMTYPES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ITEM_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_LANGUAGES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_LAST_ISSUE_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_LIBRARY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_LIST_POS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_LOANNING_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_MEDIUMS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_OAI_URL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_PATRON_COPYNUMBERS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_PATRON_FORGOTPASSWORD_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_PATRON_GROUP_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_PATRON_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_PATRON_INLIB_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_PATRON_LOAN_DETAILINFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_PATRON_LOAN_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_PATRON_NAME_REQUEST_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_PATRON_ONLOAN_COPIES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_PO_STATUS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_PUBLISHERS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_RECEIVED_COPIES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_RECEIVED_ISSUES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_RECORDTYPES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_REGULARITY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ROUTING_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_SER_CATEGORIES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_SOURCE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_SOURCE_STATUS_SER_ITEM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_SYS_VIEW_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_USER_RIGHT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_VENDORS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_VENDOR_TO_CLAIM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_VOLUMEBYLIBRARYS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_GET_ZSERVER_LIST_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HELP_CAT_DIC_SELECT_BYDICID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HELP_CAT_DIC_SELECT_BYPARENTID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HELP_CAT_FILE_SELECT_BYDICID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HELP_CAT_FILE_SELECT_BYURL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HELP_DIC_DEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HELP_DIC_ITEM_SELECT_BYID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HELP_ITEM_LINK_SELECT_BYDICID_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_INFO_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_INQUEUE_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_INV_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_ITEM_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LIBLOCUSER_SEL2_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LIBLOCUSER_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LIBLOC_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LIBRARY_SEL_REGSPEC_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LIB_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LOCATION_DETAIL_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LOCATION_HOLDING_LIBRARY_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LOCATION_SCHEMA_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LOCATION_SEL_CLO_OPE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LOCATION_SEL_REGSPEC_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LOC_SCHEMA_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_LOC_SHELF_SCHEMA_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_REMOVE_REASON_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_SHELF_SCHEMA_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_HOLDING_SHELF_SCHEMA_SELECT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_COUNTRY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_INSERREPORT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_IR_DETAIL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_IR_LIBADD_COUNTRY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_IR_LOG_CANCEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_IR_SHIPMESS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_LIST_ZSERVER_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_LOCLIBADDR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_LOCLIBELECADDR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_OREQUEST_ITEMS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_OR_DETAIL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_OR_RENEW_LOG_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_OUTGOING_REQUESTS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_OUTGOING_REQUEST_LOG_RECEIVE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_OUTOVERDUE_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_OUTSERREPORT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_REQITEM_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_RESPONSES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_SERREPORT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_GET_ZSERVER_DBS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_INCOMMONREQUEST_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_INGENERATEREPORT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_OUTGENERATEREPORT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_RESPONSES_GET_DENIED_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_RESPONSES_GET_GENDENIED_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_RESPONSES_GET_PATDENIED_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_STATISTIC_SERVICE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_STAT_QUICKVIEW_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ILL_ZDBs_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_INVENTORY_DETAIL_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_INVENTORY_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ITEM_CAT_QUEUE_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ITEM_ODERED_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_ITEM_SELECT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityResult\SP_LOCK_PATRON_CARD_Result.cs" />
+    <Compile Include="Models\SP_MARC_BLOCK_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_MARC_FIELD_GETPROPERTIES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_MARC_FIELD_TYPE_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_MARC_FUNCTION_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_ACTIVE_ACCOUNT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_CHECK_EDELIV_USER_DOWNLOAD_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_CHECK_EDELIV_USER_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_CHECK_PATRON_CARD_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_EDATA_GET_METADATA_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_FULLTEXT_SEARCH_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_ACCAUTHOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_BEST_ITEMS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_COMMENTS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_DIC_ITEM_TYPE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_EDATA_DETAIL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_EDATA_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_EDELIV_INFOR_BY_GROUP_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_EDELIV_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_EDUCATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_GENERATELINFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_HOLDINGINFO_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_HOLDINGS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_ILLREQUEST_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_ILL_DUE_ITEM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_ILL_REC_ITEM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_NEW_ITEMS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_OCCUPATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_ONHOLDING_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_RELATED_ANALYTICS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_RELATION_TITLES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_REQUEST_GROUP_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_SER_HOLDINGS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_STAS_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_GET_TITLES_RELATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_RELATED_TERMS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_OPAC_RELATION_BOOKS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PATRON_GROUP_STATISTIC_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PATRON_SELECT_ALLDIC_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PAT_GET_COLLEGE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PAT_GET_EDUCATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PAT_GET_ETHNIC_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PAT_GET_LOCATION_OF_GROUP_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PAT_GET_LOCATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PAT_GET_NOTPRINTED_CARD_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PAT_GET_OCCUPATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PAT_GET_OTHERADDRESS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PAT_GET_PATRONGROUP_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PAT_GET_PROVINCE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SER_GET_PERIODICAL_INFOR_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SER_GET_RECEIVE_ISSUES_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SER_GET_REGULARITY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SER_GET_REQUEST_LIST_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SER_REGULARITY_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_CATEGORY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_CLASSIFICATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_GENCLASSIFICATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_LOANDAYED_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_LOANDAY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_LOANMONED_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_LOANMON_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_LOANYEARSED_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_LOANYEARS_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_LOCATION_SER_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_SERIAL_COUNTRY_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_SERIAL_FREQ_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_STAT_SERIAL_LANGUAGE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SYS_GETUSER_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SYS_GET_TEMPLATE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SYS_LDAP_USER_LOGIN_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SYS_PARAMETER_SEL_EMAIL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SYS_TEMPFILE_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SYS_USER_LOCATION_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SYS_USER_LOGIN_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SYS_USER_SELECT_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_SYS_USER_SER_LOCATION_SEL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_WAP_GETDETAIL_OFITEM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_WAP_GET_ILLREQUEST_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_WAP_GET_ONHOLDED_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_WAP_GET_ONHOLDING_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_WAP_GET_RESERVATION_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_WAP_HOLDING_ITEMDETAIL_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SQ_ACQ_GET_VENDOR_SENDPO_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_EVENT_GROUP.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_LOG.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_MODULE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_PARAMETER.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_REFERENCE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_TEMPLATE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_TEMP_CODE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_TEMP_FILE.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_USER.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_USER_GOOGLE_ACCOUNT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_USER_RIGHT.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_USER_RIGHT_DETAIL.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SYS_VIEW.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Temper.cs" />
+    <Compile Include="Models\test.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usertest.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_CATA_CHECK_EXIST_TITLE_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_CATA_GET_MARC_FORM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FPT_SP_CATA_GETFIELDS_OF_FORM_Result.cs">
+      <DependentUpon>Libol.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="SupportClass\AuthAttribute.cs" />
+    <Compile Include="SupportClass\DataTableAjaxPostModel.cs" />
+    <Compile Include="SupportClass\FormatHoldingTitle.cs" />
+    <Compile Include="SupportClass\HangfireAuthorizationFilter.cs" />
+    <Compile Include="SupportClass\Wrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CustomJS\buttons.bootstrap4.min.js" />
+    <Content Include="Content\CustomJS\buttons.colVis.min.js" />
+    <Content Include="Content\CustomJS\buttons.html5.min.js" />
+    <Content Include="Content\CustomJS\buttons.print.min.js" />
+    <Content Include="Content\CustomJS\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\CustomJS\dataTables.buttons.min.js" />
+    <Content Include="Content\CustomJS\jquery-3.3.1.js" />
+    <Content Include="Content\CustomJS\jstree.min.js" />
+    <Content Include="Content\CustomJS\range_dates.js" />
+    <Content Include="Content\CustomJS\jquery.dataTables.min.js" />
+    <Content Include="Content\CustomJS\jszip.min.js" />
+    <Content Include="Content\CustomJS\pdfmake.min.js" />
+    <Content Include="Content\CustomJS\vfs_fonts.js" />
+    <Content Include="Content\datatables.css" />
+    <Content Include="Content\datatables.min.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.bootstrap.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.bootstrap4.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.dataTables.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.foundation.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.foundation.min.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.jqueryui.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.semanticui.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\buttons.semanticui.min.css" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.bootstrap.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.bootstrap.min.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.bootstrap4.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.bootstrap4.min.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.colVis.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.colVis.min.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.flash.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.flash.min.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.foundation.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.foundation.min.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.html5.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.html5.min.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.jqueryui.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.jqueryui.min.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.print.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.print.min.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.semanticui.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\buttons.semanticui.min.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\dataTables.buttons.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\js\dataTables.buttons.min.js" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\swf\flashExport.swf" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\images\sort_asc.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\images\sort_both.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\images\sort_desc.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.bootstrap4.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\dataTables.checkboxes.min.js" />
+    <Content Include="Content\DataTables\DataTables-1.10.18\js\jquery.dataTables.js" />
+    <Content Include="Content\DataTables\dataTables.checkboxesCustomForAccount.min.js" />
+    <Content Include="Content\DataTables\Select-1.3.0\css\select.bootstrap4.css" />
+    <Content Include="Content\DataTables\Select-1.3.0\js\dataTables.select.js" />
+    <Content Include="Content\Images\bg.gif" />
+    <Content Include="Content\Images\libol.jpg" />
+    <Content Include="Content\Images\Loading1.gif" />
+    <Content Include="Content\Images\loan.gif" />
+    <Content Include="Content\Images\lock.gif" />
+    <Content Include="Content\Images\Logo.png" />
+    <Content Include="Content\multiselect.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\PagingStyle.css" />
+    <Content Include="Content\PartialViewStyle.css" />
+    <Content Include="Content\TableOrientation.css" />
+    <Content Include="Content\DataTables\dataTables.checkboxes.css" />
+    <Content Include="Content\DataTables\dataTables.checkboxes.min.js" />
+    <Content Include="Content\DataTables\Select-1.3.0\css\select.bootstrap4.css" />
+    <Content Include="Content\DataTables\Select-1.3.0\js\dataTables.select.js" />
+    <Content Include="Content\ImagePatron\NoImage.png" />
+    <Content Include="Content\Images\9280-200.png" />
+    <Content Include="Content\Images\book.png" />
+    <Content Include="Content\Images\btn_google_signin_light_normal_web%402x.png" />
+    <Content Include="Content\Images\images.png" />
+    <Content Include="Content\Images\Logo.png" />
+    <Content Include="Content\Images\NoImage.png" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Models\FLibContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FLibContext.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Libol.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Libol.edmx</DependentUpon>
+      <LastGenOutput>Libol.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Libol.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Libol.edmx</DependentUpon>
+      <LastGenOutput>Libol.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap-table.min.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\datatables.js" />
+    <Content Include="Scripts\datatables.min.js" />
+    <Content Include="Scripts\bs-animation.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="Models\Libol.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Libol.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Libol.edmx.diagram">
+      <DependentUpon>Libol.edmx</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\common.scss" />
+    <Content Include="Content\DataTables\Buttons-1.5.6\css\mixins.scss" />
+    <Content Include="Content\Log\console-app.log" />
+    <Content Include="Content\EmailTemplate\NoticeEmail.cshtml" />
+    <Content Include="Content\Template1\Template_Import_Patron.xlsx" />
+    <None Include="Properties\PublishProfiles\flib123 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\flib123 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\flib123 - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\flib20 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\flib30 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Libol - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\Libol - Web Deploy.pubxml" />
+    <None Include="log4net.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\PublishProfiles\Libol - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\Libol20190814092921 - Web Deploy.pubxml" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\ExportToExcel.js" />
+    <Content Include="Scripts\ExportToWord.js" />
+    <Content Include="Scripts\GoodleDrawingChart.js" />
+    <Content Include="Scripts\Jquery-2.2.3.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\load.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\multiselect.min.js" />
+    <Content Include="Scripts\Paging.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\TotalMoneyToWords.js" />
+    <Content Include="Scripts\script.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Views\AcquireReport\GetYearStats.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Circulation\Index.cshtml" />
+    <Content Include="Views\Circulation\Reports.cshtml" />
+    <Content Include="Views\Circulation\ReportOnLoanCopy.cshtml" />
+    <Content Include="Views\Circulation\ReportLoanCopy.cshtml" />
+    <Content Include="Views\Circulation\StatisticAnnual.cshtml" />
+    <Content Include="Views\Circulation\StatisticMonth.cshtml" />
+    <Content Include="Views\Circulation\StatisticPatronGroup.cshtml" />
+    <Content Include="Views\Circulation\StatisticTopCopy.cshtml" />
+    <Content Include="Views\Circulation\StatisticTopPatron.cshtml" />
+    <Content Include="Views\AcquireReport\BaoCaoBoSung_New.cshtml" />
+    <Content Include="Views\AcquireReport\Index.cshtml" />
+    <Content Include="Views\AcquireReport\LanguageStat.cshtml" />
+    <Content Include="Views\AcquireReport\StatisticYear.cshtml" />
+    <Content Include="Views\AcquireReport\GetMonthStats.cshtml" />
+    <Content Include="Views\AcquireReport\AcquireStatisticIndex.cshtml" />
+    <Content Include="Views\Circulation\GetLoanStats.cshtml" />
+    <Content Include="Views\Circulation\GetFilteredLoanStats.cshtml" />
+    <Content Include="Views\Circulation\GetOnLoanStats.cshtml" />
+    <Content Include="Views\Circulation\GetFilteredOnLoanStats.cshtml" />
+    <Content Include="Views\AcquireReport\LiquidationStats.cshtml" />
+    <Content Include="Views\AcquireReport\GetLiquidationStats.cshtml" />
+    <Content Include="Views\Circulation\DemoDataTableEport.cshtml" />
+    <Content Include="Views\Circulation\GetYearStats.cshtml" />
+    <Content Include="Views\Circulation\GetMonthStats.cshtml" />
+    <Content Include="Views\Circulation\LockPatronStats.cshtml" />
+    <Content Include="Views\Circulation\GetLockPatronStats.cshtml" />
+    <Content Include="Views\AcquireReport\AcquisitionIndex.cshtml" />
+    <Content Include="Views\AcquireReport\RecomendReport.cshtml" />
+    <Content Include="Views\AcquireReport\GetRecomendReport.cshtml" />
+    <Content Include="Views\Circulation\StatisticYear.cshtml" />
+    <Content Include="Views\AcquireReport\StatisticMonth.cshtml" />
+    <Content Include="Views\Circulation\DisplayPatronGroup.cshtml" />
+    <Content Include="Views\Circulation\DisplayTopPatron.cshtml" />
+    <Content Include="Views\Circulation\DisplayTopCopy.cshtml" />
+    <Content Include="Views\Patron\Create.cshtml" />
+    <Content Include="Views\Patron\PatronProfile.cshtml" />
+    <Content Include="Views\Catalogue\MainTab.cshtml" />
+    <Content Include="Views\Catalogue\AddNewCatalogue.cshtml" />
+    <Content Include="Views\Catalogue\SearchCodeNumber.cshtml" />
+    <Content Include="Views\PrintBarcode\Index.cshtml" />
+    <Content Include="Views\PrintLabel\Index.cshtml" />
+    <Content Include="Views\CheckIn\Index.cshtml" />
+    <Content Include="Views\CheckOut\Index.cshtml" />
+    <Content Include="Views\Shelf\Index.cshtml" />
+    <Content Include="Views\Login\Logout.cshtml" />
+    <Content Include="Views\CheckIn\_checkinByCardNumber.cshtml" />
+    <Content Include="Views\CheckIn\_checkinByDKCB.cshtml" />
+    <Content Include="Views\CheckIn\_findByCardNumber.cshtml" />
+    <Content Include="Views\CheckOut\_checkoutSuccess.cshtml" />
+    <Content Include="Views\CheckOut\_showPatronInfo.cshtml" />
+    <Content Include="Views\Management\Account.cshtml" />
+    <Content Include="Views\Patron\AddPatronByFile.cshtml" />
+    <Content Include="Views\Patron\PreviewPatronFile.cshtml" />
+    <Content Include="Views\Patron\SearchPatron.cshtml" />
+    <Content Include="Views\Catalogue\AddNewCatalogueDetail.cshtml" />
+    <Content Include="Views\Patron\_SearchPatronDetail.cshtml" />
+    <Content Include="Views\Acquired\Index.cshtml" />
+    <Content Include="Views\AcquireReport\StatTaskbar.cshtml" />
+    <Content Include="Views\AcquireReport\GetStatTaskbar.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Acquired\InRepository.cshtml" />
+    <Content Include="Views\Acquired\InRepositoryPartialView.cshtml" />
+    <Content Include="Views\Acquired\LiquidationOrLost.cshtml" />
+    <Content Include="Views\Acquired\LiquidationOrLostPartialView.cshtml" />
+    <Content Include="Views\Acquired\NotYetChecked.cshtml" />
+    <Content Include="Views\Acquired\NotYetCheckedPartialView.cshtml" />
+    <Content Include="Views\Circulation\CopyNumberLiquidationStats.cshtml" />
+    <Content Include="Views\Circulation\GetCopyNumberLiquidationStats.cshtml" />
+    <Content Include="Uploads\Mẫu import user libol.xlsx" />
+    <Content Include="Views\Circulation\CirStatisticTop20.cshtml" />
+    <Content Include="Views\Circulation\GetCirTop20Stats.cshtml" />
+    <Content Include="Views\OverdueList\_PatronDetail.cshtml" />
+    <Content Include="Views\Patron\DeletePatronsByList.cshtml" />
+    <Content Include="Views\Catalogue\ViewCatalogue.cshtml" />
+    <Content Include="Views\Patron\AdjournPatronExpiredDateByList.cshtml" />
+    <Content Include="Views\AcquireReport\InventoryReport.cshtml" />
+    <Content Include="Views\AcquireReport\GetInventoryReport.cshtml" />
+    <Content Include="Views\Catalogue\DeleteCatalogue.cshtml" />
+    <Content Include="Views\Circulation\GetTop20Stats.cshtml" />
+    <Content Include="Views\Circulation\StatisticTop20.cshtml" />
+    <Content Include="Views\AcquireReport\SpecializedReport.cshtml" />
+    <Content Include="Views\AcquireReport\GetSpecializedReport.cshtml" />
+    <Content Include="Views\Acquisition\OpenLoc.cshtml" />
+    <Content Include="Views\Acquisition\CloseLoc.cshtml" />
+    <Content Include="Views\Acquisition\CreateInventory.cshtml" />
+    <Content Include="Views\Acquisition\CloseInventory.cshtml" />
+    <Content Include="Views\Acquisition\InventoryReport.cshtml" />
+    <Content Include="Views\Acquisition\GetInventoryReport.cshtml" />
+    <Content Include="Views\Acquisition\RecordNotFound.cshtml" />
+    <Content Include="Views\Acquisition\DuplicateCopyNumber.cshtml" />
+    <Content Include="Views\Catalogue\SearchViewCode.cshtml" />
+    <Content Include="Views\Catalogue\ViewCatalogueAfterSearch.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Patron\SearchPatronFilter.cshtml" />
+    <Content Include="Views\Renew\Renew.cshtml" />
+    <Content Include="Views\AcquireReport\GetLanguageStats.cshtml" />
+    <Content Include="Views\AcquireReport\StatisticTop20.cshtml" />
+    <Content Include="Views\AcquireReport\GetTop20Stats.cshtml" />
+    <Content Include="Views\Shared\Permisssion.cshtml" />
+    <Content Include="Views\Renew\_searchToRenew.cshtml" />
+    <Content Include="Views\OverdueList\OverdueList.cshtml" />
+    <Content Include="Views\OverdueList\_OverdueListResult.cshtml" />
+    <Content Include="Views\CheckOut\_findByCardNumber.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\PrintLabel\Print.cshtml" />
+    <Content Include="Views\PrintBarcode\Print.cshtml" />
+    <Content Include="Views\Acquisition\HoldingLocRemove.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="CAT_FILE\" />
+    <Folder Include="Views\OverdueEmailNotice\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51234</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51234/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

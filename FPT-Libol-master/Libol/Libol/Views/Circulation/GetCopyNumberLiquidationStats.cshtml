@@ -1,0 +1,123 @@
+﻿
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <script>
+        $(document).ready(function () {
+            var table = $('#table').DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+
+                buttons: [
+                    {
+                        extend: 'print',
+                        title: function () { var printTitle = 'Kiểm tra thanh lý'; return printTitle; }
+                    },
+                    {
+                        extend: 'excel',
+                        title: function () { var printTitle = 'Kiểm tra thanh lý'; return printTitle; }
+                    },
+                    'pdf',
+                    'colvis'
+                ],
+                footerCallback: function (row, data, start, end, display) {
+                    var api = this.api(), data;
+                    var intVal = function (i) {
+                        return typeof i === 'string' ?
+                            i.replace(/[\$,]/g, '') * 1 :
+                            typeof i === 'number' ?
+                                i : 0;
+                    };
+                    // Total over all pages
+                    total = api
+                        .column(5)
+                        .data()
+                        .reduce(function (a, b) {
+                            return intVal(a) + intVal(b);
+                        }, 0);
+                    // Total over this page
+                    pageTotal = api
+                        .column(5, { page: 'current' })
+                        .data()
+                        .reduce(function (a, b) {
+                            return (intVal(a) + intVal(b)).toFixed(2);
+                        }, 0);
+
+                    // Update footer
+                    $(api.column(5).footer()).html(
+                        pageTotal + ' (' + total.toFixed(2) + ' total)'
+                    );
+                }
+            });
+
+            document.getElementById("Count").innerHTML = "Tổng số lượng: " + table.rows().count();
+
+            $("#ExportReporttoExcel").on("click", function () {
+                table.button('.buttons-excel').trigger();
+            });
+
+            $("#Print").on("click", function () {
+                table.button('.buttons-print').trigger();
+            });
+        });
+    </script>
+</head>
+
+<div id="Main">
+    @{
+        if (ViewBag.Result != null)
+        {
+            <table id="table" class="table table-striped table-bordered" style="border: thin;" border="1">
+                <thead>
+                    <tr>
+                        <th>Tên sách</th>
+                        <th>Số lần sử dụng</th>
+                        <th>Giá tiền</th>
+                        <th>Lý do thanh lý</th>
+                        <th>Mã thanh lý</th>
+                        <th>Ngày thanh lý</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Result)
+                    {
+                        <tr>
+                            <td>@item.Content</td>
+                            <td>@item.UseCount</td>
+                            <td>@item.Price.ToString("#.##")</td>
+                            <td>@item.Reason</td>
+                            <td>@item.LiquidCode</td>
+                            <td>@item.RemovedDate.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5" style="text-align:right">Total:</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div style="text-align: right;">
+                <span id="Count"></span>
+                <span id="Total"></span>
+            </div>
+        }
+    }
+</div>
+
+<div class="btn-group d-xl-flex justify-content-xl-center" role="group">
+    @{
+        if (ViewBag.Result != null)
+        {
+            <button id="Print" type="button" style="margin-right:20px;">In</button>
+            <button id="ExportReporttoExcel" type="button" style="margin-right:20px;">Lưu vào file excel</button>
+        }
+        else
+        {
+            <div style="text-align:center; margin-top: 10%"><b>Không tìm thấy kết quả nào</b></div>
+        }
+     }
+    </div>
+        
+    

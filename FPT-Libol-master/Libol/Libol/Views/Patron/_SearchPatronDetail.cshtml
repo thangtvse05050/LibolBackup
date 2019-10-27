@@ -1,0 +1,179 @@
+﻿<style>
+    .columnleft {
+        float: right;
+    }
+    #myModal, #modalDetail th {
+        font-size: 12px;
+    }
+
+    #myModal, #modalDetail td {
+        font-size: 11px;
+    }
+</style>
+<div class="modal" id="modalDetail">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Thông tin chi tiết của bạn đọc</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h5>
+                    Thông tin cơ bản
+                </h5>
+                <div class="col" style="padding-left:50px; padding-bottom:10px;">
+                    <table>
+                        <tr>
+                            <td class="columnleft">Họ tên: </td>
+                            <td><strong>@ViewBag.PatronDetail.Name</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">Dân tộc: </td>
+                            <td><strong>@ViewBag.PatronDetail.intEthnicID</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">Ngày sinh: </td>
+                            <td><strong>@ViewBag.PatronDetail.strDOB</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">Giới tính: </td>
+                            <td>
+                                <strong>@ViewBag.PatronDetail.Sex</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">Số thẻ: </td>
+                            <td><strong>@ViewBag.PatronDetail.strCode</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">Ngày cấy thẻ: </td>
+                            <td><strong>@ViewBag.PatronDetail.strLastIssuedDate</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">Ngày hết hạn thẻ: </td>
+                            <td><strong>@ViewBag.PatronDetail.strExpiredDate</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">nhóm bạn đọc: </td>
+                            <td><strong>@ViewBag.PatronDetail.intPatronGroupID</strong></td>
+                        </tr>
+                    </table>
+                </div>
+                <h5>
+                    Nghề nghiệp
+                </h5>
+                <div class="col" style="padding-left:50px; padding-bottom:10px;">
+                    <table>
+                        <tr>
+                            <td class="columnleft">Khoa: </td>
+                            <td><strong>@ViewBag.PatronDetail.intFacultyID</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">Nhóm nghề nghiệp: </td>
+                            <td><strong>@ViewBag.PatronDetail.intOccupationID</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">Trường: </td>
+                            <td><strong>@ViewBag.PatronDetail.intCollegeID</strong></td>
+                        </tr>
+                    </table>
+                </div>
+                <h5>
+                    Thông tin liên lạc
+                </h5>
+                <div class="col" style="padding-left:50px; padding-bottom:10px;">
+                    <table>
+                        <tr>
+                            <td class="columnleft">Địa chỉ: </td>
+                            <td><strong>@ViewBag.PatronDetail.strAddress</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">SĐT cố định: </td>
+                            <td><strong>@ViewBag.PatronDetail.strTelephone</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">SĐT di động: </td>
+                            <td><strong>@ViewBag.PatronDetail.strMobile</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="columnleft">Email: </td>
+                            <td><strong>@ViewBag.PatronDetail.strEmail</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                @if (((List<Int32>)Session["RightIDs"]).Contains(3))
+                {
+                    <button type="button" class="btn btn-primary" onclick="location.href='/Patron/Create?strPatronID=@ViewBag.PatronDetail.ID';">Sửa</button>
+                }
+                @if (((List<Int32>)Session["RightIDs"]).Contains(5))
+                {
+                    <button type="button" class="btn btn-danger" onclick="showConfirmDel()">Xóa</button>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<input type="hidden" value="@ViewBag.PatronDetail.ID" id="IDToDelete"/>
+
+
+<div class="modal" id="modalConfirmDel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận xóa bạn đọc</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <p style="color:red;">
+                    Bạn chắc chắn muốn xóa bạn đọc <strong style="color:black;">@ViewBag.PatronDetail.Name</strong> với số thẻ <strong style="color:black;">@ViewBag.PatronDetail.strCode</strong> không?
+                </p>
+                
+           
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-danger" onclick="deletePatron()">OK</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function showConfirmDel() {
+        $("#modalConfirmDel").modal("show");
+        $("#modalDetail").modal("hide");
+    }
+
+    function deletePatron() {
+        var id = document.getElementById("IDToDelete").value;
+        var empObj = {
+            strPatronID: id
+        }
+        $.ajax({
+            url: "/Patron/DeletePatron",
+            data: JSON.stringify(empObj),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            success: function (result) {
+                if (result != "") {
+                    window.location.href = "/Patron/SearchPatron?DeleteSuccess=false";
+                } else {
+                    window.location.href = "/Patron/SearchPatron?DeleteSuccess=true";
+                }
+            },
+            error: function (errormessage) {
+
+            }
+        });
+    }
+</script>
+

@@ -1,0 +1,550 @@
+﻿<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/Content/PartialViewStyle.css">
+
+<h4><b>Số liệu xếp giá trong kho</b></h4>
+
+@{
+    if (ViewBag.screen_stage.Equals("remove result"))
+    {
+        <h3>Các đăng ký cá biệt sau vừa được chuyển tới kho đã mất/thanh lý </h3>
+        foreach (var item in ViewBag.selected_checkboxes_list_final)
+        {
+            <span><label>@item | </label></span>
+        }
+        <h3>Tải lại trang để cập nhật số liệu mới nhất</h3>
+    }
+    // display normal infomation
+    else
+    {
+        if (ViewBag.screen_stage.Equals("finding result"))
+        {
+            <input type="hidden" value="finding_result" id="found" />
+        }
+        <table border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse">
+            <tr>
+                <td style="padding-right: 0.5px; padding-bottom:0px; padding-top:0px; border:none">Thư viện:  <b>@ViewBag.LibName</b> <input id="libname" value="@ViewBag.LibID" hidden /></td>
+                <td style="padding-right: 0.5px; padding-bottom:0px; padding-top:0px; border:none"> <b>Kho:  <b>@ViewBag.LocName</b><input id="locname" value="@ViewBag.LocID" hidden /></b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 0.5px; padding-bottom:0px; padding-top:0px; border:none"><b> Số đầu ấn phẩm: @ViewBag.SUMITEM</b> </td>
+                <td style="padding-right: 0.5px; padding-bottom:0px; padding-top:0px; border:none"><b>Số bản đang cho mượn: @ViewBag.CountCir</b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 0.5px; padding-bottom:0px; padding-top:0px; border:none"><b> Số bản ấn phẩm: @ViewBag.SUMCOPY</b> </td>
+                <td style="padding-right: 0.5px; padding-bottom:0px; padding-top:0px; border:none"><b>Số bản đang khóa: @ViewBag.CountLocked</b></td>
+            </tr>
+            <tr>
+                <td style="padding-right: 0.5px; padding-bottom:0px; padding-top:0px; border:none"><b> Lần kiểm kê cuối: @ViewBag.INVENTORY</b></td>
+                <td style="padding-right: 0.5px; padding-bottom:0px; padding-top:0px; border:none"></td>
+            </tr>
+        </table>
+
+        <span><input type="checkbox" id="ckbCheckAll" /> <label for="ckbCheckAll">Chọn tất</label></span>
+
+        if (ViewBag.screen_stage.Equals("finding result"))
+        {
+            <b  style="margin-left:20px">Tổng số kết quả: <b style="color:red">@ViewBag.record_per_page</b> bản ghi.   </b>
+        }
+        else
+        {
+            <label  style="margin-left:20px"><b>Hiển thị</b></label>
+            <select id="select_entries">
+                @if ("25".Equals(ViewBag.record_per_page))
+                {
+                    <option selected="selected">25</option>
+                }
+                else
+                {
+                    <option>25</option>
+                }
+                @if ("50".Equals(ViewBag.record_per_page))
+                {
+                    <option selected="selected">50</option>
+                }
+                else
+                {
+                    <option>50</option>
+                }
+                @if ("100".Equals(ViewBag.record_per_page))
+                {
+                    <option selected="selected">100</option>
+                }
+                else
+                {
+                    <option>100</option>
+                }
+                @if ("200".Equals(ViewBag.record_per_page))
+                {
+                    <option selected="selected">200</option>
+                }
+                else
+                {
+                    <option>200</option>
+                }
+                @if ("1000".Equals(ViewBag.record_per_page))
+                {
+                    <option selected="selected">1000</option>
+                }
+                else
+                {
+                    <option>1000</option>
+                }
+
+            </select> <label>bản ghi trên 1 trang.</label>
+        }
+
+        <span>
+            <label for="select_pages"><b>Trang: </b></label>
+            <select id="select_pages">
+                @{
+                    for (int i = 1; i <= ViewBag.pagingamount; i++)
+                    {
+                        if (i == Int32.Parse(ViewBag.page_index))
+                        {
+                            <option value="@i" selected="selected">@i</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@i</option>
+                        }
+
+                    }
+                }
+            </select>/@ViewBag.pagingamount
+        </span>
+        <span>
+            <img id="imgLocked" src="~/Content/Images/lock.gif" alt="" style="border-width:0px" />
+            <span id="lblLocked" class="lbLabel">Đang khoá</span>
+        </span>
+        <span>
+            <img id="imgOnHold" src="~/Content/Images/loan.gif" alt="" style="border-width:0px" />
+            <span id="lblOnHold" class="lbLabel">Đang cho mượn</span>
+        </span>
+        <table id="example" class="display" style="width:100%">
+            <thead style="background-color:lightcoral; color: white;  text-align: center;font-size: 14px">
+                <tr>
+                    <th>Trạng thái</th>
+                    <th>STT</th>
+                    <th>Thư Viện</th>
+                    <th>Kho</th>
+                    <th>ĐKCB</th>
+                    <th>Số Định Danh</th>
+                    <th>Tập</th>
+                    <th>Thông tin chi tiết</th>
+                    <th>Ngày bổ sung</th>
+                    <th>Giá tiền</th>
+                    <th>Số lượt mượn</th>
+                    <th>Ngày mượn cuối</th>
+                    <th>Ghi chú</th>
+                </tr>
+            </thead>
+            <tbody id="checkBoxes" style="text-align: center;border:1px;font-size:12px">
+                @{
+                    var count = Int32.Parse(ViewBag.record_per_page) * (Int32.Parse(ViewBag.page_index) - 1);
+                }
+                @if (ViewBag.list != null)
+                {
+                    foreach (var item in ViewBag.list)
+                    {
+                        <tr>
+                            @{
+                                count++;
+                            }
+
+                            <td style="text-align:center">
+                                @if (item.InUsed)
+                                {
+                                    <img id="imgOnHold" src="~/Content/Images/loan.gif" alt="" style="border-width:0px" />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" id="@item.ID" value="@count" name="cbToDelete" />
+                                    if (!item.InCirculation)
+                                    {
+                                        <img id="imgLocked" src="~/Content/Images/lock.gif" alt="" style="border-width:0px" />
+                                    }
+                                }
+                            </td>
+                            <td>@count</td>
+                            <td>@item.LibName</td>
+                            <td>@item.LocName</td>
+                            <td>@item.CopyNumber</td>
+                            <td>@item.CallNumber</td>
+                            <td style="width: 5%">@item.Volume</td>
+                            <td style="width: 20%">@item.Content</td>
+                            <td>@item.AcquiredDate.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Price.ToString("#.##")</td>
+                            <td>@item.UseCount</td>
+                            <td>@item.DateLastUsed.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Note</td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+        <br />
+        <br />
+        <div style="text-align:center"><input type="button" value="In ra file Excel" onclick="exportToExcelFile()" /></div>
+        <br />
+        <br />
+        <br />
+        <div style=" position:center">
+            <span>
+                Lý do: @Html.DropDownList("ta", ViewBag.ta as List<SelectListItem>)
+            </span>
+            <span>
+                <input type="button" value="Khóa" onclick="restore_item()" />
+            </span>
+            <span>
+                <input type="button" value="Mở khóa" onclick="restore_unlock_item()" />
+            </span>
+            <span>
+                <input type="hidden" value="Hủy" onclick="cancel_item()" />
+            </span>
+            <span>
+                <input type="button" value="Tìm Kiếm" class="open-button" onclick="opencloseFindingForm()" />
+            </span>
+            <span>
+                <input type="button" value="Xóa" onclick="removeItemFromDataBase()" />
+            </span>
+        </div>
+
+        @*Finding form hidden*@
+        <div class="form-popup" id="findArea" style="display:none">
+            <div class="form-container">
+                <h2>Tìm Kiếm</h2>
+
+                <label for="find_title"><b>Nhan đề: </b></label>
+                <input type="text" placeholder="Nhập tiêu đề sách cần tìm ở đây" name="find_title" id="find_title">
+                <br />
+
+                <label for="find_dkcb"><b>Đăng Ký Cá Biệt: </b></label>
+                <input type="text" placeholder="Nhập Đăng Ký Cá Biệt cần tìm ở đây" name="find_dkcb" id="find_dkcb">
+
+                <label for="find_so_dinh_danh"><b>Số Định Danh: </b></label>
+                <input type="text" placeholder="Nhập Số Định Danh cần tìm ở đây" name="find_so_dinh_danh" id="find_so_dinh_danh">
+
+
+                <button type="button" class="btn" onclick="searchingForNewItem()" id="find_new">Bắt đầu tìm kiếm</button>
+                <button type="button" class="btn cancel" onclick="opencloseFindingForm()">Hủy tìm kiếm</button>
+
+                @* reduce the risk of your application being duped by a cross site request forgery attack  *@
+                <input name="__RequestVerificationToken" type="hidden" value="<token_generated_here>">
+            </div>
+        </div>
+
+    }
+}
+
+<script src="~/Scripts/Jquery-2.2.3.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $("#select_entries").change(function () {
+            var page_index = "1";
+            var record_per_page = $("#select_entries").val();
+            var libname = $("#libname").val();
+            var locname = $("#locname").val();
+
+            var state = "abc";
+
+            $.ajax({
+            url: 'InRepositoryPartialView',
+                data: {
+                    'libname': libname, 'locname': locname, 'page_index': page_index,
+                    'record_per_page': record_per_page, 'state': state
+                },
+                type: "POST",
+                success: function (result) {
+                    $("#result").html(result)
+                },
+                error: function (errormessage) {
+                    console.log("error");
+                }
+            })
+        });
+
+        $("#select_pages").change(function () {
+            var page_index = $("#select_pages").val();
+            var record_per_page = $("#select_entries").val();
+            var libname = $("#libname").val();
+            var locname = $("#locname").val();
+
+            var state = "abc";
+            //
+            var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
+                $checkboxes = $("#checkBoxes :checkbox");
+            $checkboxes.each(function () {
+                checkboxValues[this.id] = this.checked;
+                });
+
+                localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+
+            //
+            $.ajax({
+                url: "InRepositoryPartialView",
+                data: {
+                        'libname': libname, 'locname': locname, 'page_index': page_index,
+                    'record_per_page': record_per_page, 'state': state
+                },
+                type: "POST",
+                success: function (result) {
+                    $("#result").html(result)
+                },
+                error: function (errormessage) {
+                        console.log("error");
+                    }
+                })
+        });
+
+        $("#Library").change(function () {
+            $("#Location").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetLocation")', // we are calling json method
+                dataType: 'json',
+                data: { id: $("#Library").val() },
+                success: function (locs) {
+                    $.each(locs, function (i, loc) {
+                        $("#Location").append('<option value="' + loc.Value + '">' +
+                        loc.Text + '</option>');
+                        });
+                    }
+                });
+            return false;
+        });
+    });
+
+            //checkbox function
+    $(function () {
+        var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
+        $checkboxes = $("#checkBoxes :checkbox");
+
+        // On page load
+        $checkboxes.each(function () {
+            $(this).prop('checked', checkboxValues[this.id] || false);
+            });
+
+        $("#ckbCheckAll").on("click", function () {
+            $($checkboxes).prop('checked', $(this).prop('checked'));
+            $checkboxes.each(function () {
+                checkboxValues[this.id] = this.checked;
+            });
+
+            localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+        });
+
+        $("#checkBoxes").on("change", function () {
+        if ($("input[name='cbToDelete']").length == $("input[name='cbToDelete']:checked").length) {
+            $("#ckbCheckAll").prop("checked", true);
+        } else {
+            $("#ckbCheckAll").prop("checked", false);
+        }
+
+            $checkboxes.each(function () {
+                checkboxValues[this.id] = this.checked;
+                });
+
+                localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+            });
+
+        $("#checkBoxes").on("click", function () {
+            if ($("input[name='cbToDelete']").length == $("input[name='cbToDelete']:checked").length) {
+                    $("#ckbCheckAll").attr("checked", "checked");
+            } else {
+                $("#ckbCheckAll").removeAttr("checked");
+            }
+            $checkboxes.each(function () {
+                checkboxValues[this.id] = this.checked;
+            });
+
+            localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+        });
+
+    });
+
+    function searchingForNewItem() {
+        var find_title = $("#find_title").val().trim();
+        var find_code = $("#find_code").val();
+        var find_price = $("#find_price").val();
+        var find_dkcb = $("#find_dkcb").val().trim();
+        var find_so_dinh_danh = $("#find_so_dinh_danh").val().trim();
+        var find_volume = $("#find_volume").val();
+
+        var state = "";
+        if (!find_title.trim().length && !find_dkcb.trim().length && !find_so_dinh_danh.trim().length) {
+            alert("Hãy nhập vào gì đó để tìm kiếm!");
+        } else {
+            $.ajax({
+                url: "InRepositoryPartialView",
+                data: {
+                    'find_title': find_title, 'find_code': find_code, 'find_price': find_price,
+                    'find_dkcb': find_dkcb, 'find_so_dinh_danh': find_so_dinh_danh,
+                    'find_volume': find_volume, 'state': state
+                },
+                type: "POST",
+                success: function (result) {
+                    $("#result").html(result);
+
+                },
+                error: function (errormessage) {
+                    console.log("error");
+                }
+            });
+        }
+    }
+    // delete item and move to holding remove table
+    function removeItemFromDataBase() {
+        var selected_checkbox_list = localStorage.getItem('checkboxValues');
+        var reason = $("#ta").val();
+        console.log(reason);
+        var state = "remove item";
+
+        if (!selected_checkbox_list) {
+            alert("Hãy chọn quyển sách mà bạn muốn xóa!");
+        } else if (selected_checkbox_list.indexOf('true') > 0) {
+
+            $.ajax({
+                url: "InRepositoryPartialView",
+                data: {
+                    'selected_checkbox_list': selected_checkbox_list,
+                    'state': state, 'reason': reason
+                },
+                type: "POST",
+                success: function (result) {
+                    $("#result").html(result);
+
+                },
+                error: function (errormessage) {
+                    console.log("error");
+                }
+            });
+        } else {
+            alert("Hãy chọn quyển sách mà bạn muốn xóa!");
+        }
+    }
+
+    function opencloseFindingForm() {
+        var x = document.getElementById("findArea");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    // lock item
+    function restore_item() {
+        var selected_checkbox_list = localStorage.getItem('checkboxValues');
+        var strType =  $("input[name='restore']:checked").val();
+        var libid = $("#libname").val();
+        var locid = $("#locname").val();
+        var state = "restore result";
+        var page_index = $("#select_pages").val();
+        var record_per_page = $("#select_entries").val();
+
+        $.ajax({
+            url: "InRepositoryPartialView",
+            data: {
+                'selected_checkbox_list': selected_checkbox_list, 'state': state,
+                'strType': strType, 'libid': libid, 'locid': locid,
+                'page_index': page_index, 'record_per_page': record_per_page
+            },
+            type: "POST",
+            success: function (result) {
+                $("#result").html(result);
+            },
+            error: function (errormessage) {
+                console.log("error");
+            }
+        });
+    }
+    // unclock utem
+    function restore_unlock_item() {
+        var selected_checkbox_list = localStorage.getItem('checkboxValues');
+        var strType = $("input[name='restore']:checked").val();
+        var libid = $("#libname").val();
+        var locid = $("#locname").val();
+        var state = "restore and unlock result";
+        var page_index = $("#select_pages").val();
+        var record_per_page = $("#select_entries").val();
+
+        $.ajax({
+            url: "InRepositoryPartialView",
+            data: {
+                'selected_checkbox_list': selected_checkbox_list, 'state': state,
+                'strType': strType, 'libid': libid, 'locid': locid,
+                'page_index': page_index, 'record_per_page': record_per_page
+            },
+            type: "POST",
+            success: function (result) {
+                $("#result").html(result);
+            },
+            error: function (errormessage) {
+                console.log("error");
+            }
+        });
+    }
+
+    function exportToExcelFile() {
+        var libname = $("#libname").val();
+        var locname = $("#locname").val();
+        var found = $("#found").val();
+
+        if (found === 'finding_result') {
+            exportTableToExcel("example", "Excel");
+        } else {
+            $.ajax({
+                url: "ExcelExportForInRepository",
+                data: {
+                    'libname': libname, 'locname': locname
+                },
+                type: 'POST',
+                cache: false,
+                success: function (data) {
+                    window.location = 'Download';
+                },
+                error: function (data) {
+                    Materialize.toast("Something went wrong. ", 3000, 'rounded');
+                }
+            });
+        }
+    }
+
+    function exportTableToExcel(tableID, filename = '') {
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+        // Specify file name
+        filename = filename ? filename + '.xls' : 'excel_data.xls';
+        // Create download link element
+        downloadLink = document.createElement("a");
+        document.body.appendChild(downloadLink);
+        if (navigator.msSaveOrOpenBlob) {
+            var blob = new Blob(['\ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+            // Setting the file name
+            downloadLink.download = filename;
+            //triggering the function
+            downloadLink.click();
+        }
+    }
+
+    function cancel_item() {
+
+    }
+
+</script>
+
+
+
+
+
