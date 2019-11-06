@@ -1,0 +1,122 @@
+﻿
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="~/Content/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.css">
+
+    <script>
+        $(document).ready(function () {
+            var table = $('#table').DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+
+                buttons: [
+                    {
+                        extend: 'excel',
+                        title: function () { var printTitle = 'Kiểm kê_DKCB bị thiếu'; return printTitle; }
+                    },
+                    'pdf',
+                    'colvis'
+                ]
+                //footerCallback: function (row, data, start, end, display) {
+                //    var api = this.api(), data;
+                //    var intVal = function (i) {
+                //        return typeof i === 'string' ?
+                //            i.replace(/[\$,]/g, '') * 1 :
+                //            typeof i === 'number' ?
+                //                i : 0;
+                //    };
+                //    // Total over all pages
+                //    total = api
+                //        .column(5)
+                //        .data()
+                //        .reduce(function (a, b) {
+                //            return intVal(a) + intVal(b);
+                //        }, 0);
+                //    // Total over this page
+                //    pageTotal = api
+                //        .column(5, { page: 'current' })
+                //        .data()
+                //        .reduce(function (a, b) {
+                //            return (intVal(a) + intVal(b)).toFixed(2);
+                //        }, 0);
+
+                //    // Update footer
+                //    $(api.column(5).footer()).html(
+                //        pageTotal + ' (' + total.toFixed(2) + ' total)'
+                //    );
+                //}
+            });
+
+            document.getElementById("Count").innerHTML = "Tổng số lượng: " + table.rows().count();
+
+            $("#ExportReporttoExcel").on("click", function () {
+                table.button('.buttons-excel').trigger();
+            });
+            // table.destroy();
+        });
+    </script>
+
+</head>
+<div id="Main">
+    <br />
+    <label>Tổng số ĐKCB kiểm tra là:<b> @ViewBag.totalCheck </b></label><br />
+    <label>Tổng số ĐKCB đang được mượn:<b> @ViewBag.totalOnLoan </b></label><br />
+    <label>Tổng số ĐKCB trong kho dữ liệu là:<b> @ViewBag.totalInLibrary </b></label><br />
+    <label>Tổng số ĐKCB bị thiếu là:<b> @ViewBag.totalLack  </b></label><br />
+    <label>Tổng số ĐKCB bị trùng là:<b> @ViewBag.totalDuplicate  </b></label><br />
+    <label>Tổng số ĐKCB không có trong dữ liệu là:<b>  @ViewBag.totalEX </b></label><br />
+    @{
+        if (ViewBag.LackDataResult != null)
+        {
+            <div>
+                <br />
+                <label><b>Các đăng ký cá biệt bị thiếu</b> </label>
+                <table id="table" class="table table-striped table-bordered" style="border: thin;" border="1">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th style="text-align :center">Tên sách</th>
+                            <th style="text-align :center">Mã tài liệu</th>
+                            <th style="text-align :center">DKCB</th>
+                            <th style="text-align :center">Callnumber</th>
+                            <th style="text-align :center">Giá tiền</th>
+                            <th style="text-align :center">Ghi chú</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int STT = 1;
+                        }
+                        @foreach (var item in ViewBag.LackDataResult)
+                        {
+
+                            <tr>
+                                <td>@(STT)</td>
+                                <td>@item.Content</td>
+                                <td>@item.Code</td>
+                                <td>@item.CopyNumber</td>
+                                <td>@item.CallNumber</td>
+                                <td>@item.Price @item.Currency</td>
+                                <td>@item.Note</td>
+                            </tr>
+                            STT++;
+                        }
+                    </tbody>
+                </table>
+                <div style="text-align: right;">
+                    <span id="Count"></span>
+                    <span id="Total"></span>
+                </div>
+                <div class="col-md-12 text-center">
+                    <div class="btn-group btn-group">
+                        <button type="button" id="ExportReporttoExcel" class="btn btn-primary">Lưu vào file excel</button>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    }
+</div>
+

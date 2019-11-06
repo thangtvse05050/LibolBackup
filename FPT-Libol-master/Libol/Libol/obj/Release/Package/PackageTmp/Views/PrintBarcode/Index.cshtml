@@ -1,0 +1,390 @@
+﻿
+@{
+    ViewBag.Title = "In mã vạch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .form-row {
+        margin-bottom: 0.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 0.5rem;
+    }
+
+    #modalSearchResult {
+        font-size: 0.8rem !important;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="~/Content/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.css">
+<link rel="stylesheet" type="text/css" href="~/Content/DataTables/Select-1.3.0/css/select.bootstrap4.css">
+<link rel="stylesheet" type="text/css" href="~/Content/DataTables/dataTables.checkboxes.css">
+<script type="text/javascript" charset="utf8" src="~/Content/DataTables/DataTables-1.10.18/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="~/Content/DataTables/DataTables-1.10.18/js/dataTables.bootstrap4.js"></script>
+<script type="text/javascript" charset="utf8" src="~/Content/DataTables/Select-1.3.0/js/dataTables.select.js"></script>
+<script type="text/javascript" charset="utf8" src="~/Content/DataTables/dataTables.checkboxesCustomForAccount.min.js"></script>
+<script>
+    var table;
+    $(document).ready(function () {
+        table = $('#tableResult').DataTable({
+            "processing": true,
+            "serverSide": true,
+            ajax: {
+                url: "/PrintLabel/SearchItemCode",
+                type: 'POST',
+                data: function (d) {
+                    d.txtTitle = document.getElementById("txtTitle").value,
+                        d.txtCopyNumber = document.getElementById("txtCopyNumber").value,
+                        d.txtAuthor = document.getElementById("txtAuthor").value,
+                        d.txtPublisher = document.getElementById("txtPublisher").value,
+                        d.txtYear = document.getElementById("txtYear").value,
+                        d.txtISBN = document.getElementById("txtISBN").value
+                }
+            },
+            columns: [
+                { "data": "Title" },
+                {
+                    "data": "Code",
+                    "render": function (data, type, row, meta) {
+                        if (type === 'display') {
+                            data = '<a href="#" onclick="SetItemCode(' + "'" + data + "'" + ')">' + data + '</a>';
+                        }
+
+                        return data;
+                    }
+                },
+            ],
+            order: [[1, 'asc']],
+            orderCellsTop: true,
+            searching: false
+        });
+    });
+    $(document).ready(function () {
+        document.getElementById('strFromItemCode').value = getParameterByName('strFromItemCode');
+        document.getElementById('strToItemCode').value = getParameterByName('strToItemCode');
+        document.getElementById('strFromCopyNumber').value = getParameterByName('strFromCopyNumber');
+        document.getElementById('strToCopyNumber').value = getParameterByName('strToCopyNumber');
+        document.getElementById('strElse').value = getParameterByName('strElse');
+        if (getParameterByName('strFromItemCode') != null) {
+            checkformCheck1();
+        }
+        if (getParameterByName('strFromCopyNumber') != null) {
+            checkformCheck2();
+        }
+        if (getParameterByName('strElse') != null) {
+            checkformCheck3();
+        }
+    });
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+</script>
+<h4 style="margin : 1rem">In mã vạch</h4>
+<form id="formPrintBarcode" action="/PrintBarcode/Print">
+    <div class="form-row">
+        <div class="col-2">
+            <div class="form-group">
+                <label>Thư viện</label>
+                <select class="form-control" style="width:80% !important" onchange="OnchangeLibrary()" id="intLibID" name="intLibID">
+                    <option value="-1"></option>
+                    @foreach (var item in ViewBag.Library)
+                    {
+                        <option value="@item.ID">@item.Code</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Kho</label>
+                <select class="form-control" style="width:80% !important" name="intLocID" id="intLocID">
+                    <option value="-1"></option>
+                </select>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-row">
+                <div class="col-3">
+                    <div class="form-check"><input type="radio" class="form-check-input" name="intSelMode" value="0" id="formCheck-1" checked /><label class="form-check-label" for="formCheck-1">Mã tài liệu</label></div>
+                </div>
+                <div class="col">
+                    <div class="form-row">
+                        <div class="col-4"><label class="col-form-label">Từ Mã tài liệu</label></div>
+                        <div class="col"><input type="text" class="form-control" name="strFromItemCode" id="strFromItemCode" onclick="checkformCheck1();"/></div>
+                        <div class="col-1"><a href="#" onclick="ShowSearch('strFromItemCode')">Tìm</a></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-4"><label class="col-form-label">Tới Mã tài liệu</label></div>
+                        <div class="col"><input type="text" class="form-control" name="strToItemCode" id="strToItemCode" onclick="checkformCheck1();"/></div>
+                        <div class="col-1"><a href="#" onclick="ShowSearch('strToItemCode')">Tìm</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-3">
+                    <div class="form-check"><input type="radio" class="form-check-input" name="intSelMode" value="1" id="formCheck-2" /><label class="form-check-label" for="formCheck-2">Mã xếp giá</label></div>
+                </div>
+                <div class="col">
+                    <div class="form-row">
+                        <div class="col-3"><label class="col-form-label float-right">Từ ĐKCB</label></div>
+                        <div class="col"><input type="text" class="form-control" id="strFromCopyNumber" name="strFromCopyNumber" onclick="checkformCheck2();" /></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-3"><label class="col-form-label float-right">Tới ĐKCB</label></div>
+                        <div class="col"><input type="text" class="form-control" id="strToCopyNumber" name="strToCopyNumber" onclick="checkformCheck2();" /></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-check"><input type="radio" class="form-check-input" name="intSelMode" value="2" id="formCheck-3" /><label class="form-check-label" for="formCheck-3">In theo mã Đăng ký cá biệt nhập dưới đây<br /></label></div><textarea class="form-control" id="strElse" name="strElse" onclick="checkformCheck3();"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Kiểu Barcode<br /></label></div>
+                <div class="col">
+                    <select class="form-control" name="ddlType">
+                        <option value="1">EAN-13</option>
+                        <option Value="2">EAN-8</option>
+                        <option Value="3">UPC-A</option>
+                        <option Value="4">Code 39 Check</option>
+                        <option Value="5">Codabar</option>
+                        <option Value="6" selected>Code 39</option>
+                        <option Value="7">2 of 5</option>
+                        <option Value="8">Interleaved 2 of 5 (ITF)</option>
+                        <option Value="9">UPC-E</option>
+                        <option Value="10">EAN-13 + 2</option>
+                        <option Value="11">EAN-13 + 5</option>
+                        <option Value="12">EAN-8 + 2</option>
+                        <option Value="13">EAN-8 + 5</option>
+                        <option Value="14">UPC-A + 2</option>
+                        <option Value="15">UPC-A + 5</option>
+                        <option Value="16">UPC-E + 2</option>
+                        <option Value="17">UPC-E + 5</option>
+                        <option Value="18">EAN-128 A</option>
+                        <option Value="19">EAN-128 B</option>
+                        <option Value="20">EAN-128 C</option>
+                        <option Value="21">Code 93</option>
+                        <option Value="22">POSTNET</option>
+                        <option Value="23">Code-128 A</option>
+                        <option Value="24">Code-128 B</option>
+                        <option Value="25">Code-128 C</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Chiều cao</label></div>
+                <div class="col"><input type="number" class="form-control" value="70" name="txtHeight"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Chiều rộng</label></div>
+                <div class="col"><input type="number" class="form-control" value="1" name="txtWidth"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Kiểu ảnh</label></div>
+                <div class="col">
+                <select class="form-control" name="ddlImageType">
+                    <option value="3" selected>JPG</option>                    
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Hướng quay</label></div>
+                <div class="col">
+                    <select class="form-control" name="ddlRotation">
+                        <option Value="0" selected>Không quay</option>
+                        <option Value="1">90 độ</option>
+                        <option Value="2">180 độ</option>
+                        <option Value="3">270 độ</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Khoảng cách giữa hàng</label></div>
+                <div class="col"><input type="number" class="form-control" value="0" name="txtRowSpace"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Khoảng cách giữa cột</label></div>
+                <div class="col"><input type="number" class="form-control" value="0" name="txtColSpace"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Số ảnh/dòng</label></div>
+                <div class="col"><input type="number" class="form-control" value="1" name="txtColImageNumber"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Số ảnh/trang</label></div>
+                <div class="col"><input type="number" class="form-control" value="20" name="txtPageImageNumber"/></div>
+            </div>
+            <div class="form-row">
+                <div class="col"><label class="col-form-label float-right">Mẫu</label></div>
+                <div class="col">
+                    <select class="form-control" name="TemplateID">
+                        @foreach (var item in ViewBag.Template)
+                        {
+                            <option value="@item.ID">@item.Title</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <div class="form-row" style="margin-top:1rem;margin-left: 30%;">
+        <div><button class="btn btn-primary" type="button" onclick="BarCodePrint()">In ra máy in Barcode</button></div>
+        <div style="margin-left:1rem"><button class="btn btn-primary" type="button" onclick="LazerPrint()">In ra máy in Lazer</button></div>
+        <div style="margin-left:1rem"><button class="btn btn-primary" type="button" onclick="Reset()">Đặt lại</button></div>
+    </div>
+    <input type="hidden" name="Page" value="1" />
+    <input type="hidden" id="formItemCode" value="" />
+</form>
+
+<div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="modalSearch" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal">Tìm kiếm biểu ghi biên mục</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nhan đề chính</label>
+                    <input type="text" class="form-control" name="txtTitle" id="txtTitle">
+                </div>
+                <div class="form-group">
+                    <label>Mã xếp giá</label>
+                    <input type="text" class="form-control" name="txtCopyNumber" id="txtCopyNumber">
+                </div>
+                <div class="form-group">
+                    <label>Tác giả</label>
+                    <input type="text" class="form-control" name="txtAuthor" id="txtAuthor">
+                </div>
+                <div class="form-group">
+                    <label>Nhà xuất bản</label>
+                    <input type="text" class="form-control" name="txtPublisher" id="txtPublisher">
+                </div>
+                <div class="form-group">
+                    <label>Năm xuất bản</label>
+                    <input type="number" class="form-control" name="txtYear" id="txtYear">
+                </div>
+                <div class="form-group">
+                    <label>ISBN</label>
+                    <input type="text" class="form-control" name="txtISBN" id="txtISBN">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="SearchItemCode()">Tìm</button>
+                <button type="button" class="btn btn-primary" onclick="ResetModalSearch()">Đặt lại</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalSearchResult" tabindex="-1" role="dialog" aria-labelledby="modalSearchResult" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal">Tìm kiếm biểu ghi biên mục</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="tableResult" class="table table-striped table-bordered datatables" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Nội dung</th>
+                            <th>Mã tài liệu</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function checkformCheck1() {
+        document.getElementById("formCheck-1").checked = true;
+    }
+    function checkformCheck2() {
+        document.getElementById("formCheck-2").checked = true;
+    }
+    function checkformCheck3() {
+        document.getElementById("formCheck-3").checked = true;
+    }
+    function ShowSearch(formItemCode) {
+        document.getElementById("formItemCode").value = formItemCode;
+        $("#modalSearch").modal();
+    }
+    function SetItemCode(ItemCode) {
+        document.getElementById(document.getElementById("formItemCode").value).value = ItemCode;
+        $("#modalSearchResult").modal('hide');
+    }
+    function OnchangeLibrary() {
+        var e = document.getElementById("intLibID");
+        var id = e.options[e.selectedIndex].value;
+        var empObj = {
+            LibID: id
+        };
+        $.ajax({
+            url: "/PrintBarcode/OnchangeLibrary",
+            data: JSON.stringify(empObj),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = "<option value='-1'></option>"
+                for (r in result) {
+                    html = html + "<option value=" + result[r].ID + ">" + result[r].Symbol + "</option>"
+                }
+                document.getElementById("intLocID").innerHTML = html;
+
+            },
+            error: function (errormessage) {
+
+            }
+        });
+    }
+    function Reset() {
+        location.reload();
+    }
+    function ResetModalSearch() {
+        document.getElementById("txtTitle").value = "";
+        document.getElementById("txtCopyNumber").value = "";
+        document.getElementById("txtAuthor").value = "";
+        document.getElementById("txtPublisher").value = "";
+        document.getElementById("txtYear").value = "";
+        document.getElementById("txtISBN").value = "";
+    }
+
+    function SearchItemCode() {
+
+        table.ajax.reload();
+        $("#modalSearch").modal('hide');
+        $("#modalSearchResult").modal();
+    }
+
+    function BarCodePrint() {
+        document.getElementById("formPrintBarcode").action = "/PrintBarcode/PrintBarcode";
+        document.getElementById("formPrintBarcode").submit();
+    }
+
+    function LazerPrint() {
+        document.getElementById("formPrintBarcode").action = "/PrintBarcode/Print";
+        document.getElementById("formPrintBarcode").submit();
+    }
+</script>

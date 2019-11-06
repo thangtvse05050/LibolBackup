@@ -1,0 +1,137 @@
+﻿<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="~/Content/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.css">
+    <script>
+        $(document).ready(function () {
+            var table = $('#table').DataTable({
+                "processing": true,
+                "serverSide": true,
+                ajax: {
+                    url: "/AcquireReport/GetLiquidationInfo",
+                    type: 'POST',
+                    "data": function (d) {
+                        d.strLiquidID = document.getElementById("LiquidID").value,
+                            d.strLibID = document.getElementById("Library").value,
+                            d.strLocPrefix = document.getElementById("LocationPrefix").value,
+                            d.strLocID = $("#LocationsByPrefix").val().toString(),
+                            d.strFromDate = document.getElementById("FromDate").value,
+                            d.strToDate = document.getElementById("ToDate").value
+                    }
+                },
+
+                columns: [
+                    { "data": "LibName" },
+                    { "data": "LocName" },
+                    { "data": "CopyNumber" },
+                    { "data": "Content" },
+                    { "data": "RemovedDate" },
+                    { "data": "Price" }
+                ],
+                buttons: [
+                    {
+                        extend: 'excel',
+                        title: function () { var printTitle = 'Danh sách Đăng ký cá biệt bị hủy'; return printTitle; },
+                        action: newExportAction
+                    },
+                    'csv',
+                    'pdf',
+                    'colvis'
+                ],
+                "rowCallback": function (row, data, index) {
+                    var api = this.api()
+                    var json = api.ajax.json();
+                    var intVal = function (i) {
+                        return typeof i === 'string' ?
+                            i.replace(/[\$,]/g, '') * 1 :
+                            typeof i === 'number' ?
+                                i : 0;
+                    };
+                    // Total over all pages
+                    total = json.total;
+                    // Total over this page
+                    pageTotal = api
+                        .column(5, { page: 'current' })
+                        .data()
+                        .reduce(function (a, b) {
+                            return (intVal(a) + intVal(b)).toFixed(2);
+                        }, 0);
+
+                    // Update footer
+                    $(api.column(5).footer()).html(
+                        pageTotal + ' (' + total.toFixed(2) + ' total)'
+                    );
+                }
+            });
+
+            //document.getElementById("Count").innerHTML = "Tổng số lượng: " + table.rows().count();
+
+            $("#ExportReporttoExcel").on("click", function () {
+                table.button('.buttons-excel').trigger();
+            });
+        });
+        var oldExportAction = function (self, e, dt, button, config) {
+            if (button[0].className.indexOf('buttons-excel') >= 0) {
+                if ($.fn.dataTable.ext.buttons.excelHtml5.available(dt, config)) {
+                    $.fn.dataTable.ext.buttons.excelHtml5.action.call(self, e, dt, button, config);
+                }
+                else {
+                    $.fn.dataTable.ext.buttons.excelFlash.action.call(self, e, dt, button, config);
+                }
+            } else if (button[0].className.indexOf('buttons-print') >= 0) {
+                $.fn.dataTable.ext.buttons.print.action(e, dt, button, config);
+            }
+        };
+
+        var newExportAction = function (e, dt, button, config) {
+            var self = this;
+            var oldStart = dt.settings()[0]._iDisplayStart;
+            dt.one('preXhr', function (e, s, data) {
+                data.start = 0;
+                data.length = 2147483647;
+                dt.one('preDraw', function (e, settings) {
+                    oldExportAction(self, e, dt, button, config);
+
+                    dt.one('preXhr', function (e, s, data) {
+                        settings._iDisplayStart = oldStart;
+                        data.start = oldStart;
+                    });
+                    setTimeout(dt.ajax.reload, 0);
+                    return false;
+                });
+            });
+            dt.ajax.reload();
+        };
+
+    </script>
+</head>
+
+<div id="Main">
+    <h4 id="stat" style="margin-left:20px;">Mã thanh lý: @ViewBag.LiquidCode</h4>
+    <table id="table" class="table table-striped table-bordered" style="width:100% !important;" border="1">
+        <thead>
+            <tr>
+                <th>Thư viện</th>
+                <th>Kho</th>
+                <th>Đăng ký cá biệt</th>
+                <th>Nhan đề/ Tác giả</th>
+                <th>Ngày hủy</th>
+                <th>Giá tiền</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="5" style="text-align:right">Total:</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="btn-group btn-group">
+            <button type="button" id="ExportReporttoExcel" class="btn btn-primary">Lưu vào file excel</button>
+        </div>
+    </div>
+</div>

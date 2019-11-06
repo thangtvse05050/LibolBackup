@@ -1,0 +1,157 @@
+﻿
+@{
+                /**/
+
+                ViewBag.Title = "Gia hạn";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+<style>
+    table th {
+        font-size: 14px;
+    }
+
+    table td {
+        font-size: 13px;
+    }
+</style>
+
+<h4 style="margin-top: 20px;margin-bottom: 20px;">Gia hạn</h4>
+<div class="row">
+    <div class="col">
+        <label>Mã số: </label><input type="text" id="fieldsearch" autofocus onkeypress="GetRenewbyEnter(event)">
+        <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="formCheck-1" name="groupradio" value="3"><label class="form-check-label" for="formCheck-1">ĐKCB</label></div>
+        <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="formCheck-2" name="groupradio" value="1" checked><label class="form-check-label" for="formCheck-2">Số thẻ</label></div>
+        <div class="form-check form-check-inline"><input class="form-check-input" type="radio" id="formCheck-3" name="groupradio" value="2"><label class="form-check-label" for="formCheck-3">Mã tài liệu</label></div>
+        <button class="btn btn-primary" type="button" onclick="getrenewtable()">Lọc</button>
+
+    </div>
+</div>
+<strong id="success"></strong>
+<div id="content">
+
+</div>
+<div class="row">
+    <div class="col">
+        <label>Ngày gia hạn cụ thể: </label><input type="text" id="strFixedDueDate" onfocus="SearchDate()"><input type="date" id="cont" onchange="changeTime()">
+        <button class="btn btn-primary" type="button" onclick="renew()">Gia hạn</button>
+
+    </div>
+</div>
+
+
+<script>
+    function GetRenewbyEnter(e) {
+        if (e.keyCode == 13) {
+            getrenewtable();
+        }
+    }
+    function changeTime() {
+        var x = new Date(document.getElementById("cont").value);
+        var date = x.getDate();
+        var month = x.getMonth();
+        month++;
+        var year = x.getFullYear();
+        document.getElementById("strFixedDueDate").value = date + "/" + month + "/" + year;
+
+
+
+    }
+    function SearchDate() {
+        $("#strFixedDueDate").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/Renew/AutoComplete',
+                    data: "{ 'term': '" + request.term + "'}",
+                    dataType: "json",
+                    type: "POST",
+
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return item;
+                        }))
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+
+
+                });
+
+            }
+        });
+    }
+
+    function getrenewtable() {
+        var xInt = $('.form-check input:radio:checked').val();
+        var empObj = {
+            intType: parseInt(xInt, 10),
+            strCodeVal: document.getElementById("fieldsearch").value
+        };
+        $.ajax({
+            url: "/Renew/SearchToRenew",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            success: function (result) {
+                $("#content").html(result);
+                document.getElementById("fieldsearch").focus();
+            },
+            error: function () {
+                document.getElementById("fieldsearch").focus();
+                $("#success").html("");
+            }
+        });
+    }
+
+    function renew() {
+        var selectedIds = table.columns().checkboxes.selected()[0];
+        var ids = [];
+        var times = [];
+        var range = [];
+        var dates = [];
+        for (var i = 0; i < selectedIds.length; i++) {
+            var x = selectedIds[i].ID;
+            var t = selectedIds[i].DueDate;
+            var y = selectedIds[i].RenewCount;
+            var z = selectedIds[i].Renewals;
+            ids.push(x);
+            dates.push(t);
+            times.push(y);
+            range.push(z);
+        }
+        var empObj = {
+            intLoanID: ids,
+            intAddTime: 7,
+            intTimeUnit: 1,
+            strFixedDueDate: document.getElementById("strFixedDueDate").value.split("/").reverse().join("-"),
+            strCodeVal: document.getElementById("fieldsearch").value,
+            duedates: dates,
+            inttimes: times,
+            intrange: range
+        };
+        $.ajax({
+            url: "/Renew/Renew",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            success: function (result) {
+                $("#content").html(result);
+                document.getElementById("fieldsearch").focus();
+                $("#success").html($("#hiddenmessage").val());
+            },
+            error: function (errormessage) {
+                console.log("abcssd");
+                document.getElementById("fieldsearch").focus();
+            }
+        });
+    }
+</script>

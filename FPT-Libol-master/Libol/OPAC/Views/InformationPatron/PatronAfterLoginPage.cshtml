@@ -1,0 +1,190 @@
+﻿@model OPAC.Models.SP_OPAC_CHECK_PATRON_CARD_Result
+
+@{
+    ViewBag.Title = "Thông tin bạn đọc - Thư viện trường đại học FPT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start body -->
+<div class="container">
+    <figure>
+        <img class="pic-header" alt="Home Slide" src="~/AllContent/images/white-background.png" />
+    </figure>
+    <div class="navbar-home">
+        <a href="@Url.Action("Home", "Home")"><i class="fa fa-home"></i> Trang chủ</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Sản phẩm</a>
+        <div class="dropdown-home">
+            <button class="dropbtn">Dịch vụ</button>
+            <div class="dropdown-content">
+                <a href="#">Z39.50</a>
+            </div>
+        </div>
+        <a href="#" style="width: 153px">Nội qui thư viện</a>
+        <a href="@Url.Action("PatronAfterLoginPage", "InformationPatron")" style="width: 220px; background-color: #D8491F">Thông tin bạn đọc</a>
+        @if (Session["ID"] == null)
+        {
+            <a href="@Url.Action("Login", "Login")" id="login" class="login"><i class="fa fa-sign-in"></i> Đăng nhập</a>
+        }
+        else
+        {
+            <a href="@Url.Action("Logout", "Login")" id="login" class="login"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+        }
+    </div>
+    <br>
+
+    <div class="inline">
+        <table border="1" class="personal" id="list-infor">
+            <tr>
+                <th class="personal">Trình đơn bạn đọc</th>
+            </tr>
+            <tr>
+                <td class="personal selecting">Thông tin bạn đọc</a></td>
+            </tr>
+            <tr>
+                <td class="personal"><a href="@Url.Action("BookBorrowingPage", "InformationPatron")" class="personal">Tài liệu đang mượn</a></td>
+            </tr>
+            <tr>
+                <td class="personal"><a href="#" class="personal">Thông tin đặt mượn sách</a></td>
+            </tr>
+            <tr>
+                <td class="personal"><a href="#" class="personal">Lịch sử mượn sách</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="inline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+    @if (Session["ID"] == null)
+    {
+        <div>
+            <table border="1" class="personal" id="infor">
+                <tr>
+                    <th class="personal">Thông tin bạn đọc</th>
+                </tr>
+                <tr>
+                    <td class="personal">
+                        <p class="need-to-login">Bạn đọc cần phải đăng nhập vào hệ thống</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div>
+            <table border="1" class="personal" id="infor">
+                <tr>
+                    <th class="personal">Thông tin bạn đọc</th>
+                </tr>
+                <tr>
+                    <td class="personal">
+                        <table id="person-infor">
+                            @{
+                                string patronName = Model.FirstName + " " + Model.MiddleName + " " + Model.LastName;
+                            }
+                            <tr>
+                                <td class="fornews">Tên bạn đọc:</td>
+                                <td class="fornews">@patronName</td>
+                            </tr>
+                            <tr>
+                                <td class="fornews">Số thẻ:</td>
+                                <td class="fornews">@Model.Code</td>
+                            </tr>
+                            <tr>
+                                <td class="fornews">Cấp ngày:</td>
+                                <td class="fornews">@Model.ValidDate</td>
+                            </tr>
+                            <tr>
+                                <td class="fornews">Hết hạn ngày:</td>
+                                <td class="fornews">@Model.ExpiredDate</td>
+                            </tr>
+                            <tr>
+                                <td class="fornews">Nhóm bạn đọc:</td>
+                                <td class="fornews">@Model.GroupName</td>
+                            </tr>
+                            <tr>
+                                <td class="fornews">Tình trạng thẻ:</td>
+                                @if (Model.isLocked == 0)
+                                {
+                                    <td class="fornews"><b>Thẻ mở</b></td>
+                                }
+                                else
+                                {
+                                    <td class="fornews" style="color: red"><b>Thẻ đóng</b></td>
+                                }
+                            </tr>
+                            <tr>
+                                <td class="fornews">Số tiền nợ:</td>
+                                <td class="fornews">@Model.Debt VND</td>
+                            </tr>
+                            <tr>
+                                <td class="fornews" colspan="2">
+                                    <a href="#changePass" onclick="Reload()" class="btn2 btn-borrow1" style="color: white">Đổi mật khẩu</a> 
+                                    @if (TempData["success"] != null)
+                                    {
+                                        <p style="color: green">@TempData["success"].ToString()</p>
+                                    }
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+    <br>
+</div>
+<br>
+<!-- End body -->
+<!-- Change password popup-->
+<div id="changePass" class="modal-window">
+    <div>
+        <a href="javascript:window.history.back()" title="Đóng" class="modal-close">&times;</a>
+        <h1 style="font-family: Arial">Đổi mật khẩu</h1>
+        <div>
+            <form action="/InformationPatron/UpdatePatron" method="post">
+                <table>
+                    <tr>
+                        <td class="fornews" style="text-align: right">Mật khẩu mới</td>
+                        <td class="fornews"><input type="password" id="newPass" name="newPassword" size="40" /></td>
+                    </tr>
+                    <tr>
+                        <td class="fornews" style="text-align: right">Xác nhận mật khẩu</td>
+                        <td class="fornews"><input type="password" id="confirmPass" name="confirmPassword" size="40" /></td>
+                    </tr>
+                    <tr>
+                        <td class="fornews" colspan="2" style="text-align: center">
+                            <div id="message"></div>
+                        </td>
+                    </tr>
+                </table>
+                <p style="text-align: center">
+                    <button class="submit" onclick="return CheckUpdatePassword()">Đồng ý</button>
+                    <button type="button" class="submit" onclick="Reload()">Đặt lại</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--Check update password-->
+<script type="text/javascript">
+    function CheckUpdatePassword() {
+        var newPass = document.getElementById("newPass").value;
+        var confirmPass = document.getElementById("confirmPass").value;
+        var message = document.getElementById("message");
+
+        if (confirmPass !== newPass) {
+            message.innerHTML = '<span style="color: red">Xác nhận mật khẩu không chính xác!</span>';
+            return false;
+        }
+
+        return true;
+    }
+
+    function Reload() {
+        document.getElementById("newPass").value = "";
+        document.getElementById("confirmPass").value = "";
+        document.getElementById("message").innerHTML = "";
+    }
+</script>

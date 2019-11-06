@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Thêm bạn đọc theo lô";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4 style="margin : 1rem">Thêm bạn đọc theo lô</h4>
+@using (Html.BeginForm("PreviewPatronFile", "Patron", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+
+        <label for="exampleFormControlFile1">Vui lòng chọn file</label>
+        <input name="uploadFile" type="file" class="form-control-file" id="filePatron" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+
+
+    </div>
+    <button type="submit" class="btn btn-primary">OK</button>
+
+    <p>(Click vào <a href="~/Content/Template1/Template_Import_Patron.xlsx">đây</a> để tải template)</p>
+}
+
+
+

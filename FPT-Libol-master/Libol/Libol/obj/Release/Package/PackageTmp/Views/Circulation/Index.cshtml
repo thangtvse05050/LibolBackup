@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Báo cáo mượn trả";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h4 style="margin-top: 20px;margin-bottom: 20px;">Thống kê và báo cáo</h4>
+
+<table class="table">
+    <thead style="background-color:deepskyblue; color: white; ">
+        <tr>
+            <th>Báo cáo mượn trả</th>
+            <th>Thống kê theo thời gian</th>
+            <th>Thống kê theo thuộc tính</th>
+        </tr>
+    </thead>
+    <tbody style="font-weight:bold; color: dodgerblue;">
+        <tr>
+            <td><a href="ReportOnLoanCopy">Đang mượn</a></td>
+            <td><a href="StatisticYear">Hàng năm</a></td>
+            <td><a href="StatisticTopCopy">Ấn phẩm có tần suất mượn cao nhất</a></td>
+        </tr>
+        <tr>
+            <td><a href="ReportLoanCopy">Từng mượn</a></td>
+            <td><a href="StatisticMonth">Hàng tháng</a></td>
+            <td><a href="StatisticTopPatron">Bạn đọc có số lần mượn cao nhất</a></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><a href="StatisticPatronGroup">Nhóm bạn đọc theo thời gian</a></td>
+            <td>Top20</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Địa điểm ghi mượn theo thời gian</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Dạng tư liệu lưu thông theo thời gian</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+
