@@ -1,0 +1,192 @@
+﻿
+@{
+    ViewBag.Title = "SpecializedReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css">
+    <title>Thống kê ấn phẩm đã được mượn</title>
+    <style>
+        label {
+            text-align: right;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<h4 style="margin-top:20px;">Báo cáo Chuyên ngành</h4>
+<br />
+<div class="row">
+    <div class="col-md-2">
+        <a class="form-group row col" href="/AcquireReport/SpecializedReport">Báo cáo chuyên ngành</a>
+        <a class="form-group row col" href="/AcquireReport/CreateNewSpecialized">Thêm chuyên ngành</a>
+        <a class="form-group row col bold" href="/AcquireReport/UpdateSpecialized">Sửa chuyên ngành</a>
+        <a class="form-group row col" href="/AcquireReport/AddSubjectToSpecialized">Thêm môn học vào chuyên ngành</a>
+        <a class="form-group row col" href="/AcquireReport/UpdateSpecialized">Xóa môn học khỏi chuyên ngành</a>
+    </div>
+    <div class="col-md-8 text-center">
+        <div class="form-group row col-8">
+            <label class="control-label col-md-8 align-self-center">Thư viện</label>
+            @Html.DropDownList("Library", ViewData["lib"] as List<SelectListItem>, new { @class = "form-control col-md-4" })
+        </div>
+        <div class="form-group row col-8">
+            <label class="control-label col-md-8 align-self-center">Chuyên ngành</label>
+            @Html.DropDownList("Specialized", new SelectList(string.Empty, "Value", "Text"), "Chọn chuyên ngành", new { @class = "form-control col-md-4" })
+            
+        </div>
+        <div class="form-group row col-8">
+            <label class="control-label col-md-8 align-self-center">Tên mới</label>
+            <input type="text" id="Spec" name="Spec" class="form-control col-md-4" />
+        </div>
+       
+
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8 ml-lg-4">
+        @*<div class="row">
+            
+            <textarea type="text" class="form-control col-md-4  mx-auto" id="subjects" name="subjects" rows="8" onchange="getSubjectText()"></textarea>
+        </div>
+        <br />*@
+        <div class="row ">
+            <div class="mx-auto ">
+                <button type="button" id="update" class="btn-primary btn">Cập nhật chuyên ngành</button>
+                <button type="button" id="delete" class="btn-danger btn" >Xóa chuyên ngành</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ContentSpecReport"></div>
+
+<script>
+    function getSubjectText() {
+        document.getElementById("Subject").value = document.getElementById("subjects").value;
+
+    }
+
+    $(document).ready(function () {
+        $("input[name=Subject]").change(function () {
+            document.getElementById("subjects").value = document.getElementById("Subject").value;
+        });
+
+        $("#Library").change(function () {
+            $("#Specialized").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetSpecializedStored")', // we are calling json method
+                dataType: 'json',
+                data: { id: $("#Library").val() },
+                success: function (locs) {
+                    $.each(locs, function (i, loc) {
+                        $("#Specialized").append('<option value="' + loc.Value + '">' +
+                            loc.Text + '</option>');
+                    });
+                }
+            });
+            return false;
+          });
+          $("#Specialized").change(function () {
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetSpecializedSubject")', // we are calling json method
+                dataType: 'json',
+                data: { id: $("#Specialized").val() },
+                success: function (locs) {
+                    var str = locs;
+                    document.getElementById("Spec").value = str.split("/")[0];
+                    document.getElementById("Subject").value = str.split("/")[1];
+                    document.getElementById("subjects").value = str.split("/")[1];
+                    
+                }
+            });
+            return false;
+          });
+      });
+ 
+    document.getElementById("update").onclick = function () {
+        var empObj = {
+            
+            strSpec: document.getElementById("Specialized").value,
+            strLibID: document.getElementById("Library").value,
+            strSpecNew: document.getElementById("Spec").value,
+        };
+
+        if (document.getElementById("Library").value == "") {
+            alert("Hãy chọn Thư viện");
+        } else if (document.getElementById("Spec").value == "") {
+            alert("Tên chuyên ngành không được để trống");
+        } 
+         
+        else {
+            $.ajax({
+                url: "GetUpdateSpecialized",
+                data: JSON.stringify(empObj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result == "Cập nhật chuyên ngành thành công!!") {
+                        alert(result);
+                        location.reload();
+                    }
+                    else
+                    {
+                        alert(result);
+                        
+                    }
+                  
+                 
+                },
+                error: function () {
+                }
+            });
+
+        }
+
+    };
+
+    document.getElementById("delete").onclick = function () {
+        var empObj = {
+           
+            strSpec: document.getElementById("Specialized").value,
+      
+        };
+
+        if (document.getElementById("Library").value == "") {
+            alert("Hãy chọn Thư viện");
+        } 
+        else {
+            $.ajax({
+                url: "GetDeleteSpecialized",
+                data: JSON.stringify(empObj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+
+                    alert(result);
+                    location.reload();
+                },
+                error: function () {
+                }
+            });
+
+        }
+
+    };
+</script>
+
+
+

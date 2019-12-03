@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thống kê và báo cáo</h2>
+<table class="table table-hover" style="background-color: blanchedalmond; ">
+    <thead style="background-color:blue; color: white; ">
+        <tr>
+            <th>Báo cáo mượn trả</th>
+            <th>Thống kê theo thời gian</th>
+            <th>Thống kê theo thuộc tính</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.ActionLink("Đang mượn", "ReportOnLoanCopy", "Circulation")</td>
+            <td>@Html.ActionLink("Hàng năm", "StatisticAnnual", "Circulation")</td>
+            <td>@Html.ActionLink("Ấn phẩm có tần suất mượn cao nhất", "StatisticTopCopy", "Circulation")</td>
+        </tr>
+        <tr>
+            <td>@Html.ActionLink("Từng mượn", "ReportLoanCopy", "Circulation")</td>
+            <td>@Html.ActionLink("Hàng tháng", "StatisticMonth", "Circulation")</td>
+            <td>@Html.ActionLink("Bạn đọc có số lần mượn cao nhất", "StatisticTopPatron", "Circulation")</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>@Html.ActionLink("Nhóm bạn đọc theo thời gian", "StatisticPatronGroup", "Circulation")</td>
+            <td>Top20</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Địa điểm ghi mượn theo thời gian</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Dạng tư liệu lưu thông theo thời gian</td>
+            <td></td>
+        </tr>
+
+
+    </tbody>
+</table>

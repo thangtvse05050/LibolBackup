@@ -1,0 +1,201 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<head>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            var len = @ViewBag.ItemDetailsResult.Count + 3;
+            var table1 = $("#table1").DataTable({
+                paging: false,
+                searching: false,
+                info: false,
+                order: false,
+                buttons: [{
+                    extend: 'excelHtml5',
+                    title: function () { var printTitle = 'Bổ sung - Thống kê theo mã ngôn ngữ'; return printTitle; },
+                    customize: function (xlsx) {
+                        var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                        // make bold-text in row which has index is len
+                        $('row:eq(' + len + ') c', sheet).attr('s', '2');
+                    }
+                }],
+            });
+            var table2 = $("#table2").DataTable({
+                paging: false,
+                searching: false,
+                info: false,
+                order: false,
+            });
+            var data = [
+                ["", ""],
+                ["Mã ngôn ngữ", "Số lượng bản ấn phẩm"],
+
+            ];
+            table1.rows.add(data).draw()
+                .nodes()
+                .to$()
+                .addClass('hide');
+            table1.rows.add(table2.data().toArray()).draw()
+                .nodes()
+                .to$()
+                .addClass('hide');
+            //tableToExport.rows.add(table2.data().toArray()).draw();
+            //console.log(tableToExport.data());
+            $("#ExportReporttoExcel").on("click", function () {
+                table1.button('.buttons-excel').trigger();
+            });
+        });
+    </script>
+</head>
+<table align="center">
+    <tr valign="top">
+        <td style="width: 35%;">
+            <div id="table_div1" style="margin-top: 150px;">
+                <h4 class="caps" id="stat1" style="margin-left:50px;">Tổng số đầu ấn phẩm: @ViewBag.Result.TotalBook</h4><br />
+                <table id="table1" class="WordSection1 table-striped table-bordered" style="margin-left:50px; border: thin;" border="1">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center">Mã Ngôn ngữ</th>
+                            <th style="text-align:center">Số lượng đầu ấn phẩm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.ItemDetailsResult)
+                        {
+                            <tr>
+                                <td style="text-align:center">@item.ISOCode</td>
+                                <td style="text-align:center">@item.Total</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </td>
+        <td style="width: 65%;">
+            <div id="columnchart_values1" style="width: 900px; height: 700px;"></div>
+        </td>
+    </tr>
+</table>
+<table align="center">
+    <tr valign="top">
+        <td style="width: 35%;">
+            <div id="table_div1" style="margin-top: 150px;">
+                <h4 class="caps" id="stat1" style="margin-left:50px;">Tổng số bản ấn phẩm: @ViewBag.Result.TotalCopies</h4><br />
+                <table id="table2" class="WordSection1 table-striped table-bordered" style="margin-left:50px; border: thin;" border="1">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center">Mã Ngôn ngữ</th>
+                            <th style="text-align:center">Số lượng bản ấn phẩm</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.CopyDetailsResult)
+                        {
+                            <tr>
+                                <td style="text-align:center">@item.ISOCode</td>
+                                <td style="text-align:center">@item.Total</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </td>
+        <td style="width: 65%;">
+            <div id="columnchart_values2" style="width: 900px; height: 700px;"></div>
+        </td>
+    </tr>
+</table>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <button type="button" id="ExportReporttoExcel" class="btn btn-primary">Lưu vào file excel</button>
+    </div>
+</div>
+<script type="text/javascript">
+    google.charts.load("current", { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart1);
+    google.charts.setOnLoadCallback(drawChart2);
+
+    function drawChart1() {
+        var table = document.getElementById("table1");
+        if (table.rows.length <= 1)
+            return;
+        var len = table.rows.length;
+        var arr = [["Ngôn ngữ", "Số đầu ấn phẩm", { role: "style" }]];
+        for (var i = 1; i < len; i++) {
+            if (table.rows[i].classList.contains("hide")) continue;
+            arr.push([table.rows[i].cells[0].innerHTML, parseInt(table.rows[i].cells[1].innerHTML), "aquamarine1"]);
+        }
+        var data = google.visualization.arrayToDataTable(arr);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            },
+            2]);
+
+        var options = {
+            title: "",
+            bar: { groupWidth: "50%" },
+            legend: { position: "none" },
+            hAxis: {
+                title: 'Năm',
+            },
+            vAxis: {
+                title: 'Số đầu ấn phẩm',
+            }
+
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values1"));
+        chart.draw(view, options);
+    }
+
+    function drawChart2() {
+        var table = document.getElementById("table2");
+        if (table.rows.length <= 1)
+            return;
+        var len = table.rows.length;
+        var arr = [["Ngôn ngữ", "Số bản ấn phẩm", { role: "style" }]];
+        for (var i = 1; i < len; i++) {
+            if (table.rows[i].classList.contains("hide")) continue;
+            arr.push([table.rows[i].cells[0].innerHTML, parseInt(table.rows[i].cells[1].innerHTML), "aquamarine1"]);
+        }
+        var data = google.visualization.arrayToDataTable(arr);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            },
+            2]);
+
+        var options = {
+            title: "",
+            bar: { groupWidth: "50%" },
+            legend: { position: "none" },
+            hAxis: {
+                title: 'Năm',
+            },
+            vAxis: {
+                title: 'Số bản ấn phẩm',
+            }
+
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values2"));
+        chart.draw(view, options);
+    }
+</script>

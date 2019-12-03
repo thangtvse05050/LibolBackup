@@ -1,0 +1,101 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "Tìm kiếm biên mục";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+        <title>SearchNumberCode</title>
+        <link rel="stylesheet" href="bootstrap.min.css" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>*@
+<div id="container" class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3 text-center">
+            <br>
+
+            <h2>Tìm Kiếm Biên Mục</h2>
+            <div class="info-form">
+                @using (Html.BeginForm("ViewCatalogueAfterSearch", "Catalogue", FormMethod.Get, new { @class = "form-signin" }))
+                {
+                    @*<form action="/Catalogue/ViewCatalogueAfterSearch" class="form-inlin justify-content-center">*@
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtCode" name="txtCode" placeholder="Mã Tài Liệu" runat="server" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtTT" name="txtTT" placeholder="Nhan Đề Chính" runat="server" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtCN" name="txtCN" placeholder="Mã ĐKCB" runat="server" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtISBN" name="txtISBN" placeholder="ISBN" runat="server" />
+                    </div>
+                    <button id="btnSubmit" type="submit" class="btn btn-success ">Tìm Kiếm</button>
+                    @*</form>*@
+                }
+            </div>
+            <br>
+        </div>
+    </div>
+
+    @*<div class="table-responsive col-sm-10 offset-sm-1">
+            <table class="table table-hover table-bordered" id="table"></table>
+        </div>*@
+</div>
+
+<script>
+    $(document).keypress(function (e) {
+        var keycode = (e.keyCode ? e.keyCode : e.which);
+        if (keycode == '13') {
+            onsubmit();
+        }
+    });
+
+    //var Data;
+    //function Search() {
+    //    //debugger;
+
+    //    var strCode = $('#txtCode').val().trim();
+    //    var strCN = $('#txtCN').val().trim();
+    //    var strTT = $('#txtTT').val().trim();
+    //    var ISBN = $('#txtISBN').val().trim();
+    //    $.ajax({
+    //        url: "/Catalogue/SearchCode",
+    //        type: "POST",
+    //        data: JSON.stringify({ strCode: strCode, strCN: strCN, strTT: strTT, ISBN: ISBN }),
+    //        contentType: "application/json;charset=utf-8",
+    //        dataType: "json",
+    //        success: function (inforList) {
+    //            $('#table').empty();
+    //            Data = inforList;
+    //            $('#table').append("<tr class='table-success'><th scope='col'> Mã Tài Liệu</th ><th scope='col'>Nhan Đề</th></tr >")
+    //            for (var i = 0; i < inforList.length; ++i) {
+    //                var code;
+    //                if (inforList[i].FieldCode == '001') code = inforList[i].Content;
+    //                if (inforList[i].FieldCode == '245') {
+    //                    //lọc các kí tự $
+    //                    $('#table').append("<tr><td> <strong><a href='/Catalogue/AddNewCatalogueDetail?ID=" + inforList[i].ItemID + "'>" + code + "</strong></td><td>" + inforList[i].Content + "</td></tr>");
+    //                }
+
+    //            }
+    //            $('#table').show(0);
+    //        },
+    //        error: function (errorThrown) {
+    //            alert(errorThrown);
+    //        }
+    //    });
+
+
+    //}
+
+</script>
+@*$('#table').append("<tr class='table-success'><th scope='col'> Ma Tai Lieu</th><th scope='col'>Nhan De</th><th scope='auto'>Hanh Dong</th></tr>")*@
+@*$('#table').append("<tr><td> <strong><a href='/Catalogue/AddNewCatalogueDetail?ID=" + inforList[i].ItemID + "'>" + code + "</strong></td><td>" + inforList[i].Content + "</td><td>Chi Tiet</td></tr>");*@
+
+
+

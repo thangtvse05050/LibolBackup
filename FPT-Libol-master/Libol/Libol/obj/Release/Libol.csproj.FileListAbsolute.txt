@@ -1,0 +1,472 @@
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\ApplicationInsights.config
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Libol.dll.config
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Libol.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Libol.pdb
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\csc.exe
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\csc.exe.config
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\csc.rsp
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\csi.exe
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\csi.exe.config
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\csi.rsp
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.Managed.Core.targets
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.AppContext.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Collections.Immutable.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Console.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.IO.Compression.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.IO.FileSystem.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.IO.Pipes.AccessControl.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.IO.Pipes.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Reflection.Metadata.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.AccessControl.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Claims.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Cryptography.Encoding.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Cryptography.Primitives.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Principal.Windows.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Text.Encoding.CodePages.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.ValueTuple.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Xml.ReaderWriter.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Xml.XmlDocument.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Xml.XPath.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\System.Xml.XPath.XDocument.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\vbc.exe
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\vbc.exe.config
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\vbc.rsp
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\VBCSCompiler.exe
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\roslyn\VBCSCompiler.exe.config
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Antlr3.Runtime.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\EntityFramework.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\EntityFramework.SqlServer.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.AI.Agent.Intercept.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.AI.DependencyCollector.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.AI.Web.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.AI.WindowsServer.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.ApplicationInsights.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.Web.Infrastructure.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Newtonsoft.Json.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\PagedList.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\PagedList.Mvc.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.ComponentModel.Annotations.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Diagnostics.DiagnosticSource.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.Helpers.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.Mvc.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.Optimization.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.Razor.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.Deployment.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.Razor.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\WebGrease.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\zxing.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\zxing.presentation.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\EntityFramework.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\EntityFramework.SqlServer.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\PagedList.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\PagedList.Mvc.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.Helpers.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.Mvc.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.Optimization.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.Razor.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.Deployment.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.Razor.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Newtonsoft.Json.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Antlr3.Runtime.pdb
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\zxing.pdb
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\zxing.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\zxing.presentation.pdb
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\zxing.presentation.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\System.Diagnostics.DiagnosticSource.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.AI.DependencyCollector.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.AI.WindowsServer.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.AI.Web.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\obj\Release\Libol.csprojAssemblyReference.cache
+F:\CapstoneProject\FPT-Libol\Libol\Libol\obj\Release\Libol.csproj.CoreCompileInputs.cache
+F:\CapstoneProject\FPT-Libol\Libol\Libol\obj\Release\Libol.csproj.CopyComplete
+F:\CapstoneProject\FPT-Libol\Libol\Libol\obj\Release\Libol.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\obj\Release\Libol.pdb
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\log4net.config
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\log4net.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\log4net.xml
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\EPPlus.dll
+F:\CapstoneProject\FPT-Libol\Libol\Libol\bin\EPPlus.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\ApplicationInsights.config
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\log4net.config
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Libol.dll.config
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Libol.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Libol.pdb
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\csc.exe
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\csc.exe.config
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\csc.rsp
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\csi.exe
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\csi.exe.config
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\csi.rsp
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.AppContext.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Console.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.IO.Compression.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.IO.Pipes.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Claims.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.ValueTuple.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Xml.XPath.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\vbc.exe
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\vbc.exe.config
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\vbc.rsp
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\VBCSCompiler.exe
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Antlr3.Runtime.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\EntityFramework.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\EntityFramework.SqlServer.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\EPPlus.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\log4net.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.AI.Web.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.ApplicationInsights.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Newtonsoft.Json.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\PagedList.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\PagedList.Mvc.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.ComponentModel.Annotations.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.Helpers.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.Mvc.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.Optimization.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.Razor.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.Razor.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\WebGrease.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\zxing.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\zxing.presentation.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\EntityFramework.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\EntityFramework.SqlServer.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\EPPlus.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\log4net.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\PagedList.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\PagedList.Mvc.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.Helpers.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.Mvc.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.Optimization.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.Razor.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Web.WebPages.Razor.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Newtonsoft.Json.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Antlr3.Runtime.pdb
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\zxing.pdb
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\zxing.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\zxing.presentation.pdb
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\zxing.presentation.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.AI.Web.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\obj\Release\Libol.csprojAssemblyReference.cache
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\obj\Release\Libol.csproj.CoreCompileInputs.cache
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\obj\Release\Libol.csproj.CopyComplete
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\obj\Release\Libol.dll
+C:\Users\ngqua\Desktop\FPT-Libol\Libol\Libol\obj\Release\Libol.pdb
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\ApplicationInsights.config
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\log4net.config
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Libol.dll.config
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Libol.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Libol.pdb
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csc.exe
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csc.exe.config
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csc.rsp
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csi.exe
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csi.exe.config
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csi.rsp
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.AppContext.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Console.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.IO.Compression.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.IO.Pipes.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Claims.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.ValueTuple.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Xml.XPath.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\vbc.exe
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\vbc.exe.config
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\vbc.rsp
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\VBCSCompiler.exe
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Antlr3.Runtime.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\EntityFramework.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\EntityFramework.SqlServer.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\EPPlus.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Hangfire.Core.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Hangfire.SqlServer.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\log4net.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.Web.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.ApplicationInsights.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.Owin.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Newtonsoft.Json.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Owin.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\PagedList.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\PagedList.Mvc.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.ComponentModel.Annotations.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Helpers.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Mvc.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Optimization.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Razor.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.Deployment.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.Razor.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\WebGrease.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.presentation.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\EntityFramework.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\EntityFramework.SqlServer.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\EPPlus.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Hangfire.Core.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Hangfire.SqlServer.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\log4net.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.Owin.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\PagedList.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\PagedList.Mvc.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Helpers.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Mvc.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Optimization.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Razor.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.Deployment.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.Razor.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Newtonsoft.Json.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Antlr3.Runtime.pdb
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.pdb
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.presentation.pdb
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.presentation.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.Web.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\es\Hangfire.Core.resources.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\nl\Hangfire.Core.resources.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\pt-BR\Hangfire.Core.resources.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\zh\Hangfire.Core.resources.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\bin\zh-TW\Hangfire.Core.resources.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\obj\Release\Libol.csprojAssemblyReference.cache
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\obj\Release\Libol.csproj.CoreCompileInputs.cache
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\obj\Release\Libol.csproj.CopyComplete
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\obj\Release\Libol.dll
+C:\Users\admin\Documents\GitHub\Libol\FPT-Libol-master\Libol\Libol\obj\Release\Libol.pdb
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\ApplicationInsights.config
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\log4net.config
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Libol.dll.config
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Libol.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Libol.pdb
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csc.exe
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csc.exe.config
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csc.rsp
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csi.exe
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csi.exe.config
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\csi.rsp
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.Managed.Core.targets
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.AppContext.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Collections.Immutable.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Console.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.IO.Compression.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.IO.FileSystem.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.IO.Pipes.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Reflection.Metadata.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.AccessControl.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Claims.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Security.Principal.Windows.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.ValueTuple.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Xml.XmlDocument.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Xml.XPath.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\vbc.exe
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\vbc.exe.config
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\vbc.rsp
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\VBCSCompiler.exe
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\roslyn\VBCSCompiler.exe.config
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Antlr3.Runtime.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\EntityFramework.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\EntityFramework.SqlServer.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\EPPlus.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Hangfire.Core.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Hangfire.SqlServer.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\log4net.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.Agent.Intercept.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.DependencyCollector.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.Web.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.WindowsServer.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.ApplicationInsights.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.Owin.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.Web.Infrastructure.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Newtonsoft.Json.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Owin.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\PagedList.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\PagedList.Mvc.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.ComponentModel.Annotations.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Diagnostics.DiagnosticSource.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Helpers.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Mvc.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Optimization.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Razor.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.Deployment.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.Razor.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\WebGrease.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.presentation.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\EntityFramework.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\EntityFramework.SqlServer.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\EPPlus.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Hangfire.Core.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Hangfire.SqlServer.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\log4net.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.Owin.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\PagedList.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\PagedList.Mvc.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Helpers.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Mvc.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Optimization.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.Razor.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.Deployment.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Web.WebPages.Razor.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Newtonsoft.Json.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Antlr3.Runtime.pdb
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.pdb
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.presentation.pdb
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\zxing.presentation.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\System.Diagnostics.DiagnosticSource.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.DependencyCollector.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.WindowsServer.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.AI.Web.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\es\Hangfire.Core.resources.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\nl\Hangfire.Core.resources.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\pt-BR\Hangfire.Core.resources.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\zh\Hangfire.Core.resources.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\bin\zh-TW\Hangfire.Core.resources.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\obj\Release\Libol.csprojAssemblyReference.cache
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\obj\Release\Libol.csproj.CoreCompileInputs.cache
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\obj\Release\Libol.csproj.CopyComplete
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\obj\Release\Libol.dll
+E:\FPT\Project Caption\Back_up\thangtv_0711_v2\Libol\FPT-Libol-master\Libol\Libol\obj\Release\Libol.pdb

@@ -1,0 +1,395 @@
+﻿
+@{
+    ViewBag.Title = "Ghi trả";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <script src="~/Scripts/jquery.blockUI.js"></script>
+
+    <style>
+
+        body {
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        #sidebar-wrapper {
+            min-height: 100vh;
+            margin-left: -15px !important;
+            -webkit-transition: margin .25s ease-out;
+            -moz-transition: margin .25s ease-out;
+            -o-transition: margin .25s ease-out;
+            transition: margin .25s ease-out;
+        }
+
+            #sidebar-wrapper .sidebar-heading {
+                padding: 0.875rem 1.25rem;
+                font-size: 1.2rem;
+            }
+
+            #sidebar-wrapper .list-group {
+                width: 18rem;
+                padding-left: 5px;
+            }
+
+            #sidebar-wrapper label {
+                font-size: 13px;
+            }
+
+        label {
+            font-size: 13px;
+        }
+
+
+        @@media (min-width: 768px) {
+            #sidebar-wrapper {
+                margin-left: 0;
+            }
+
+            #page-content-wrapper {
+                min-width: 0;
+                width: 100%;
+            }
+
+            #wrapper.toggled #sidebar-wrapper {
+                margin-left: -15rem;
+            }
+        }
+
+        th {
+            font-size: 14px;
+        }
+
+        td {
+            font-size: 13px;
+        }
+
+        .form-control {
+            font-size: 0.8rem !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <h4 style="margin:1rem;">Ghi trả </h4>
+            <div class="list-group list-group-flush">
+                <div class="col">
+                    <h5>Tùy chọn</h5>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" checked>
+                                <label class="form-check-label" for="exampleCheck1">Tự động ghi nhận phí phạt</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom: 5px;">
+                        <div class="col">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck2" checked>
+                                <label class="form-check-label" for="exampleCheck2">Đề nghị thu phí quá hạn</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom: 5px;">
+                        <div class="col-4">
+                            <div class="form-group"><label class="col-form-label">Ngày trả:</label></div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-group"><input class="form-control" id="strCheckinDate" type="date" value="@string.Format("{0:yyyy-MM-dd}", System.DateTime.Now)" /></div>
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-top: 0px;">
+                        <div class="col-3"><label class="col-form-label">Số thẻ:</label></div>
+                        <div class="col"><input class="form-control" type="text" id="strPatronCode" onchange="checkinByCardNumber()" /></div>
+                        <div class="col-4"><label class="col-form-label"> <a onclick="Searchpatron();" href="#">Tìm</a> | <a href="/Patron/Create">Thêm</a></label></div>
+                    </div>
+                    <div class="form-row" style="margin-top: 0px;margin-bottom: 5px;">
+                        <div class="col-3"><label class="col-form-label">ĐKCB:</label></div>
+                        <div class="col"><input class="form-control" type="text" id="strCopyNumber" onchange="checkinbyDKCB()" autofocus /></div>
+                        <div class="col-4"><label class="col-form-label"><a href="/Catalogue/SearchCodeNumber">Tìm</a> | <a href="/Catalogue/AddNewCatalogue">Thêm</a></label></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-4"><button class="btn btn-primary form-control" type="button" onclick="checkinbyDKCB()">Ghi trả</button></div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col" id="contentcheckin"></div>
+    </div>
+    <input type="hidden" value="@ViewBag.HiddenPatronCode" id="hiddenPatronCode" />
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($("#hiddenPatronCode").val() != '') {
+            document.getElementById("strPatronCode").value = $("#hiddenPatronCode").val();
+            var empObj = {
+                strPatronCode: $("#hiddenPatronCode").val(),
+            };
+            $.ajax({
+                url: "/CheckIn/SearchPatronDetail",
+                data: JSON.stringify(empObj),
+                contentType: "application/json;charset=utf-8",
+                type: "POST",
+                beforeSend: function (request) {
+                    $.blockUI({
+                        css: {
+                            border: 'none',
+                            padding: '15px',
+                            backgroundColor: '#000',
+                            '-webkit-border-radius': '10px',
+                            '-moz-border-radius': '10px',
+                            opacity: .5,
+                            color: '#fff'
+                        }
+                    });
+                },
+                complete: function (request, json) {
+
+                },
+                success: function (result) {
+                    $("#contentcheckin").html(result);
+                    $.unblockUI()
+                    if (document.getElementById("hiddenmessage").value != "") {
+                        alert(document.getElementById("hiddenmessage").value);
+                    }
+                    document.getElementById("strCopyNumber").focus();
+                },
+                error: function (errormessage) {
+                    $.unblockUI()
+                    document.getElementById("strCopyNumber").focus();
+                },
+
+            });
+        }
+    });
+
+
+    function findByCardNumber() {
+        $.ajax({
+            url: "CheckIn/FindByCardNumber",
+            data: null,
+            type: "Post",
+            beforeSend: function (request) {
+                $.blockUI({
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    }
+                });
+            },
+            complete: function (request, json) {
+            },
+            success: function (result) {
+                document.getElementById("contentcheckin").innerHTML = result;
+                $.unblockUI()
+            },
+            error: function (errormessage) {
+                $.unblockUI()
+            }
+        });
+    }
+
+    function checkinByCardNumber() {
+        var empObj = {
+            strPatronCode: document.getElementById("strPatronCode").value,
+        };
+        $.ajax({
+            url: "/CheckIn/SearchPatronDetail",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            beforeSend: function (request) {
+                $.blockUI({
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    }
+                });
+            },
+            complete: function (request, json) {
+
+            },
+            success: function (result) {
+                $("#contentcheckin").html(result);
+                $.unblockUI()
+                if (document.getElementById("hiddenmessage").value != "") {
+                    alert(document.getElementById("hiddenmessage").value);
+                }
+                document.getElementById("strCopyNumber").focus();
+            },
+            error: function (errormessage) {
+                $.unblockUI()
+                document.getElementById("strCopyNumber").focus();
+            },
+
+        });
+    }
+
+
+    function Searchpatron() {
+        $.ajax({
+            url: "/CheckIn/FindByCardNumber",
+            type: "GET",
+            success: function (result) {
+                $("#contentcheckin").html(result);
+            },
+            error: function () {
+            }
+        });
+    }
+
+    function Searchpatronbyname() {
+        var empObj = {
+            strFullName: document.getElementById("searchpatronbyname").value
+        };
+        $.ajax({
+            url: "/CheckIn/FindByName",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            beforeSend: function (request) {
+                $.blockUI({
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    }
+                });
+            },
+            complete: function (request, json) {
+
+            },
+            success: function (result) {
+                $("#contentcheckin").html(result);
+                $.unblockUI()
+            },
+            error: function () {
+                $.unblockUI()
+            }
+        });
+    }
+    function btnsearchpatron() {
+        var empObj = {
+            strFullName: document.getElementById("searchpatronbyname").value
+        };
+        $.ajax({
+            url: "/CheckIn/FindByName",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            beforeSend: function (request) {
+                $.blockUI({
+                    css: {
+                        border: 'none',
+                        padding: '15px',
+                        backgroundColor: '#000',
+                        '-webkit-border-radius': '10px',
+                        '-moz-border-radius': '10px',
+                        opacity: .5,
+                        color: '#fff'
+                    }
+                });
+            },
+            complete: function (request, json) {
+
+            },
+            success: function (result) {
+                $("#contentcheckin").html(result);
+                $.unblockUI()
+            },
+            error: function (errormessage) {
+                $.unblockUI()
+            }
+        });
+
+    }
+
+    function checkinbyDKCB() {
+        var empObj = {
+            intType: 1,
+            intAutoPaid: 0,
+            strCopyNumbers: document.getElementById("strCopyNumber").value,
+            strCheckInDate: document.getElementById("strCheckinDate").value,
+            strPatronCode: document.getElementById("strPatronCode").value
+        };
+        $.ajax({
+            url: "CheckIn/CheckInByDKCB",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            success: function (result) {
+                $("#contentcheckin").html(result)
+                if (document.getElementById("hiddenmessage1").value != "") {
+                    alert(document.getElementById("hiddenmessage1").value);
+                }
+                document.getElementById("strCopyNumber").value = "";
+                document.getElementById("strCopyNumber").focus();
+            },
+            error: function (errormessage) {
+                console.log("error");
+                document.getElementById("strCopyNumber").focus();
+            }
+        });
+    }
+
+    function checkinbyDKCBs() {
+        var rows = $('.selected');
+        var ids = [];
+        for (var i = 0; i < rows.length; i++) {
+            var x = $(rows[i]).children('td:nth-child(3)').text();
+            console.log(x);
+            ids.push(x);
+        }
+        var empObj = {
+            strPatronCode: document.getElementById("strPatronCode").value,
+            intType: 1,
+            intAutoPaid: 0,
+            strCopyNumbers: ids,
+            strCheckInDate: document.getElementById("strCheckinDate").value
+        };
+        $.ajax({
+            url: "CheckIn/CheckInByDKCBs",
+            data: JSON.stringify(empObj),
+            contentType: "application/json;charset=utf-8",
+            type: "POST",
+            success: function (result) {
+                $("#contentcheckin").html(result)
+                if (document.getElementById("hiddenmessage1").value != "") {
+                    alert(document.getElementById("hiddenmessage1").value);
+                }
+                document.getElementById("strCopyNumber").value = "";
+                document.getElementById("strCopyNumber").focus();
+            },
+            error: function (errormessage) {
+                console.log("error");
+                document.getElementById("strCopyNumber").focus();
+            }
+        });
+    }
+
+
+</script>
+

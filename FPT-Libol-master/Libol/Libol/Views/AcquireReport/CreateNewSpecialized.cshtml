@@ -1,0 +1,158 @@
+﻿
+
+@{
+                /**/
+
+                ViewBag.Title = "SpecializedReport";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/DataTables/Select-1.3.0/css/select.bootstrap4.css">
+    <script type="text/javascript" charset="utf8" src="~/Content/DataTables/Select-1.3.0/js/dataTables.select.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+    <title>Thống kê ấn phẩm đã được mượn</title>
+    <style>
+        label {
+            text-align: right;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<h4 style="margin-top:20px;">Báo cáo Chuyên ngành</h4>
+<br />
+<div class="row">
+    <div class="col-md-2">
+        <a class="form-group row col" href="/AcquireReport/SpecializedReport">Báo cáo chuyên ngành</a>
+        <a class="form-group row col bold" href="/AcquireReport/CreateNewSpecialized">Thêm chuyên ngành</a>
+        <a class="form-group row col" href="/AcquireReport/UpdateSpecialized">Sửa chuyên ngành</a>
+        <a class="form-group row col" href="/AcquireReport/AddSubjectToSpecialized">Thêm môn học vào chuyên ngành</a>
+        <a class="form-group row col" href="/AcquireReport/DeleteSubjectFromSpecialzed">Xóa môn học khỏi chuyên ngành</a>
+    </div>
+    <div class="col-md-8 ml-0">
+        <div class="form-group row col-8">
+            <label class="control-label col-md-8 align-self-center">Thư viện</label>
+            @Html.DropDownList("Library", ViewData["lib"] as List<SelectListItem>, new { @class = "form-control col-md-4" })
+        </div>
+        <div class="form-group row col-8">
+            <label class="control-label col-md-8 align-self-center">Tên chuyên ngành</label>
+            @*  @Html.DropDownList("Specialized", new SelectList(string.Empty, "Value", "Text"),"Chọn chuyên ngành", new { @class = "form-control col-md-4" })*@
+            <input type="text" id="Spec" name="Spec" class="form-control col-md-4" />
+
+        </div>
+        <div class="form-group row col-8">
+            <label class="control-label col-md-8 align-self-center">Mã môn</label>
+            <input type="text" id="Subject" name="Subject" class="form-control col-md-4" />
+            <label class="control-label col-md-9 " data-toggle="tooltip" title="Mỗi mã môn cách nhau bởi một dấu cách" style="color:red; text-decoration:underline">Lưu ý</label>
+        </div> 
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8 ml-lg-4">
+        <div class="row">
+            <textarea type="text" class="form-control col-md-4  mx-auto" id="subjects" name="subjects" rows="8" onchange="getSubjectText()"></textarea>
+        </div>
+        <br />
+        <div class="row">
+            <button type="button" id="stat" class="btn btn-primary mx-auto">Thêm chuyên ngành</button>
+        </div>
+    </div>
+</div>
+<br />
+
+<div class="row">
+
+    <div class="col-md-8 ml-4">
+
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+        function getSubjectText() {
+            document.getElementById("Subject").value = document.getElementById("subjects").value;
+
+        }
+        $(document).ready(function () {
+            $("input[name=Subject]").change(function () {
+                document.getElementById("subjects").value = document.getElementById("Subject").value;
+            });
+        });
+        document.getElementById("stat").onclick = function () {
+        var empObj = {
+            strSubjects: document.getElementById("Subject").value,
+            strSpec: document.getElementById("Spec").value,
+            strLibID: document.getElementById("Library").value,
+            };
+
+        if (document.getElementById("Library").value == "") {
+            alert("Hãy chọn Thư viện");
+        } else if (document.getElementById("Spec").value == "") {
+            alert("Tên chuyên ngành không được để trống");
+        }else if (document.getElementById("Subject").value == "") {
+            alert("Hãy nhập mã môn");
+        }
+        else {
+            $.ajax({
+                url: "GetCreateNewSpecialized",
+                data: JSON.stringify(empObj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+
+                    if (result != "") {
+                        //alert(result);
+                        $.alert({
+                            title: 'Thông Báo !',
+                            content: result,
+                        });
+                    }
+
+                },
+                error: function () {
+                }
+            });
+
+        }
+
+    };
+</script>
+
+
+
